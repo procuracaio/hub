@@ -148,14 +148,19 @@ input:focus,textarea:focus{outline:none;border-bottom-color:var(--ink)}
           <div class="choices">
             <label class="choice"><input type="radio" name="busca" value="Marca do zero"><span>Marca do zero</span></label>
             <label class="choice"><input type="radio" name="busca" value="Reformular a marca"><span>Reformular a marca</span></label>
-            <label class="choice"><input type="radio" name="busca" value="Site para a empresa"><span>Site para a empresa</span></label>
-            <label class="choice"><input type="radio" name="busca" value="Marca e site"><span>Marca e site</span></label>
+            <label class="choice"><input type="radio" name="busca" value="Só o site"><span><span>Só o site<small>já tenho uma marca</small></span></span></label>
           </div><span class="err">Escolha uma opção.</span></fieldset>
         <fieldset class="f" data-f="entrega" data-if="marca" hidden><legend>O que você precisa receber?</legend>
           <div class="choices">
             <label class="choice"><input type="radio" name="entrega" value="Identidade completa"><span><span>Identidade completa<small>logo, cores, tipografia e manual</small></span></span></label>
             <label class="choice"><input type="radio" name="entrega" value="Só o logo"><span>Só o logo</span></label>
             <label class="choice"><input type="radio" name="entrega" value="Ainda não sei"><span>Ainda não sei</span></label>
+          </div><span class="err">Escolha uma opção.</span></fieldset>
+        <fieldset class="f" data-f="precisaSite" data-if="marca" hidden><legend>Você também precisa de site?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="precisaSite" value="Sim"><span>Sim</span></label>
+            <label class="choice"><input type="radio" name="precisaSite" value="Não"><span>Não</span></label>
+            <label class="choice"><input type="radio" name="precisaSite" value="Ainda não sei"><span>Ainda não sei</span></label>
           </div><span class="err">Escolha uma opção.</span></fieldset>
         <fieldset class="f" data-f="paginas" data-if="site" hidden><legend>Quantas páginas o site deve ter?</legend>
           <div class="choices">
@@ -225,7 +230,7 @@ const digits = s => String(s).replace(/\D/g, '');
 /* Perguntas que aparecem conforme a resposta anterior */
 function conditional(){
   const b = val('busca');
-  const show = { marca: b && b !== 'Site para a empresa', site: b === 'Site para a empresa' || b === 'Marca e site', outro: val('origem') === 'Outro' };
+  const show = { marca: b && b !== 'Só o site', site: b === 'Só o site' || (b && val('precisaSite') === 'Sim'), outro: val('origem') === 'Outro' };
   form.querySelectorAll('[data-if]').forEach(f => { f.hidden = !show[f.dataset.if]; });
 }
 form.addEventListener('change', conditional);
@@ -239,6 +244,7 @@ const rules = {
   momento: () => !!val('momento'),
   busca: () => !!val('busca'),
   entrega: () => !!val('entrega'),
+  precisaSite: () => !!val('precisaSite'),
   paginas: () => !!val('paginas'),
   prazo: () => !!val('prazo'),
   consentimento: () => val('consentimento') === true,
@@ -274,7 +280,7 @@ form.addEventListener('submit', async e => {
   if (!check(steps[cur])) return;
   if (cur < steps.length - 1) return show(cur + 1);
   const data = {};
-  ['nome','whatsapp','email','empresa','oQueFaz','cidade','link','momento','busca','entrega','paginas','porQueAgora','prazo','origem','origemOutro','site_url'].forEach(n => data[n] = val(n));
+  ['nome','whatsapp','email','empresa','oQueFaz','cidade','link','momento','busca','entrega','precisaSite','paginas','porQueAgora','prazo','origem','origemOutro','site_url'].forEach(n => data[n] = val(n));
   data.consentimento = val('consentimento') === true;
   if (simbolo) data.simbolo = simbolo;
   bNext.disabled = true; bNext.textContent = 'Enviando…'; alertBox.hidden = true;
