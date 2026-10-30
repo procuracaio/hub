@@ -1,0 +1,55 @@
+# Um conceito por símbolo. Formato: número | texto.
+# A primeira frase vira o título da página do símbolo; o resto vira o texto de apoio.
+
+01 | Um hexágono de conexões guarda o código binário no centro. Os nós nos cantos são os servidores; o círculo é o dado que circula protegido pela rede.
+02 | O caixote de feira cheio de frutas resume o serviço: a colheita chega inteira, do jeito que saiu do pé. As ripas de madeira dão o ritmo dos grafismos.
+03 | A maçã sobre a mesa do professor nasce de dentro de um sol. É a escola como lugar de começo: o primeiro dia, a primeira letra.
+04 | Quatro círculos sobrepostos formam o quadrifólio das janelas góticas. O losango em volta é o caixilho: a luz entra, mas com desenho.
+05 | A engrenagem ganha linhas de velocidade que desenham um E. É a indústria que não pode parar, e a oficina que responde rápido.
+06 | Três camadas de telhado protegem a casa. A cumeeira é a linha mais alta do telhado, a peça que fecha a obra.
+07 | Um respingo de tinta dentro de uma forma macia e arredondada. A liberdade de criar, num espaço que acolhe.
+08 | Uma flor recortada dentro do hexágono do favo. A abelha está no meio do caminho entre as duas formas: é ela que transforma uma na outra.
+09 | O cano em U do sifão, com flanges nas pontas, guarda uma gota no centro. Desenho de encanador: funcional e sem enfeite.
+10 | A bandeira fincada no pico nevado. A forma é angular e firme, como a trilha de quem sobe passo a passo.
+11 | Duas mãos sustentam uma gota dentro de um círculo. Cuidar da água é coletivo: ninguém faz isso com uma mão só.
+12 | A chama acesa sobre as toras cruzadas, no centro de um círculo. A mesa do restaurante é a roda em volta da fogueira.
+13 | Três anéis com setas giram em torno de um centro, como um átomo em movimento. O material sempre volta ao começo.
+14 | Uma rosa dos ventos assimétrica: as pontas têm tamanhos diferentes, como os roteiros. Nenhuma viagem é igual à outra.
+15 | Oito pétalas geométricas, entre quadrados e gotas, cercam o miolo redondo. Uma flor desenhada com régua e compasso.
+16 | O olho atento dentro de um selo recortado, com a lupa saindo pela borda. A marca de quem confere tudo antes de carimbar.
+17 | Uma linha contínua dá oito voltas e fecha uma flor. É o gesto do tricô: repetir a laçada até a peça aparecer.
+18 | Dois balões de fala se cruzam e, no encontro, aparece um olho. Conversa boa começa quando um enxerga o outro.
+19 | Um livro que termina em ponta de lápis, com reticências no meio. A história ainda está sendo escrita.
+20 | Duas aves de pescoço longo se entrelaçam e desenham um S. Simetria calma, como a água parada de manhã.
+21 | Duas mãos se fecham em volta de um cadeado. A tecnologia protege, mas quem cuida são pessoas.
+22 | Uma chave recortada dentro de um marcador de mapa. Encontrar o endereço e receber a chave são o mesmo serviço.
+23 | Dois blocos deslocados criam um raio no vazio entre eles. A energia é o que passa no meio, de um lado para o outro.
+24 | Uma flor de oito pétalas desenhada só com quadrados. A estética dos jogos antigos, com o cuidado de um jardim.
+25 | Uma elipse dentro da outra: o planeta e a sua órbita vistos de perfil. Também é um olho aberto para o céu.
+26 | O oito deitado do infinito vira um S dentro do hexágono. Entrada e saída se cruzam no meio e o saldo fecha.
+27 | O quadrado dobra e vira uma seta para o alto e para a direita. A caixa fechada já está a caminho.
+28 | Um dente desenhado só com arcos e retângulos: a coroa redonda e as duas raízes abertas. Técnica e precisão, sem perder a simpatia.
+29 | Quatro prédios de cantos chanfrados formam um quarteirão. Os vazios são janelas, e o conjunto vale mais que cada bloco.
+30 | A cruz da farmácia vira o miolo de uma flor de oito pétalas. Ciência e planta na mesma forma.
+31 | O losango guarda ondas que se dobram em M. Cada onda que quebra empurra a próxima.
+32 | Uma fruta redonda com as folhas abertas no topo. O recorte embaixo é um sorriso de quem acabou de provar.
+33 | Três pedras empilhadas, cada uma menor que a de baixo. O equilíbrio que só aparece quando tudo desacelera.
+34 | Um quadrado no centro e oito meias-luas em volta. Os retalhos se encaixam e uma flor aparece entre eles.
+35 | Faixas diagonais com degraus, como pegadas em velocidade. A passada sobe um pouco a cada treino.
+36 | Uma pessoa forma a letra A com os braços e as pernas. É a marca de quem coloca gente em movimento.
+37 | Duas figuras em A dividem o mesmo eixo, uma acima da outra. O par que dança junto e conduz junto.
+38 | Os arcos do brinquedo de empilhar, espelhados em cima e embaixo. Cada camada encaixa na anterior, no tempo da criança.
+39 | O quadrado, o losango e o círculo encaixados como num exercício de prancheta. Cada forma trava a outra.
+40 | Triângulos e meias-luas se sobrepõem como escamas, ou como ondas vistas de longe. O mar e o peixe na mesma forma.
+41 | Fios ovais em diagonal formam um volume redondo. O corte que balança e continua bonito quando a pessoa se mexe.
+42 | Um biscoito redondo com uma flor vazada no centro, como se tivesse saído da forminha agora.
+43 | A casa entre duas setas, uma que sai e outra que chega. Mudar é isso: uma casa dentro de um movimento.
+44 | A estrela de oito pontas dos mosaicos árabes, dentro do círculo do prato. Geometria que vira hospitalidade.
+45 | Quatro pontos cardeais em volta de um centro firme. A consultoria não decide pelo cliente: mostra para onde cada caminho leva.
+46 | A pedra vista de cima, com o corte em losango, presa no aro redondo do anel. Lapidar é tirar o excesso até sobrar o brilho.
+47 | Um anel no centro e losangos em volta, que crescem e diminuem como a respiração. O centro fica parado enquanto tudo se move.
+48 | Dois colchetes abraçam um losango, como as chaves de um bloco de código. Dentro fica só o que precisa estar lá.
+49 | Quatro peças iguais, cada uma com um arco de compasso, giram em volta do mesmo centro. Os arcos se encontram e desenham uma estrela de quatro pontas, como num piso de ladrilho hidráulico.
+50 | Um círculo perde um quarto, e no lugar entram quadrados que sobem em degraus. A forma redonda vira escada até o ponto mais alto.
+51 | Um losango com um recorte em hélice no centro. São quatro peças que se travam sem prego nem cola, como um encaixe de marcenaria.
+52 | Quatro folhas finas nascem do mesmo ponto e desenham um J. É um traço leve, feito com a calma de quem cuida.
