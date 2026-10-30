@@ -1,3 +1,7 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Estúdio Caio Pires</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Símbolos desenhados por Caio Pires, designer de marcas.">
@@ -42,8 +46,11 @@ h2{font-size:clamp(34px,4.6vw,64px);line-height:1}
 .brandmark{text-decoration:none;display:flex;align-items:baseline;gap:10px;font:650 20px/1 var(--display);font-variation-settings:'wdth' 80,'opsz' 48;letter-spacing:-.01em;white-space:nowrap}
 .brandmark span{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
 .nav{display:flex;gap:4px}
-.nav a{text-decoration:none;font:500 14px/1 var(--body);padding:10px 12px;border-radius:999px}
+.nav a{white-space:nowrap;text-decoration:none;font:500 14px/1 var(--body);padding:10px 12px;border-radius:999px}
 .nav a:hover{background:var(--soft)}
+.nav a.cta-nav{background:var(--ink);color:var(--paper);margin-left:6px}
+.nav a.cta-nav:hover{background:var(--ink);opacity:.88}
+@media (max-width:560px){.nav .hide-s{display:none}}
 
 /* Botões */
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);font:600 15px/1 var(--body);text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,color .2s}
@@ -277,8 +284,9 @@ input[type=range]{width:100%;accent-color:var(--ink)}
     <a class="brandmark" href="#inicio">Caio Pires<span>Estúdio de marcas</span></a>
     <nav class="nav" aria-label="Seções">
       <a href="#simbolos">Símbolos</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato</a>
+      <a href="#sobre" class="hide-s">Sobre</a>
+      <a href="#contato" class="hide-s">Contato</a>
+      <a href="comecar/" class="cta-nav">Começar um projeto</a>
     </nav>
   </div>
 </header>
@@ -291,7 +299,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
       <p class="lede">Sou <b>Caio Pires</b>, designer de marcas. Aqui estão só os símbolos que desenhei, sem nome, sem cor e sem aplicação. Se a forma se sustenta sozinha, sustenta qualquer marca.</p>
       <div class="hero-cta">
         <a class="btn" href="#simbolos">Ver os símbolos <span aria-hidden="true">↓</span></a>
-        <a class="btn ghost" href="#contato">Falar comigo</a>
+        <a class="btn ghost" href="comecar/">Começar um projeto</a>
       </div>
       <dl class="facts">
         <div><dt id="fN">52</dt><dd class="lbl">símbolos</dd></div>
@@ -355,6 +363,8 @@ input[type=range]{width:100%;accent-color:var(--ink)}
     <div class="wrap">
       <span class="lbl">Contato</span>
       <h2 id="h-cont" style="margin-top:16px">Tem um negócio que precisa de marca?</h2>
+      <p style="margin:18px 0 0;max-width:34em;color:color-mix(in srgb,var(--paper) 72%,transparent)">Responda o pré-briefing em uns 5 minutos e receba a proposta pelo WhatsApp.</p>
+      <p style="margin-top:24px"><a class="btn" href="comecar/">Começar um projeto <span aria-hidden="true">→</span></a></p>
       <div class="mail">
         <code id="mail">cpires.design@gmail.com</code>
         <button class="btn" type="button" id="copyMail">Copiar e-mail</button>
@@ -652,7 +662,7 @@ function renderSP(i){
       <div class="cta-g">
         <div><span class="lbl">Próximo passo</span><h2 id="hC">Um símbolo assim pode começar a sua marca.</h2></div>
         <div class="row">
-          <a class="btn" href="mailto:cpires.design@gmail.com?subject=${encodeURIComponent('Símbolo nº '+pad(i))}">Conversar sobre o nº ${pad(i)}</a>
+          <a class="btn" href="comecar/?simbolo=${pad(i)}">Começar um projeto</a>
           <button class="btn ghost" type="button" data-close>Ver todos</button>
         </div>
       </div>

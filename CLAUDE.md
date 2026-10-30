@@ -6,6 +6,7 @@ O Caio não programa. Ele pede mudanças em linguagem natural; você faz, mostra
 - `simbolos/NN.svg`: um símbolo por arquivo; o número define a ordem e o número exibido. Qualquer SVG com formas preenchidas serve (o `build.py` converte retângulos, polígonos e transformações em paths e ignora formas brancas).
 - `conceitos.txt`: `NN | texto`. A primeira frase vira o título da página do símbolo.
 - `src/pagina.html`: modelo com os marcadores `/*SYMS*/` e `/*CONC*/`, preenchidos pelo build. Todo o CSS e JS está nele.
+- `comecar/index.html`: página do pré-briefing ("Começar um projeto"). É um arquivo pronto, editado direto (não passa pelo build). Envia as respostas para o bot do WhatsApp do estúdio (`https://bot-whatsapp-791312662225.southamerica-east1.run.app/pre-briefing`), que guarda no Supabase e avisa o Caio. As opções de cada pergunta precisam ser iguais às de `OPCOES` em `src/pre-briefing.js` do bot (pasta `estudio-caio/00_estudio/bot do whatsapp/`). Aceita `?simbolo=NN` para registrar de qual símbolo o cliente veio.
 - `build.py`: `pip install svgelements cairosvg pillow --break-system-packages` e depois `python3 build.py`. Gera `index.html`.
 
 ## Regras

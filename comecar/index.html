@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Começar um projeto · Estúdio Caio Pires</title>
+<meta name="description" content="Conte sobre o seu negócio em poucos minutos e receba a proposta do Estúdio Caio Pires pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F3F4F1; --card:#FFFFFF; --soft:#E7E9E3; --line:#D3D6CF;
+  --ink:#141513; --mute:#5F625C; --err:#B3261E;
+  --display:'Bricolage Grotesque','Arial Narrow',system-ui,sans-serif;
+  --body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --gut:max(clamp(16px,4vw,44px),env(safe-area-inset-left,0px));
+  --gutr:max(clamp(16px,4vw,44px),env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#121311; --card:#1A1B19; --soft:#22241F; --line:#2E302B; --ink:#ECEDE8; --mute:#A0A39B; --err:#F2B8B5; color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#121311; --card:#1A1B19; --soft:#22241F; --line:#2E302B; --ink:#ECEDE8; --mute:#A0A39B; --err:#F2B8B5; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1180px;margin-inline:auto;padding-left:var(--gut);padding-right:var(--gutr)}
+.lbl{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+h1,h2{font-family:var(--display);font-variation-settings:'wdth' 82,'opsz' 96;font-weight:600;letter-spacing:-.025em;margin:0;text-wrap:balance}
+
+.top{border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.brandmark{text-decoration:none;display:flex;align-items:baseline;gap:10px;font:650 20px/1 var(--display);font-variation-settings:'wdth' 80,'opsz' 48;white-space:nowrap}
+.brandmark span{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.back{font:500 14px/1 var(--body);text-decoration:none;padding:10px 12px;border-radius:999px}
+.back:hover{background:var(--soft)}
+
+.layout{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,6vw,96px);padding-block:clamp(32px,6vw,80px) 80px;align-items:start}
+.intro{position:sticky;top:32px}
+.intro h1{font-size:clamp(40px,5.4vw,76px);line-height:.95;margin-top:16px;font-variation-settings:'wdth' 78,'opsz' 96;letter-spacing:-.035em}
+.intro p{color:var(--mute);font-size:18px;max-width:28em;margin:24px 0 0}
+.how{list-style:none;padding:0;margin:32px 0 0;border-top:1px solid var(--line)}
+.how li{display:grid;grid-template-columns:36px 1fr;gap:4px 10px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.how i{font:500 12px/1.7 var(--mono);font-style:normal;color:var(--mute)}
+
+.card{background:var(--card);border:1px solid var(--line);padding:clamp(20px,3.4vw,40px)}
+.prog{display:flex;gap:6px;margin-bottom:10px}
+.prog i{flex:1;height:3px;background:var(--soft)}
+.prog i.on{background:var(--ink)}
+.stepno{margin-bottom:22px}
+.step[hidden]{display:none}
+.step h2{font-size:clamp(26px,2.6vw,34px);line-height:1.05;margin-bottom:6px}
+.step>p{color:var(--mute);margin:0 0 26px}
+.f{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;border:0;padding:0;min-width:0}
+.f>label,.f>legend{font-weight:600;font-size:16px;padding:0}
+.f .hint{font-size:14px;color:var(--mute);margin-top:-4px}
+.opt{font-weight:400;color:var(--mute);font-size:14px}
+input[type=text],input[type=tel],input[type=email],textarea{width:100%;background:transparent;border:0;border-bottom:1.5px solid var(--line);padding:10px 0;font-size:18px;border-radius:0;transition:border-color .2s}
+textarea{resize:vertical;min-height:96px;line-height:1.5}
+input:focus,textarea:focus{outline:none;border-bottom-color:var(--ink)}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:4px}
+.choice{position:relative}
+.choice input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.choice>span{display:flex;align-items:center;min-height:54px;padding:12px 16px;border:1.5px solid var(--line);font-size:16px;transition:border-color .15s,background .15s,color .15s}
+.choice small{display:block;color:var(--mute);font-size:13px;margin-top:2px}
+.choice input:hover+span{border-color:var(--ink)}
+.choice span span{display:block}
+.choice input:checked+span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.choice input:checked+span small{color:inherit;opacity:.75}
+.choice input:focus-visible+span{outline:2px solid var(--ink);outline-offset:3px}
+.check{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--mute);cursor:pointer}
+.check input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--ink);flex:none}
+.err{color:var(--err);font-size:14px;display:none}
+.f.bad .err{display:block}
+.f.bad input[type=text],.f.bad input[type=tel],.f.bad input[type=email],.f.bad textarea{border-bottom-color:var(--err)}
+.f.bad .choice span{border-color:var(--err)}
+.trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);font:600 15px/1 var(--body);text-decoration:none;cursor:pointer}
+.btn:disabled{opacity:.5;cursor:wait}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn[hidden]{display:none}
+.msg{padding:clamp(8px,2vw,20px) 0}
+.msg h2{font-size:clamp(30px,3.4vw,46px);line-height:1;margin:14px 0 16px}
+.msg p{color:var(--mute);margin:0 0 14px;max-width:32em}
+.alert{border:1.5px solid var(--err);color:var(--err);padding:14px 16px;font-size:15px;margin-top:18px}
+.alert[hidden]{display:none}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:28px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+
+@media (max-width:900px){.layout{grid-template-columns:1fr}.intro{position:static}.how{display:none}}
+@media (max-width:560px){.brandmark span{display:none}.choices{grid-template-columns:1fr}.nav .btn{padding:14px 18px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap bar">
+  <a class="brandmark" href="../">Caio Pires<span>Estúdio de marcas</span></a>
+  <a class="back" href="../">← Voltar ao site</a>
+</div></header>
+
+<main class="wrap layout">
+  <section class="intro" aria-labelledby="h1">
+    <span class="lbl">Começar um projeto</span>
+    <h1 id="h1">Me conte sobre o seu negócio.</h1>
+    <p>São poucas perguntas, uns 5 minutos. Com elas eu entendo o seu momento e preparo uma proposta feita para você, sem número no chute.</p>
+    <ol class="how">
+      <li><i>01</i><span>Você responde este pré-briefing.</span></li>
+      <li><i>02</i><span>Eu leio com calma e te chamo pelo WhatsApp com a proposta.</span></li>
+      <li><i>03</i><span>Se fizer sentido, a gente começa pelo método Palavras de Marca.</span></li>
+    </ol>
+  </section>
+
+  <section class="card" aria-live="polite">
+    <form id="form" novalidate>
+      <div class="prog" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <p class="lbl stepno" id="stepNo"></p>
+
+      <div class="step" data-step="1">
+        <h2>Sobre você</h2>
+        <p>Para eu saber com quem estou falando e onde te enviar a proposta.</p>
+        <div class="f" data-f="nome"><label for="nome">Seu nome</label><input type="text" id="nome" name="nome" autocomplete="name" maxlength="80"><span class="err">Escreva o seu nome.</span></div>
+        <div class="f" data-f="whatsapp"><label for="whatsapp">WhatsApp com DDD</label><input type="tel" id="whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" placeholder="(21) 98888-7777" maxlength="30"><span class="err">Confira o número, com DDD.</span></div>
+        <div class="f" data-f="email"><label for="email">E-mail <span class="opt">(opcional)</span></label><input type="email" id="email" name="email" autocomplete="email" maxlength="120"><span class="err">Esse e-mail parece incompleto.</span></div>
+      </div>
+
+      <div class="step" data-step="2" hidden>
+        <h2>Sobre a empresa</h2>
+        <p>Quanto mais concreto, melhor a proposta.</p>
+        <div class="f" data-f="empresa"><label for="empresa">Nome da empresa ou marca</label><input type="text" id="empresa" name="empresa" autocomplete="organization" maxlength="100"><span class="err">Escreva o nome da empresa ou marca.</span></div>
+        <div class="f" data-f="oQueFaz"><label for="oQueFaz">O que a empresa faz e para quem?</label><span class="hint">Ex.: padaria de fermentação natural para as famílias do bairro.</span><textarea id="oQueFaz" name="oQueFaz" maxlength="600"></textarea><span class="err">Conte um pouco mais, em uma ou duas frases.</span></div>
+        <fieldset class="f" data-f="momento"><legend>Em que momento o negócio está?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="momento" value="Já está faturando"><span>Já está faturando</span></label>
+            <label class="choice"><input type="radio" name="momento" value="Vai abrir em breve"><span>Vai abrir em breve</span></label>
+            <label class="choice"><input type="radio" name="momento" value="Ainda é uma ideia"><span>Ainda é uma ideia</span></label>
+          </div><span class="err">Escolha uma opção.</span></fieldset>
+        <div class="f" data-f="cidade"><label for="cidade">Cidade e estado <span class="opt">(opcional)</span></label><input type="text" id="cidade" name="cidade" autocomplete="address-level2" maxlength="80"></div>
+        <div class="f" data-f="link"><label for="link">Site ou Instagram atual <span class="opt">(opcional)</span></label><input type="text" id="link" name="link" maxlength="200" placeholder="@suaempresa"></div>
+      </div>
+
+      <div class="step" data-step="3" hidden>
+        <h2>O que você precisa</h2>
+        <p>Se ainda não tiver certeza, tudo bem: a gente decide junto.</p>
+        <fieldset class="f" data-f="busca"><legend>O que você está buscando?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="busca" value="Marca do zero"><span>Marca do zero</span></label>
+            <label class="choice"><input type="radio" name="busca" value="Reformular a marca"><span>Reformular a marca</span></label>
+            <label class="choice"><input type="radio" name="busca" value="Site para a empresa"><span>Site para a empresa</span></label>
+            <label class="choice"><input type="radio" name="busca" value="Marca e site"><span>Marca e site</span></label>
+          </div><span class="err">Escolha uma opção.</span></fieldset>
+        <fieldset class="f" data-f="entrega" data-if="marca" hidden><legend>O que você precisa receber?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="entrega" value="Identidade completa"><span><span>Identidade completa<small>logo, cores, tipografia e manual</small></span></span></label>
+            <label class="choice"><input type="radio" name="entrega" value="Só o logo"><span>Só o logo</span></label>
+            <label class="choice"><input type="radio" name="entrega" value="Ainda não sei"><span>Ainda não sei</span></label>
+          </div><span class="err">Escolha uma opção.</span></fieldset>
+        <fieldset class="f" data-f="paginas" data-if="site" hidden><legend>Quantas páginas o site deve ter?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="paginas" value="Até 5 páginas"><span><span>Até 5 páginas<small>início, sobre, serviços, galeria e contato</small></span></span></label>
+            <label class="choice"><input type="radio" name="paginas" value="Mais de 5 páginas"><span>Mais de 5 páginas</span></label>
+            <label class="choice"><input type="radio" name="paginas" value="Ainda não sei"><span>Ainda não sei</span></label>
+          </div><span class="err">Escolha uma opção.</span></fieldset>
+        <div class="f" data-f="porQueAgora"><label for="porQueAgora">Por que agora? O que precisa mudar? <span class="opt">(opcional)</span></label><span class="hint">Ex.: vamos abrir a segunda loja e a marca atual não passa a qualidade do produto.</span><textarea id="porQueAgora" name="porQueAgora" maxlength="800"></textarea></div>
+      </div>
+
+      <div class="step" data-step="4" hidden>
+        <h2>Para fechar</h2>
+        <p>Último passo.</p>
+        <fieldset class="f" data-f="prazo"><legend>Para quando você precisa disso pronto?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="prazo" value="Até 30 dias"><span>Até 30 dias</span></label>
+            <label class="choice"><input type="radio" name="prazo" value="Em 1 a 3 meses"><span>Em 1 a 3 meses</span></label>
+            <label class="choice"><input type="radio" name="prazo" value="Sem data definida"><span>Sem data definida</span></label>
+          </div><span class="err">Escolha uma opção.</span></fieldset>
+        <fieldset class="f" data-f="origem"><legend>Como você conheceu o estúdio? <span class="opt">(opcional)</span></legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="origem" value="Instagram"><span>Instagram</span></label>
+            <label class="choice"><input type="radio" name="origem" value="Anúncio"><span>Anúncio</span></label>
+            <label class="choice"><input type="radio" name="origem" value="Indicação"><span>Indicação</span></label>
+            <label class="choice"><input type="radio" name="origem" value="Google"><span>Google</span></label>
+            <label class="choice"><input type="radio" name="origem" value="Outro"><span>Outro</span></label>
+          </div></fieldset>
+        <div class="f" data-f="origemOutro" data-if="outro" hidden><label for="origemOutro">Onde?</label><input type="text" id="origemOutro" name="origemOutro" maxlength="120"></div>
+        <div class="f" data-f="consentimento"><label class="check"><input type="checkbox" id="consentimento" name="consentimento"><span>Concordo que o Estúdio Caio Pires use estes dados só para preparar a proposta e falar comigo sobre ela.</span></label><span class="err">Para enviar, é preciso concordar.</span></div>
+        <div class="trap" aria-hidden="true"><label for="site_url">Não preencha</label><input type="text" id="site_url" name="site_url" tabindex="-1" autocomplete="off"></div>
+        <p class="alert" id="alert" hidden></p>
+      </div>
+
+      <div class="nav">
+        <button class="btn ghost" type="button" id="bBack" hidden>← Voltar</button>
+        <span></span>
+        <button class="btn" type="submit" id="bNext">Continuar →</button>
+      </div>
+    </form>
+
+    <div class="msg" id="done" hidden tabindex="-1">
+      <span class="lbl">Pré-briefing enviado</span>
+      <h2>Obrigado, <span id="doneName"></span>.</h2>
+      <p>Recebi as suas respostas. Vou ler com calma e te chamo pelo WhatsApp com a proposta.</p>
+      <p>Enquanto isso, se quiser adiantar alguma coisa, é só me escrever.</p>
+      <p style="margin-top:26px"><a class="btn ghost" href="../">Voltar ao site</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot"><span>© 2026 Estúdio Caio Pires</span><span>Seus dados são usados só para preparar a proposta.</span></footer>
+
+<script>
+/* Endereço do bot do estúdio, que guarda as respostas e avisa o Caio. */
+const BOT = 'https://bot-whatsapp-791312662225.southamerica-east1.run.app/pre-briefing';
+const WHATS = '5521968642896';
+
+const form = document.getElementById('form'), steps = [...form.querySelectorAll('.step')];
+const bars = [...form.querySelectorAll('.prog i')], stepNo = document.getElementById('stepNo');
+const bBack = document.getElementById('bBack'), bNext = document.getElementById('bNext'), alertBox = document.getElementById('alert');
+const simbolo = (new URLSearchParams(location.search).get('simbolo') || '').replace(/\D/g, '').slice(0, 3);
+let cur = 0;
+
+const val = n => { const els = form.elements[n]; if (!els) return ''; if (els instanceof RadioNodeList) return els.value; return els.type === 'checkbox' ? els.checked : els.value.trim(); };
+const digits = s => String(s).replace(/\D/g, '');
+
+/* Perguntas que aparecem conforme a resposta anterior */
+function conditional(){
+  const b = val('busca');
+  const show = { marca: b && b !== 'Site para a empresa', site: b === 'Site para a empresa' || b === 'Marca e site', outro: val('origem') === 'Outro' };
+  form.querySelectorAll('[data-if]').forEach(f => { f.hidden = !show[f.dataset.if]; });
+}
+form.addEventListener('change', conditional);
+
+const rules = {
+  nome: () => val('nome').length >= 2,
+  whatsapp: () => { const d = digits(val('whatsapp')); return d.length >= 10 && d.length <= 13; },
+  email: () => !val('email') || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email')),
+  empresa: () => val('empresa').length >= 2,
+  oQueFaz: () => val('oQueFaz').length >= 10,
+  momento: () => !!val('momento'),
+  busca: () => !!val('busca'),
+  entrega: () => !!val('entrega'),
+  paginas: () => !!val('paginas'),
+  prazo: () => !!val('prazo'),
+  consentimento: () => val('consentimento') === true,
+};
+function check(stepEl){
+  let first = null;
+  stepEl.querySelectorAll('.f[data-f]').forEach(f => {
+    const r = rules[f.dataset.f];
+    const ok = f.hidden || !r || r();
+    f.classList.toggle('bad', !ok);
+    if (!ok && !first) first = f;
+  });
+  if (first) (first.querySelector('input,textarea') || first).focus();
+  return !first;
+}
+form.addEventListener('input', e => { const f = e.target.closest('.f'); if (f && f.classList.contains('bad')) { const r = rules[f.dataset.f]; if (!r || r()) f.classList.remove('bad'); } });
+
+function show(i){
+  cur = i;
+  steps.forEach((s, k) => s.hidden = k !== i);
+  bars.forEach((b, k) => b.classList.toggle('on', k <= i));
+  stepNo.textContent = `Etapa ${i + 1} de ${steps.length}`;
+  bBack.hidden = i === 0;
+  bNext.textContent = i === steps.length - 1 ? 'Enviar pré-briefing' : 'Continuar →';
+  conditional();
+  const h = steps[i].querySelector('h2'); h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true });
+  if (window.innerWidth < 900) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+bBack.addEventListener('click', () => show(cur - 1));
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!check(steps[cur])) return;
+  if (cur < steps.length - 1) return show(cur + 1);
+  const data = {};
+  ['nome','whatsapp','email','empresa','oQueFaz','cidade','link','momento','busca','entrega','paginas','porQueAgora','prazo','origem','origemOutro','site_url'].forEach(n => data[n] = val(n));
+  data.consentimento = val('consentimento') === true;
+  if (simbolo) data.simbolo = simbolo;
+  bNext.disabled = true; bNext.textContent = 'Enviando…'; alertBox.hidden = true;
+  try {
+    const r = await fetch(BOT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    const j = await r.json().catch(() => ({}));
+    if (r.ok && j.ok) {
+      form.hidden = true;
+      document.getElementById('doneName').textContent = data.nome.split(' ')[0];
+      const d = document.getElementById('done'); d.hidden = false; d.focus();
+      return;
+    }
+    if (r.status === 400 && j.campos) {
+      const k = steps.findIndex(s => j.campos.some(c => s.querySelector(`[data-f="${c}"]`)));
+      if (k >= 0) { show(k); j.campos.forEach(c => form.querySelector(`[data-f="${c}"]`)?.classList.add('bad')); bNext.disabled = false; return; }
+    }
+    throw new Error(j.erro || r.status);
+  } catch (err) {
+    const texto = `Olá, Caio! Tentei enviar o pré-briefing pelo site. Sou ${data.nome}, da ${data.empresa}.`;
+    alertBox.innerHTML = `Não consegui enviar agora. Suas respostas continuam aqui: tente de novo em instantes ou <a href="https://wa.me/${WHATS}?text=${encodeURIComponent(texto)}">fale comigo pelo WhatsApp</a>.`;
+    alertBox.hidden = false;
+  }
+  bNext.disabled = false; bNext.textContent = 'Enviar pré-briefing';
+});
+
+show(0);
+document.getElementById('nome').focus({ preventScroll: true });
+</script>
+</body>
+</html>
