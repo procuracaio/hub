@@ -4,169 +4,408 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Estúdio Caio Pires</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Símbolos desenhados por Caio Pires, designer de marcas.">
+<meta name="description" content="Estúdio Caio Pires: identidade visual para pequenas e médias empresas, com o método Palavras de Marca. Atendimento online para todo o Brasil.">
+<meta property="og:title" content="Estúdio Caio Pires">
+<meta property="og:description" content="Identidade visual para pequenas e médias empresas. 50 esboços, 15 símbolos, 3 sistemas e uma marca final.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Papel e tinta. Sem cor e sem nome: o símbolo é a única coisa que aparece. */
+/* Grade suíça sobre papel. O site é tinta e papel; a cor aparece só dentro dos projetos. Medidas em mono, como cotas de prancha. */
 :root{
-  --paper:#F3F4F1; --card:#FFFFFF; --soft:#E7E9E3; --line:#D3D6CF;
-  --ink:#141513; --mute:#5F625C; --scrim:#0C0D0C;
-  --display:'Bricolage Grotesque','Arial Narrow',system-ui,sans-serif;
-  --body:'Instrument Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --paper:#FAFAF8; --soft:#F1F1EE; --card:#F5F5F2; --line:#E6E6E3; --line2:#D2D2CE;
+  --mid:#A3A3A0; --mute:#5C5C5A; --ink:#111111;
+  --scrim:rgba(17,17,17,.95); --on-scrim:#F2F2EF; --on-scrim2:#C9C9C5;
+  --display:'Inter Tight','Helvetica Neue',Arial,system-ui,sans-serif;
+  --body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --gut:max(clamp(16px,4vw,44px),env(safe-area-inset-left,0px));
   --gutr:max(clamp(16px,4vw,44px),env(safe-area-inset-right,0px));
   --top:env(safe-area-inset-top,0px);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --paper:#121311; --card:#1A1B19; --soft:#22241F; --line:#2E302B;
-  --ink:#ECEDE8; --mute:#A0A39B; color-scheme:dark}}
+  --paper:#111111; --soft:#1A1A19; --card:#161615; --line:#262624; --line2:#3A3A37;
+  --mid:#6E6E6A; --mute:#A3A3A0; --ink:#FAFAF8; --scrim:rgba(8,8,8,.95); color-scheme:dark}}
 :root[data-theme="dark"]{
-  --paper:#121311; --card:#1A1B19; --soft:#22241F; --line:#2E302B;
-  --ink:#ECEDE8; --mute:#A0A39B; color-scheme:dark}
+  --paper:#111111; --soft:#1A1A19; --card:#161615; --line:#262624; --line2:#3A3A37;
+  --mid:#6E6E6A; --mute:#A3A3A0; --ink:#FAFAF8; --scrim:rgba(8,8,8,.95); color-scheme:dark}
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(72px + var(--top))}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:calc(76px + var(--top))}
+html.lock{overflow:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body::before{content:"";position:fixed;inset:0 0 auto;height:var(--top);z-index:40;background:var(--paper)}
+main{overflow-x:clip}
 a{color:inherit}
+img{max-width:100%;display:block}
 button{font:inherit;color:inherit}
+p{margin:0}
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .wrap{max-width:1320px;margin-inline:auto;padding-left:var(--gut);padding-right:var(--gutr)}
 .lbl{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
 .muted{color:var(--mute)}
-h1,h2,h3{font-family:var(--display);font-variation-settings:'wdth' 82,'opsz' 96;text-wrap:balance;margin:0;font-weight:600;letter-spacing:-.025em}
-h2{font-size:clamp(34px,4.6vw,64px);line-height:1}
-
-/* Topo */
-.top{position:sticky;top:var(--top);z-index:30;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px}
-.brandmark{text-decoration:none;display:flex;align-items:baseline;gap:10px;font:650 20px/1 var(--display);font-variation-settings:'wdth' 80,'opsz' 48;letter-spacing:-.01em;white-space:nowrap}
-.brandmark span{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
-.nav{display:flex;gap:4px}
-.nav a{white-space:nowrap;text-decoration:none;font:500 14px/1 var(--body);padding:10px 12px;border-radius:999px}
-.nav a:hover{background:var(--soft)}
-.nav a.cta-nav{background:var(--ink);color:var(--paper);margin-left:6px}
-.nav a.cta-nav:hover{background:var(--ink);opacity:.88}
-@media (max-width:560px){.nav .hide-s{display:none}}
+h1,h2,h3{font-family:var(--display);font-weight:600;margin:0;text-wrap:balance}
+h2{font-size:clamp(30px,3.6vw,52px);line-height:1.02;letter-spacing:-.03em}
+h3{font-size:clamp(22px,2.2vw,30px);line-height:1.1;letter-spacing:-.02em}
 
 /* Botões */
-.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);font:600 15px/1 var(--body);text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);font:600 15px/1 var(--body);text-decoration:none;cursor:pointer;white-space:nowrap;transition:transform .2s,background .2s,color .2s}
 .btn:hover{transform:translateY(-2px)}
 .btn.ghost{background:transparent;color:var(--ink)}
-.contact .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.contact .btn.ghost{background:transparent;color:var(--paper)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line2);background:transparent;border-radius:999px;padding:9px 14px;font:500 14px/1 var(--body);cursor:pointer;display:inline-flex;gap:8px;align-items:center;color:var(--ink);transition:border-color .2s,background .2s,color .2s}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.chip .n{font:500 11px/1 var(--mono);opacity:.7}
+.seg{display:inline-flex;flex-wrap:wrap;border:1.5px solid var(--line2);border-radius:999px;padding:3px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:8px 13px;font:500 13px/1 var(--mono);cursor:pointer;color:var(--mute)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.ib{border:1.5px solid var(--line2);background:transparent;border-radius:999px;min-width:44px;height:42px;padding:0 15px;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;font:500 14px/1 var(--body);color:var(--ink);text-decoration:none;flex:none}
+.ib:hover{border-color:var(--ink)}
+.lnk{font:500 13px/1.4 var(--mono);letter-spacing:.03em;text-decoration:none;display:inline-flex;gap:8px;align-items:center;border-bottom:1px solid var(--line2);padding-bottom:3px;align-self:flex-start}
+.lnk:hover{border-color:var(--ink)}
+
+/* Cabeçalho */
+.top{position:sticky;top:var(--top);z-index:30;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:66px}
+.wm{text-decoration:none;font:600 19px/1 var(--display);letter-spacing:-.02em;white-space:nowrap}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{text-decoration:none;font:500 14px/1 var(--body);padding:10px 11px;border-radius:999px;color:var(--mute);transition:color .2s,background .2s}
+.nav a:hover,.nav a.on{color:var(--ink);background:var(--soft)}
+.nav a.btn{margin-left:10px;padding:12px 17px;color:var(--paper);background:var(--ink)}
+.nav a.btn:hover{background:var(--ink);color:var(--paper)}
+.menu-b{display:none}
+@media (max-width:1080px){.nav{display:none}.menu-b{display:inline-flex}}
+.menu{position:fixed;inset:0;z-index:60;background:var(--paper);overflow-y:auto;padding-top:var(--top);padding-bottom:env(safe-area-inset-bottom,0px)}
+.menu .wrap{display:flex;flex-direction:column;min-height:100%;padding-bottom:28px}
+.menu-h{display:flex;justify-content:space-between;align-items:center;min-height:66px}
+.menu nav{display:flex;flex-direction:column;margin-top:18px;border-top:1px solid var(--line)}
+.menu nav a{text-decoration:none;font:600 clamp(30px,8vw,46px)/1 var(--display);letter-spacing:-.035em;padding:16px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.menu nav a span{font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--mute)}
+.menu .btn{margin-top:28px;align-self:flex-start}
+.menu .lbl{margin-top:20px}
 
 /* Abertura */
-.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center;padding-block:clamp(36px,7vw,96px) clamp(40px,6vw,80px)}
-.hero h1{font-size:clamp(46px,7.4vw,112px);line-height:.92;margin:18px 0 0;font-variation-settings:'wdth' 78,'opsz' 96;letter-spacing:-.035em}
-.lede{font-size:clamp(17px,1.5vw,20px);max-width:34em;color:var(--mute);margin:30px 0 0}
+.hero{padding-block:clamp(56px,9vw,128px) clamp(48px,6vw,80px)}
+.hero h1{font-size:clamp(38px,4.5vw,66px);line-height:1;letter-spacing:-.04em;margin-top:20px;max-width:15em}
+.lede{font-size:clamp(17px,1.45vw,20px);max-width:36em;color:var(--mute);margin-top:28px}
 .lede b{color:var(--ink);font-weight:600}
-.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.facts{display:flex;flex-wrap:wrap;gap:10px 34px;margin:38px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
-.facts div{display:flex;flex-direction:column;gap:4px}
-.facts dt{font:600 40px/1 var(--display);font-variation-settings:'wdth' 78,'opsz' 96;letter-spacing:-.03em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 24px;margin:clamp(48px,7vw,96px) 0 0;padding:20px 0 0;border-top:1px solid var(--line)}
+.facts div{display:flex;flex-direction:column;gap:8px;min-width:0}
+.facts dt{font:600 clamp(28px,2.7vw,38px)/1 var(--display);letter-spacing:-.035em;font-variant-numeric:tabular-nums}
 .facts dd{margin:0}
+@media (max-width:560px){.facts{gap:14px}.facts dt{font-size:26px}}
 
-/* Prancheta da abertura: um símbolo por vez */
-.stage{position:relative;aspect-ratio:1;background:var(--card);border:1px solid var(--line);cursor:pointer;display:block;width:100%;padding:0;color:var(--ink)}
-.stage svg{position:absolute;inset:0;width:100%;height:100%;transition:opacity .45s ease}
-.stage svg.out{opacity:0}
-.stage .tick{position:absolute;width:14px;height:14px;border-color:var(--mute);border-style:solid;border-width:0}
-.stage .t1{top:14px;left:14px;border-top-width:1px;border-left-width:1px}
-.stage .t2{top:14px;right:14px;border-top-width:1px;border-right-width:1px}
-.stage .t3{bottom:14px;left:14px;border-bottom-width:1px;border-left-width:1px}
-.stage .t4{bottom:14px;right:14px;border-bottom-width:1px;border-right-width:1px}
-.stage-cap{display:flex;justify-content:space-between;gap:12px;margin-top:12px}
-.bar-p{height:1px;background:var(--line);margin-top:10px;position:relative;overflow:hidden}
-.bar-p i{position:absolute;inset:0 auto 0 0;width:0;background:var(--ink)}
+/* Seções */
+.sec{padding-block:clamp(64px,9vw,128px);border-top:1px solid var(--line)}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 40px;margin-bottom:clamp(30px,4vw,54px)}
+.sec-head>div:first-child{min-width:0;max-width:52em}
+.sec-head h2{margin-top:14px}
+.sec-head p{max-width:36em;margin-top:18px}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* Projetos */
+.pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(30px,3.4vw,48px) clamp(18px,2.4vw,32px)}
+.pcard{display:flex;flex-direction:column;gap:16px;cursor:pointer;background:none;border:0;padding:0;text-align:left;min-width:0;color:var(--ink)}
+.pcard .ph{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:3px;overflow:hidden;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink);transition:background .35s,color .35s,border-color .35s}
+.lock{display:block;max-width:100%;background:currentColor;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.pcard:hover .ph,.pcard:focus-visible .ph{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.pcard:hover .lock{transform:scale(1.03)}
+/* Grade de construção da assinatura: as linhas se desenham ao passar o mouse */
+.cg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.cg line{stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke;opacity:.38;transform-box:fill-box;transition:transform .6s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.cg .h{transform-origin:0 50%;transform:scaleX(0)}
+.cg .v{transform-origin:50% 0;transform:scaleY(0)}
+.cg .dash{stroke-dasharray:3 4}
+.cg .ax{opacity:.75}
+.pcard:hover .cg line,.pcard:focus-visible .cg line,.pcard.drawn .cg line{transform:none}
+.pcard.drawn:not(:hover) .cg line{opacity:.22}
+.pcard.drawn:not(:hover) .cg .ax{opacity:.45}
+.badge{position:absolute;top:12px;left:12px;z-index:2;background:var(--paper);color:var(--ink);font:500 11px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;padding:7px 9px;border-radius:999px}
+.pcard .meta{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.pcard .mt{min-width:0}
+.pcard h3{font-size:clamp(24px,2.4vw,34px);letter-spacing:-.03em}
+.pcard .seg-t{color:var(--mute);margin-top:6px;font-size:15px}
+.pcard .go{font:500 13px/1 var(--mono);letter-spacing:.04em;display:inline-flex;gap:8px;align-items:center;margin-top:14px}
+.pcard .go span{transition:transform .25s}
+.pcard:hover .go span{transform:translateX(5px)}
+@media (max-width:720px){.pgrid{grid-template-columns:1fr}}
+.plist{border-top:1.5px solid var(--ink)}
+.prow{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1.4fr) minmax(0,.9fr) auto;gap:18px;align-items:center;width:100%;padding:22px 4px;border:0;border-bottom:1px solid var(--line);background:none;text-align:left;cursor:pointer;color:var(--ink);transition:padding .25s,background .25s}
+.prow:hover{padding-left:14px;background:var(--soft)}
+.prow .nm{font:600 clamp(22px,2.6vw,36px)/1 var(--display);letter-spacing:-.035em}
+.prow .sg{color:var(--mute)}
+.prow .ar{font:400 22px/1 var(--display);transition:transform .25s}
+.prow:hover .ar{transform:translateX(6px)}
+@media (max-width:720px){.prow{grid-template-columns:1fr auto}.prow .sg,.prow .kd{display:none}}
+.peek{position:fixed;left:0;top:0;width:340px;aspect-ratio:16/9;pointer-events:none;z-index:25;border-radius:3px;overflow:hidden;opacity:0;transition:opacity .25s;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink);box-shadow:0 20px 50px color-mix(in srgb,var(--ink) 18%,transparent)}
+.peek.on{opacity:1}
 
 /* Símbolos */
-.sec{padding-block:clamp(56px,8vw,112px);border-top:1px solid var(--line)}
-.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 40px;margin-bottom:clamp(24px,3.4vw,40px)}
-.sec-head p{max-width:34em;margin:14px 0 0}
-.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
-.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:3px}
-.seg button{border:0;background:transparent;padding:8px 13px;border-radius:999px;font:500 13px/1 var(--mono);cursor:pointer;color:var(--mute)}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.chip{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:9px 15px;font:500 14px/1 var(--body);cursor:pointer}
-.chip:hover{border-color:var(--ink)}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-
-.grid{--cols:6;display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
-.grid[data-size="s"]{--cols:8}
-.grid[data-size="l"]{--cols:4}
-@media (max-width:900px){.grid{--cols:4}.grid[data-size="s"]{--cols:6}.grid[data-size="l"]{--cols:3}}
-@media (max-width:560px){.grid{--cols:3}.grid[data-size="s"]{--cols:4}.grid[data-size="l"]{--cols:2}}
-.tile{position:relative;aspect-ratio:1;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:0;margin:0;background:var(--card);color:var(--ink);cursor:pointer;transition:background .18s,color .18s}
-.tile svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.tile .no{position:absolute;top:10px;left:11px;font:500 11px/1 var(--mono);letter-spacing:.06em;color:var(--mute);transition:color .18s}
-.grid[data-size="s"] .tile .no{top:7px;left:8px;font-size:10px}
-.grid.neg .tile{background:var(--ink);color:var(--paper);border-color:color-mix(in srgb,var(--paper) 14%,var(--ink))}
-.grid.neg .tile .no{color:color-mix(in srgb,var(--paper) 55%,transparent)}
+.sgrid{--cols:6;display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.sgrid[data-size="s"]{--cols:8}
+.sgrid[data-size="l"]{--cols:4}
+@media (max-width:900px){.sgrid{--cols:4}.sgrid[data-size="s"]{--cols:6}.sgrid[data-size="l"]{--cols:3}}
+@media (max-width:560px){.sgrid{--cols:3}.sgrid[data-size="s"]{--cols:4}.sgrid[data-size="l"]{--cols:2}}
+.stile{position:relative;aspect-ratio:1;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:0;margin:0;background:var(--paper);color:var(--ink);cursor:pointer;transition:background .18s,color .18s}
+.stile svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.stile .no{position:absolute;top:10px;left:11px;font:500 11px/1 var(--mono);letter-spacing:.06em;color:var(--mute);transition:color .18s}
+.sgrid[data-size="s"] .stile .no{top:7px;left:8px;font-size:10px}
+.sgrid.neg .stile{background:var(--ink);color:var(--paper);border-color:color-mix(in srgb,var(--paper) 14%,var(--ink))}
+.sgrid.neg .stile .no{color:color-mix(in srgb,var(--paper) 55%,transparent)}
 @media (hover:hover){
-  .tile:hover{background:var(--ink);color:var(--paper)}
-  .tile:hover .no{color:color-mix(in srgb,var(--paper) 55%,transparent)}
-  .grid.neg .tile:hover{background:var(--card);color:var(--ink)}
-  .grid.neg .tile:hover .no{color:var(--mute)}
-  .tile:hover svg{transform:scale(1.06)}
+  .stile:hover{background:var(--ink);color:var(--paper)}
+  .stile:hover .no{color:color-mix(in srgb,var(--paper) 55%,transparent)}
+  .sgrid.neg .stile:hover{background:var(--paper);color:var(--ink)}
+  .sgrid.neg .stile:hover .no{color:var(--mute)}
+  .stile:hover svg{transform:scale(1.06)}
 }
-.count{margin-top:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.more{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:20px}
+
+/* Processo */
+.met{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1.5px solid var(--ink)}
+.met div{padding:22px 24px 24px 0;border-right:1px solid var(--line);min-width:0}
+.met div+div{padding-left:24px}
+.met div:last-child{border-right:0}
+.met b{display:block;font:600 clamp(56px,6.2vw,92px)/.88 var(--display);letter-spacing:-.05em;font-variant-numeric:tabular-nums}
+.met .lbl{display:block;margin-top:14px;color:var(--ink)}
+.met p{margin-top:10px;font-size:15px;color:var(--mute);max-width:22em}
+.flow{list-style:none;margin:clamp(44px,6vw,72px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.flow li{display:flex;flex-direction:column;gap:8px;padding:22px 24px 26px 0;border-bottom:1px solid var(--line);min-width:0}
+.flow li:not(:nth-child(3n+1)){padding-left:24px;border-left:1px solid var(--line)}
+.flow .k{font:500 12px/1 var(--mono);letter-spacing:.08em;color:var(--mute)}
+.flow b{font:600 clamp(20px,1.8vw,24px)/1.15 var(--display);letter-spacing:-.02em}
+.flow p{font-size:15px;color:var(--mute)}
+.flow em{font:500 11px/1 var(--mono);font-style:normal;letter-spacing:.07em;text-transform:uppercase;align-self:flex-start;border:1px solid var(--ink);border-radius:999px;padding:6px 9px;margin-top:4px}
+.pfoot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;margin-top:26px}
+@media (max-width:900px){
+  .met{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .met div:nth-child(2){border-right:0}
+  .met div:nth-child(3){padding-left:0}
+  .met div:nth-child(n+3){border-top:1px solid var(--line)}
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow li:not(:nth-child(3n+1)){padding-left:0;border-left:0}
+  .flow li:nth-child(2n){padding-left:24px;border-left:1px solid var(--line)}
+}
+@media (max-width:560px){
+  .met{grid-template-columns:1fr}
+  .met div,.met div+div{padding:20px 0;border-right:0}
+  .met div+div{border-top:1px solid var(--line)}
+  .flow{grid-template-columns:1fr}
+  .flow li:nth-child(2n){padding-left:0;border-left:0}
+}
+
+/* Serviços */
+.svc-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);background:var(--ink);color:var(--paper);border-radius:4px;padding:clamp(28px,4.4vw,60px)}
+.svc-main .lbl{color:color-mix(in srgb,var(--paper) 62%,transparent)}
+.svc-main h3{font-size:clamp(28px,3vw,44px);line-height:1.02;letter-spacing:-.035em;margin-top:14px}
+.svc-main>div>p{margin-top:16px;font-size:18px;max-width:28em;color:color-mix(in srgb,var(--paper) 78%,transparent)}
+.svc-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:30px 0 0;padding-top:16px;border-top:1px solid color-mix(in srgb,var(--paper) 22%,transparent)}
+.svc-meta div{min-width:0}
+.svc-meta dd{margin:6px 0 0;font-size:15px;line-height:1.35}
+.svc-main .btn{margin-top:30px;background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.svc-main ul{list-style:none;margin:0;padding:0;border-top:1px solid color-mix(in srgb,var(--paper) 22%,transparent);align-self:start}
+.svc-main li{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid color-mix(in srgb,var(--paper) 22%,transparent);font-size:16px}
+.svc-main li::before{content:"";flex:none;width:7px;height:7px;margin-top:9px;background:currentColor;border-radius:50%}
+.svc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.svc-card{border:1px solid var(--line);border-radius:4px;padding:clamp(22px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;min-width:0}
+.svc-card h3{margin-top:2px}
+.svc-card p{font-size:16px}
+.svc-card .small{font-size:14px}
+.svc-card .lnk{margin-top:auto;padding-top:8px}
+@media (max-width:860px){.svc-main{grid-template-columns:1fr}.svc-grid{grid-template-columns:1fr}}
+@media (max-width:480px){.svc-meta{grid-template-columns:1fr 1fr}}
 
 /* Sobre */
-.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(28px,5vw,80px)}
+.about{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.2fr);gap:clamp(28px,5vw,88px)}
+.about h2{margin-top:14px}
+.about .role{margin-top:14px}
 .txt{display:flex;flex-direction:column;gap:18px;font-size:18px;max-width:36em}
-.txt p{margin:0}
-.svc{border-top:1.5px solid var(--ink);margin-top:10px}
-.svc div{display:grid;grid-template-columns:minmax(0,13em) minmax(0,1fr);gap:6px 20px;padding:15px 0;border-bottom:1px solid var(--line);font-size:16px}
-.svc span{color:var(--mute)}
+.princ{list-style:none;margin:16px 0 0;padding:0;border-top:1.5px solid var(--ink)}
+.princ li{display:grid;grid-template-columns:minmax(0,13em) minmax(0,1fr);gap:6px 24px;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px}
+.princ b{font:600 18px/1.3 var(--display);letter-spacing:-.01em}
+.princ span{color:var(--mute)}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+@media (max-width:560px){.princ li{grid-template-columns:1fr}}
+
+/* Perguntas */
+.faq-g{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.25fr);gap:clamp(28px,5vw,88px);align-items:start}
+.faq-side{position:sticky;top:calc(96px + var(--top))}
+.faq-side h2{margin-top:14px}
+.faq-side p{margin-top:18px;max-width:28em}
+.faq-side .btn{margin-top:26px}
+.faq{border-top:1.5px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:20px 0;font:600 clamp(18px,1.6vw,21px)/1.3 var(--display);letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:30px;height:30px;border:1.5px solid var(--line2);border-radius:50%;position:relative}
+.faq summary i::before,.faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:11px;height:1.5px;background:currentColor;transform:translate(-50%,-50%)}
+.faq summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .2s}
+.faq details[open] summary i::after{transform:translate(-50%,-50%) rotate(0deg)}
+.faq summary:hover i{border-color:var(--ink)}
+.faq .a{padding:0 50px 24px 0;color:var(--mute);max-width:42em}
+@media (max-width:860px){.faq-g{grid-template-columns:1fr}.faq-side{position:static}}
+@media (max-width:560px){.faq .a{padding-right:0}}
 
 /* Contato */
 .contact{background:var(--ink);color:var(--paper);border-top:0}
-.contact .lbl{color:color-mix(in srgb,var(--paper) 60%,transparent)}
-.contact h2{max-width:14em}
-.mail{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:34px}
-.mail code{font:500 clamp(16px,2vw,22px)/1.2 var(--mono);margin-right:8px;overflow-wrap:anywhere}
+.contact .lbl{color:color-mix(in srgb,var(--paper) 62%,transparent)}
+.contact h2{font-size:clamp(34px,4.5vw,66px);line-height:1;letter-spacing:-.04em;max-width:13em;margin-top:16px}
+.cl{font-size:clamp(17px,1.5vw,20px);max-width:34em;margin-top:22px;color:color-mix(in srgb,var(--paper) 74%,transparent)}
+.mail{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;margin-top:34px}
+.mail code{font:500 clamp(18px,2.4vw,28px)/1.2 var(--mono);user-select:all;overflow-wrap:anywhere}
+.contact .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.start{list-style:none;margin:clamp(40px,5vw,60px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid color-mix(in srgb,var(--paper) 22%,transparent)}
+.start li{display:flex;flex-direction:column;gap:10px;padding:18px 20px 0 0;font-size:16px;min-width:0}
+.start li+li{padding-left:20px;border-left:1px solid color-mix(in srgb,var(--paper) 22%,transparent)}
+.start .k{font:500 12px/1 var(--mono);letter-spacing:.08em;color:color-mix(in srgb,var(--paper) 62%,transparent)}
+.chan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:clamp(40px,5vw,60px) 0 0;border-top:1px solid color-mix(in srgb,var(--paper) 22%,transparent)}
+.chan div{padding:16px 16px 0 0;display:flex;flex-direction:column;gap:8px;min-width:0}
+.chan dd{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:17px}
+.chan a{text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--paper) 40%,transparent);overflow-wrap:anywhere}
+.chan a:hover{border-color:var(--paper)}
+.mini-btn{border:1px solid color-mix(in srgb,var(--paper) 35%,transparent);background:transparent;color:var(--paper);border-radius:999px;padding:6px 11px;font:500 12px/1 var(--mono);cursor:pointer}
+.mini-btn:hover{border-color:var(--paper)}
+@media (max-width:860px){.start{grid-template-columns:repeat(2,minmax(0,1fr))}.start li:nth-child(3){padding-left:0;border-left:0}.start li{padding-bottom:18px}}
+@media (max-width:700px){.chan{grid-template-columns:1fr}.chan div{padding:14px 0;border-bottom:1px solid color-mix(in srgb,var(--paper) 14%,transparent)}}
+@media (max-width:480px){.start{grid-template-columns:1fr}.start li+li{padding-left:0;border-left:0;border-top:1px solid color-mix(in srgb,var(--paper) 14%,transparent)}}
 .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:28px;color:var(--mute);font-size:14px}
 
+/* Página do projeto */
+.case{position:fixed;inset:0;z-index:50;background:var(--paper);overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;padding-top:var(--top);padding-bottom:env(safe-area-inset-bottom,0px)}
+.case-bar,.sp-bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.case-bar .wrap,.sp-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:62px}
+.case-bar .nm{font:600 17px/1 var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.bar-r{display:flex;gap:6px}
+.chero{background:var(--b);color:var(--f)}
+.chero .wrap{padding-block:clamp(36px,6vw,80px) clamp(32px,5vw,64px);display:flex;flex-direction:column;gap:clamp(28px,4vw,48px)}
+.chero .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.chero .lbl{color:inherit;opacity:.72}
+.chero .sig{width:min(760px,100%);height:auto}
+.chero .tag{font:400 clamp(24px,3.2vw,44px)/1.1 var(--display);letter-spacing:-.025em;max-width:18em;text-wrap:balance}
+.chero dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:0;border-top:1px solid color-mix(in srgb,var(--f) 30%,transparent);padding-top:18px}
+.chero dt{font:500 11px/1.4 var(--mono);letter-spacing:.07em;text-transform:uppercase;opacity:.7;margin-bottom:6px}
+.chero dd{margin:0;font-size:16px;line-height:1.35}
+@media (max-width:760px){.chero dl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cs{padding-block:clamp(44px,6vw,80px);border-bottom:1px solid var(--line)}
+.cs-h{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px 40px;margin-bottom:28px}
+.cs-h .lbl{padding-top:8px}
+@media (max-width:760px){.cs-h{grid-template-columns:1fr}}
+.two{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px)}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.prose{display:flex;flex-direction:column;gap:16px;font-size:18px;max-width:38em}
+.prose .note{font-size:15px}
+.verb{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:10px;align-self:start}
+.verb .w{font:500 34px/1 var(--display);letter-spacing:-.02em}
+.verb i{color:var(--mute);font-size:15px}
+.nouns{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:26px}
+.nouns span{font:600 clamp(26px,3.6vw,48px)/1.05 var(--display);letter-spacing:-.035em}
+.nouns span:not(:last-child)::after{content:" ·";color:var(--mute);font-weight:400}
+.say{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.say div{border-radius:4px;padding:18px;display:flex;flex-direction:column;gap:10px;background:var(--card);border:1px solid var(--line)}
+.say q{font-size:16px;quotes:"“" "”"}
+.say .no q{text-decoration:line-through;text-decoration-thickness:1px;color:var(--mute)}
+@media (max-width:620px){.say{grid-template-columns:1fr}}
+.cbuild{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start}
+.cbuild figure{margin:0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.cbuild>div{min-width:0}
+.cbuild .seg{align-self:flex-start;max-width:100%;border-radius:20px}
+.imgb{display:block;border-radius:3px;overflow:hidden;background:var(--soft);cursor:zoom-in;border:0;padding:0;width:100%;max-width:100%}
+.cbuild .imgb{aspect-ratio:16/9}
+.cbuild .imgb img{width:100%;height:100%;object-fit:cover}
+.bsteps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1.5px solid var(--ink)}
+.bsteps li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:8px;padding:14px 0;border-bottom:1px solid var(--line)}
+.bsteps .k{font:500 12px/1.6 var(--mono);color:var(--mute)}
+.bsteps b{display:block;font:600 17px/1.3 var(--display)}
+.bsteps p{font-size:15px;color:var(--mute);margin-top:3px}
+.rulebig{font:500 clamp(22px,2.4vw,30px)/1.2 var(--mono);margin-top:20px;letter-spacing:-.01em}
+.note{font-size:14px;color:var(--mute);margin-top:12px}
+@media (max-width:860px){.cbuild{grid-template-columns:1fr}}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:10px}
+.swc{padding:0;background:var(--card);border-radius:4px;overflow:hidden;text-align:left;cursor:copy;border:1px solid var(--line);display:flex;flex-direction:column;color:var(--ink)}
+.swc .c{height:112px}
+.swc .i{padding:12px;display:flex;flex-direction:column;gap:3px}
+.swc b{font:600 15px/1.2 var(--body)}
+.swc span{font:500 12px/1.4 var(--mono);color:var(--mute)}
+.spec{display:flex;flex-direction:column;gap:14px}
+.spec input{width:100%;font:400 16px/1 var(--body);padding:14px 16px;border-radius:4px;border:1.5px solid var(--line2);background:var(--card);color:var(--ink)}
+.spec input:focus{border-color:var(--ink);outline:none}
+.fspec{display:grid;grid-template-columns:200px minmax(0,1fr);gap:18px;padding:22px 0;border-top:1px solid var(--line);align-items:baseline}
+.fspec .s{overflow-wrap:anywhere;line-height:1.1}
+.fspec small{display:block;color:var(--mute);font-size:14px;margin-top:4px}
+@media (max-width:760px){.fspec{grid-template-columns:1fr}}
+.corte{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:18px;margin-bottom:18px}
+.corte img{width:100%;height:auto}
+:root[data-theme="dark"] .corte img{filter:invert(1)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .corte img{filter:invert(1)}}
+.mason{columns:3 300px;column-gap:14px}
+.mason button{display:block;width:100%;margin:0 0 14px;break-inside:avoid;border:0;padding:0;background:none;text-align:left;cursor:zoom-in}
+.mason img{width:100%;height:auto;border-radius:3px;background:var(--soft)}
+.mason span{display:block;margin-top:8px;font:500 12px/1.3 var(--mono);color:var(--mute);letter-spacing:.03em}
+.strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x proximity}
+.strip button{flex:none;width:220px;border:0;padding:0;background:none;text-align:left;cursor:zoom-in;scroll-snap-align:start}
+.strip img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:3px;background:var(--soft)}
+.strip span{display:block;margin-top:6px;font:500 11px/1.3 var(--mono);color:var(--mute)}
+.deliv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:clamp(24px,4vw,64px);align-items:start}
+.deliv ul{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--ink)}
+.deliv li{padding:13px 0;border-bottom:1px solid var(--line);display:flex;gap:12px}
+.deliv li::before{content:"";flex:none;width:8px;height:8px;margin-top:9px;background:var(--acc,var(--ink));border-radius:50%}
+.ccta{background:var(--ink);color:var(--paper);border-radius:4px;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:14px}
+.ccta .lbl{color:color-mix(in srgb,var(--paper) 62%,transparent)}
+.ccta p.big{font:600 clamp(24px,2.6vw,34px)/1.08 var(--display);letter-spacing:-.03em}
+.ccta p.sm{font-size:15px;color:color-mix(in srgb,var(--paper) 74%,transparent)}
+.ccta .btn{background:var(--paper);color:var(--ink);border-color:var(--paper);align-self:flex-start;margin-top:6px}
+@media (max-width:860px){.deliv{grid-template-columns:1fr}}
+.next{display:block;background:var(--b);color:var(--f);cursor:pointer;border:0;width:100%;text-align:left;padding:0}
+.next .wrap{padding-block:clamp(40px,6vw,80px);display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.next .lbl{color:inherit;opacity:.7}
+.next b{display:block;font:600 clamp(32px,4.6vw,66px)/1 var(--display);letter-spacing:-.04em;margin-top:12px}
+.next .ar{font:400 clamp(32px,4vw,56px)/1 var(--display);transition:transform .3s}
+.next:hover .ar{transform:translateX(10px)}
+
+/* Lupa */
+.lb{position:fixed;inset:0;z-index:80;background:var(--scrim);color:var(--on-scrim);display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:8px;padding:calc(var(--top) + 56px) max(12px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 24px) max(12px,env(safe-area-inset-left,0px))}
+.lb figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0;height:100%;justify-content:center}
+.lb img{max-height:calc(100dvh - 160px);max-width:100%;object-fit:contain;border-radius:3px;touch-action:pan-y}
+.lb figcaption{font:500 13px/1.4 var(--mono);letter-spacing:.03em;text-align:center;color:var(--on-scrim2)}
+.lbb{width:48px;height:48px;border-radius:50%;border:1.5px solid color-mix(in srgb,var(--on-scrim) 30%,transparent);background:transparent;color:var(--on-scrim);cursor:pointer;font-size:20px;display:grid;place-items:center}
+.lbb:hover{border-color:var(--on-scrim)}
+.lb .x{position:absolute;top:calc(var(--top) + 10px);right:max(12px,env(safe-area-inset-right,0px))}
+.lbn{position:absolute;top:calc(var(--top) + 24px);left:max(16px,env(safe-area-inset-left,0px));font:500 12px/1 var(--mono);color:var(--on-scrim2);letter-spacing:.06em}
+@media (max-width:620px){.lb{grid-template-columns:1fr}.lb .pv,.lb .nx{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 14px)}.lb .pv{left:20px}.lb .nx{right:20px}.lb img{max-height:calc(100dvh - 220px)}}
+
 /* Página do símbolo */
-.sp{position:fixed;inset:0;z-index:70;overflow-y:auto;overflow-x:hidden;background:var(--paper);color:var(--ink);overscroll-behavior:contain}
-.sp[hidden]{display:none}
-.sp-bar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding-top:var(--top)}
-.sp-bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px}
-.ib{border:1.5px solid var(--line);background:transparent;border-radius:999px;min-width:44px;height:42px;padding:0 15px;cursor:pointer;font:500 14px/1 var(--body);display:inline-flex;align-items:center;justify-content:center;gap:8px}
-.ib:hover{border-color:var(--ink)}
+.sp{position:fixed;inset:0;z-index:70;overflow-y:auto;overflow-x:hidden;background:var(--paper);color:var(--ink);overscroll-behavior:contain;padding-top:var(--top);padding-bottom:env(safe-area-inset-bottom,0px)}
 .back-s{display:none}
 .sp-no{font:500 13px/1 var(--mono);letter-spacing:.08em}
-.sp-arr{display:flex;gap:6px}
-
+.stage{position:relative;aspect-ratio:1;max-width:100%;background:var(--card);border:1px solid var(--line);display:block;width:100%;padding:0;color:var(--ink)}
+.stage svg{position:absolute;inset:0;width:100%;height:100%}
+.tick{position:absolute;width:14px;height:14px;border-color:var(--mute);border-style:solid;border-width:0}
+.t1{top:14px;left:14px;border-top-width:1px;border-left-width:1px}
+.t2{top:14px;right:14px;border-top-width:1px;border-right-width:1px}
+.t3{bottom:14px;left:14px;border-bottom-width:1px;border-left-width:1px}
+.t4{bottom:14px;right:14px;border-bottom-width:1px;border-right-width:1px}
 .sp-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center;padding-block:clamp(28px,5vw,72px)}
-.sp-hero .stage{cursor:default}
-.sp-hero h1{font-size:clamp(34px,4.4vw,64px);line-height:1;margin-top:16px;letter-spacing:-.03em}
-.sp-hero .rest{font-size:clamp(17px,1.4vw,20px);color:var(--mute);margin:22px 0 0;max-width:30em}
-.specs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:34px;border-top:1.5px solid var(--ink)}
+.sp-hero h1{font-size:clamp(28px,3.4vw,48px);line-height:1.05;margin-top:16px;letter-spacing:-.03em}
+.sp-hero .rest{font-size:clamp(17px,1.4vw,20px);color:var(--mute);margin-top:22px;max-width:30em}
+.specs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:34px;border-top:1.5px solid var(--ink)}
 .specs div{padding:14px 12px 0 0}
-.specs b{display:block;font:600 30px/1 var(--display);font-variation-settings:'wdth' 78,'opsz' 96;letter-spacing:-.02em}
+.specs b{display:block;font:600 30px/1 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .specs span{display:block;margin-top:6px}
-
 .blk{padding-block:clamp(48px,7vw,96px);border-top:1px solid var(--line)}
 .blk-h{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 40px;margin-bottom:clamp(22px,3vw,36px)}
-.blk-h h2{font-size:clamp(30px,3.6vw,52px);margin-top:12px}
-.blk-h p{max-width:32em;margin:12px 0 0}
-
-/* Construção */
-.dark{--ink:#141513;--paper:#F3F4F1;background:var(--ink);color:var(--paper);border-top:0}
+.blk-h h2{font-size:clamp(28px,3.2vw,44px);margin-top:12px}
+.blk-h p{max-width:32em;margin-top:12px}
+.dark{--ink:#111111;--paper:#FAFAF8;background:var(--ink);color:var(--paper);border-top:0}
 .dark .lbl,.dark .muted{color:color-mix(in srgb,var(--paper) 62%,transparent)}
-.build{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(22px,4vw,60px);align-items:center}
-.cv{position:relative;aspect-ratio:1;background:color-mix(in srgb,var(--paper) 5%,var(--ink));border:1px solid color-mix(in srgb,var(--paper) 14%,var(--ink))}
+.sbuild{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(22px,4vw,60px);align-items:center}
+.cv{position:relative;aspect-ratio:1;max-width:100%;background:color-mix(in srgb,var(--paper) 5%,var(--ink));border:1px solid color-mix(in srgb,var(--paper) 14%,var(--ink))}
 .cv svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .cv .L{transition:opacity .5s ease}
-.cv .gridL,.cv .boxL{opacity:0}
-.cv .ghost{opacity:0}
-.cv .outl{opacity:0}
-.cv .pts{opacity:0}
+.cv .gridL,.cv .boxL,.cv .ghost,.cv .outl,.cv .pts{opacity:0}
 .cv .fillL{opacity:0;transition:opacity .7s ease}
 .cv[data-s="1"] .gridL{opacity:.45}.cv[data-s="1"] .boxL{opacity:1}.cv[data-s="1"] .ghost{opacity:.14}
 .cv[data-s="2"] .gridL{opacity:.35}.cv[data-s="2"] .outl{opacity:1}
@@ -174,30 +413,26 @@ h2{font-size:clamp(34px,4.6vw,64px);line-height:1}
 .cv[data-s="4"] .fillL{opacity:1}.cv[data-s="4"] .boxL{opacity:.5}
 .cv .outl path{stroke-dasharray:1;stroke-dashoffset:1}
 .cv[data-s="2"] .outl path,.cv[data-s="3"] .outl path{stroke-dashoffset:0;transition:stroke-dashoffset 1.6s cubic-bezier(.5,.1,.3,1)}
-.steps{display:flex;flex-direction:column;gap:0;border-top:1px solid color-mix(in srgb,var(--paper) 18%,transparent)}
-.step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 12px;text-align:left;background:transparent;border:0;border-bottom:1px solid color-mix(in srgb,var(--paper) 18%,transparent);padding:18px 0;cursor:pointer;color:inherit;opacity:.5;transition:opacity .25s}
-.step:hover{opacity:.8}
-.step[aria-selected="true"]{opacity:1}
-.step i{font:500 12px/1.6 var(--mono);font-style:normal;letter-spacing:.08em}
-.step b{font:600 22px/1.2 var(--display);font-variation-settings:'wdth' 82,'opsz' 48}
-.step span{grid-column:2;font-size:15px;line-height:1.5;color:color-mix(in srgb,var(--paper) 72%,transparent);display:none}
-.step[aria-selected="true"] span{display:block}
+.ssteps{display:flex;flex-direction:column;border-top:1px solid color-mix(in srgb,var(--paper) 18%,transparent)}
+.sstep{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 12px;text-align:left;background:transparent;border:0;border-bottom:1px solid color-mix(in srgb,var(--paper) 18%,transparent);padding:18px 0;cursor:pointer;color:inherit;opacity:.5;transition:opacity .25s}
+.sstep:hover{opacity:.8}
+.sstep[aria-selected="true"]{opacity:1}
+.sstep i{font:500 12px/1.6 var(--mono);font-style:normal;letter-spacing:.08em}
+.sstep b{font:600 22px/1.2 var(--display);letter-spacing:-.02em}
+.sstep span{grid-column:2;font-size:15px;line-height:1.5;color:color-mix(in srgb,var(--paper) 72%,transparent);display:none}
+.sstep[aria-selected="true"] span{display:block}
 .play{margin-top:20px;background:var(--paper);color:var(--ink);border-color:var(--paper)}
-
-/* Simetria */
 .sym4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.sc{background:var(--card);border:1px solid var(--line);padding:14px}
+.sc{background:var(--card);border:1px solid var(--line);padding:14px;margin:0}
 .sc .fig{position:relative;aspect-ratio:1;color:var(--ink)}
 .sc .fig svg{position:absolute;inset:0;width:100%;height:100%}
-.sc .pc{font:600 34px/1 var(--display);font-variation-settings:'wdth' 78,'opsz' 96;margin-top:12px;letter-spacing:-.02em}
+.sc .pc{font:600 34px/1 var(--display);margin-top:12px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .sc .v{margin-top:6px}
 .meter{height:3px;background:var(--soft);margin-top:10px}
 .meter i{display:block;height:100%;background:var(--ink)}
-.symsum{font-size:clamp(18px,1.6vw,22px);max-width:34em;margin:22px 0 0}
-
-/* Redução */
+.symsum{font-size:clamp(18px,1.6vw,22px);max-width:34em;margin-top:22px}
 .red{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:12px}
-.sizes{background:var(--card);border:1px solid var(--line);padding:22px}
+.sizes{background:var(--card);border:1px solid var(--line);padding:22px;overflow:hidden}
 .srow{display:flex;align-items:flex-end;gap:clamp(14px,3vw,34px);flex-wrap:wrap;padding:14px 0}
 .srow+.srow{border-top:1px solid var(--line)}
 .srow.inv{background:var(--ink);color:var(--paper);margin:0 -22px -22px;padding:22px}
@@ -217,37 +452,32 @@ h2{font-size:clamp(34px,4.6vw,64px);line-height:1}
 .app .ic.l{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
 .app .ic.r{border-radius:50%}
 .app svg{position:absolute;inset:0;width:100%;height:100%}
-
-/* Padrão */
 .pat{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(18px,3vw,40px);align-items:start}
-.pv{aspect-ratio:3/2;border:1px solid var(--line);overflow:hidden;background:var(--card)}
+.pv{aspect-ratio:3/2;max-width:100%;border:1px solid var(--line);overflow:hidden;background:var(--card)}
 .pv svg{display:block;width:100%;height:100%}
-.pctl{display:flex;flex-direction:column;gap:20px}
+.pctl{display:flex;flex-direction:column;gap:20px;min-width:0}
 .field{display:flex;flex-direction:column;gap:10px}
 .field label{display:flex;justify-content:space-between}
+.field output{font:500 12px/1.4 var(--mono);color:var(--ink)}
 input[type=range]{width:100%;accent-color:var(--ink)}
-.pctl .chips{display:flex;flex-wrap:wrap;gap:8px}
 .pctl .chip{padding:8px 13px;font-size:13px}
-.pnote{font-size:15px;color:var(--mute);margin:0;min-height:3em}
-
-/* Chamada final */
-.cta{background:var(--ink);color:var(--paper);border-top:0}
-.cta .lbl{color:color-mix(in srgb,var(--paper) 62%,transparent)}
+.pnote{font-size:15px;color:var(--mute);min-height:3em}
+.spcta{background:var(--ink);color:var(--paper);border-top:0}
+.spcta .lbl{color:color-mix(in srgb,var(--paper) 62%,transparent)}
 .cta-g{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 40px;align-items:end}
-.cta h2{font-size:clamp(32px,4.2vw,60px);margin-top:14px;max-width:13em}
-.cta .row{display:flex;flex-wrap:wrap;gap:10px}
-.cta .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.cta .btn.ghost{background:transparent;color:var(--paper)}
+.spcta h2{font-size:clamp(28px,3.4vw,48px);margin-top:14px;max-width:14em}
+.spcta .row{display:flex;flex-wrap:wrap;gap:10px}
+.spcta .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.spcta .btn.ghost{background:transparent;color:var(--paper)}
 .nextp{display:flex;gap:12px;margin-top:clamp(40px,6vw,72px);padding-top:22px;border-top:1px solid color-mix(in srgb,var(--paper) 18%,transparent)}
-.nx{flex:1;display:flex;align-items:center;gap:16px;background:transparent;border:1px solid color-mix(in srgb,var(--paper) 18%,transparent);color:inherit;padding:14px;cursor:pointer;text-align:left;font:inherit}
+.nx{flex:1;display:flex;align-items:center;gap:16px;background:transparent;border:1px solid color-mix(in srgb,var(--paper) 18%,transparent);color:inherit;padding:14px;cursor:pointer;text-align:left;font:inherit;min-width:0}
 .nx:hover{border-color:var(--paper)}
 .nx.r{flex-direction:row-reverse;text-align:right}
 .nx .mini{width:64px;height:64px;position:relative;flex:none}
 .nx .mini svg{position:absolute;inset:0;width:100%;height:100%}
 .nx b{display:block;font:600 20px/1.1 var(--display)}
-
 @media (max-width:900px){
-  .sp-hero,.build,.pat,.red{grid-template-columns:1fr}
+  .sp-hero,.sbuild,.pat,.red{grid-template-columns:1fr}
   .sym4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cta-g{grid-template-columns:1fr}
 }
@@ -258,61 +488,77 @@ input[type=range]{width:100%;accent-color:var(--ink)}
   .nx .mini{width:44px;height:44px}
   .nx b{font-size:17px}
 }
-.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:11px 16px;border-radius:999px;font:500 13px/1 var(--mono);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:90}
-.toast.on{opacity:1;transform:translate(-50%,0)}
 
-@media (max-width:900px){
-  .hero{grid-template-columns:1fr}
-  .about{grid-template-columns:1fr}
-}
-@media (max-width:560px){
-  .brandmark span{display:none}
-  .nav a{padding:10px 9px}
-  .svc div{grid-template-columns:1fr}
-  .facts dt{font-size:34px}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{transition:none!important}
-}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:11px 16px;border-radius:999px;font:500 13px/1 var(--mono);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:90;max-width:calc(100vw - 32px)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs id="sprite"></defs></svg>
 
 <header class="top">
   <div class="wrap bar">
-    <a class="brandmark" href="#inicio">Caio Pires<span>Estúdio de marcas</span></a>
+    <a class="wm" href="#inicio">Estúdio Caio Pires</a>
     <nav class="nav" aria-label="Seções">
+      <a href="#projetos">Projetos</a>
       <a href="#simbolos">Símbolos</a>
-      <a href="#sobre" class="hide-s">Sobre</a>
-      <a href="#contato" class="hide-s">Contato</a>
-      <a href="comecar/" class="cta-nav">Começar um projeto</a>
+      <a href="#processo">Processo</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#perguntas">Perguntas</a>
+      <a class="btn" href="comecar/">Começar um projeto</a>
     </nav>
+    <button class="ib menu-b" type="button" id="menuB" aria-expanded="false" aria-controls="menu">Menu</button>
   </div>
 </header>
 
+<div class="menu" id="menu" hidden role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="wrap">
+    <div class="menu-h"><span class="wm">Estúdio Caio Pires</span><button class="ib" type="button" id="menuX">Fechar</button></div>
+    <nav aria-label="Seções">
+      <a href="#projetos">Projetos</a>
+      <a href="#simbolos">Símbolos</a>
+      <a href="#processo">Processo</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#perguntas">Perguntas</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn" href="comecar/">Começar um projeto <span aria-hidden="true">→</span></a>
+    <p class="lbl">Atendimento online para todo o Brasil</p>
+  </div>
+</div>
+
 <main id="inicio">
   <section class="hero wrap" aria-labelledby="h1">
-    <div>
-      <p class="lbl">Portfólio · Símbolos · 2026</p>
-      <h1 id="h1">Uma forma.<br>Nada mais.</h1>
-      <p class="lede">Sou <b>Caio Pires</b>, designer de marcas. Aqui estão só os símbolos que desenhei, sem nome, sem cor e sem aplicação. Se a forma se sustenta sozinha, sustenta qualquer marca.</p>
+      <p class="lbl">Estúdio de identidade visual · Atendimento online para todo o Brasil</p>
+      <h1 id="h1">Marcas à altura do que a sua empresa entrega.</h1>
+      <p class="lede">Sou <b>Caio Pires</b>, designer de marcas há 10 anos. Desenho identidades visuais simples e geométricas para pequenas e médias empresas que cresceram mais que a própria marca. Você acompanha cada etapa, do primeiro esboço ao manual.</p>
       <div class="hero-cta">
-        <a class="btn" href="#simbolos">Ver os símbolos <span aria-hidden="true">↓</span></a>
-        <a class="btn ghost" href="comecar/">Começar um projeto</a>
+        <a class="btn" href="comecar/">Começar um projeto <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="#projetos">Ver projetos <span aria-hidden="true">↓</span></a>
       </div>
       <dl class="facts">
-        <div><dt id="fN">52</dt><dd class="lbl">símbolos</dd></div>
-        <div><dt>1</dt><dd class="lbl">cor</dd></div>
-        <div><dt>0</dt><dd class="lbl">nomes</dd></div>
+        <div><dt>10</dt><dd class="lbl">anos desenhando marcas</dd></div>
+        <div><dt>50+</dt><dd class="lbl">esboços por projeto</dd></div>
+        <div><dt>1 a 2</dt><dd class="lbl">meses por identidade</dd></div>
       </dl>
-    </div>
-    <div>
-      <button class="stage" type="button" id="stage" aria-label="Abrir símbolo em destaque">
-        <i class="tick t1"></i><i class="tick t2"></i><i class="tick t3"></i><i class="tick t4"></i>
-      </button>
-      <div class="stage-cap lbl"><span id="stageNo" aria-live="polite"></span><span>Clique para ampliar</span></div>
-      <div class="bar-p" aria-hidden="true"><i id="stageBar"></i></div>
+  </section>
+
+  <section id="projetos" class="sec" aria-labelledby="h-proj">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="lbl">Projetos</span>
+          <h2 id="h-proj">Identidades completas</h2>
+          <p class="muted">Uma seleção de projetos do estúdio. Cada identidade foi construída com o mesmo método e inclui símbolo, sistema de cores e tipografia, aplicações e manual.</p>
+        </div>
+        <div class="controls">
+          <div class="seg" role="group" aria-label="Modo de exibição"><button type="button" id="vGrid" aria-pressed="true">Grade</button><button type="button" id="vList" aria-pressed="false">Lista</button></div>
+        </div>
+      </div>
+      <div class="pgrid" id="pgrid"></div>
+      <div class="plist" id="plist" hidden></div>
     </div>
   </section>
 
@@ -321,21 +567,105 @@ input[type=range]{width:100%;accent-color:var(--ink)}
       <div class="sec-head">
         <div>
           <span class="lbl">Símbolos</span>
-          <h2 id="h-sim" style="margin-top:14px"><span id="hN">52</span> símbolos</h2>
-          <p class="muted">Todos em vetor e numa cor só. Clique em qualquer um para abrir a página dele, com o conceito, a construção, a simetria, a redução e um gerador de padrões.</p>
+          <h2 id="h-sim">Só a forma, em preto e branco</h2>
+          <p class="muted">O acervo do estúdio: símbolos sem nome, sem cor e sem aplicação. Se a forma se sustenta sozinha, sustenta qualquer marca. Clique em um símbolo para ver a construção, a simetria, a redução e um gerador de padrões.</p>
         </div>
         <div class="controls">
-          <div class="seg" role="group" aria-label="Tamanho">
-            <button type="button" data-size="s" aria-pressed="false">P</button>
-            <button type="button" data-size="m" aria-pressed="true">M</button>
-            <button type="button" data-size="l" aria-pressed="false">G</button>
-          </div>
+          <div class="seg" id="sizeSeg" role="group" aria-label="Tamanho dos símbolos"><button type="button" data-size="s" aria-pressed="false">P</button><button type="button" data-size="m" aria-pressed="true">M</button><button type="button" data-size="l" aria-pressed="false">G</button></div>
           <button class="chip" type="button" id="bNeg" aria-pressed="false">Negativo</button>
           <button class="chip" type="button" id="bShuf">Embaralhar</button>
         </div>
       </div>
-      <div class="grid" id="grid" data-size="m"></div>
-      <div class="count lbl"><span id="cnt"></span><span id="ord">Ordem original</span></div>
+      <div class="sgrid" id="sgrid" data-size="m"></div>
+      <div class="more"><span class="lbl" id="cnt"></span><button class="btn ghost" type="button" id="bMore" aria-expanded="false">Ver todos os símbolos</button></div>
+    </div>
+  </section>
+
+  <section id="processo" class="sec" aria-labelledby="h-proc">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="lbl">Processo · Palavras de Marca</span>
+          <h2 id="h-proc">Volume antes da escolha</h2>
+          <p class="muted">Em vez de esperar o designer voltar com duas opções, você acompanha cada etapa e sabe o que vem depois. As ideias são filtradas com critério até sobrar a marca certa.</p>
+        </div>
+      </div>
+      <div class="met">
+        <div><b>50</b><span class="lbl">esboços à mão</span><p>Partindo das palavras da empresa, pelo menos 50 caminhos desenhados antes de qualquer escolha.</p></div>
+        <div><b>15</b><span class="lbl">símbolos em vetor</span><p>Os mais fortes viram 15 símbolos, apresentados em preto e branco para que a forma seja avaliada sem a distração da cor.</p></div>
+        <div><b>3</b><span class="lbl">sistemas completos</span><p>Você escolhe 3, e cada um ganha versões, cores, tipografia e aplicações do seu negócio.</p></div>
+        <div><b>1</b><span class="lbl">marca final</span><p>Você decide o sistema final. Depois vêm padrões, ícones e o manual de uso.</p></div>
+      </div>
+      <ol class="flow">
+        <li><span class="k">01</span><b>Imersão</b><p>Conversamos sobre o negócio, o público e os concorrentes. Você indica quem aprova a marca.</p></li>
+        <li><span class="k">02</span><b>Palavras</b><p>Cada aprovador faz uma lista de palavras ligadas à empresa: coisas, qualidades e ações. Juntos, chegamos a cerca de 15, e é delas que o símbolo nasce.</p><em>Você participa</em></li>
+        <li><span class="k">03</span><b>Esboços e vetores</b><p>Pelo menos 50 esboços à mão, combinando as palavras. Os 15 melhores são redesenhados em vetor.</p></li>
+        <li><span class="k">04</span><b>Primeira apresentação</b><p>Os 15 símbolos aparecem em preto e branco, numa reunião online. Você escolhe 3.</p><em>Você participa</em></li>
+        <li><span class="k">05</span><b>Segunda apresentação</b><p>Os 3 escolhidos aparecem como sistemas completos, já aplicados ao seu negócio. Você escolhe a marca final.</p><em>Você participa</em></li>
+        <li><span class="k">06</span><b>Entrega</b><p>Ajuste final, padrões, ícones, manual e todos os arquivos, com uma página online da marca.</p></li>
+      </ol>
+      <div class="pfoot"><p class="muted">Prazo de 1 a 2 meses. Depois de cada apresentação, você recebe o material em PDF para rever com calma.</p><a class="lnk" href="#perguntas">Dúvidas sobre prazo e pagamento <span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <section id="servicos" class="sec" aria-labelledby="h-svc">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="lbl">Serviços</span>
+          <h2 id="h-svc">A identidade no centro</h2>
+          <p class="muted">Tudo começa pela marca. Os outros serviços existem para que ela chegue inteira ao dia a dia da empresa.</p>
+        </div>
+      </div>
+      <article class="svc-main" aria-labelledby="h-svc1">
+        <div>
+          <span class="lbl">Serviço principal</span>
+          <h3 id="h-svc1">Identidade visual completa</h3>
+          <p>A marca inteira, construída com o método Palavras de Marca, do primeiro esboço ao manual.</p>
+          <dl class="svc-meta">
+            <div><dt class="lbl">Prazo</dt><dd>1 a 2 meses</dd></div>
+            <div><dt class="lbl">Pagamento</dt><dd>Em duas parcelas</dd></div>
+            <div><dt class="lbl">Ajustes</dt><dd>1 rodada na marca escolhida</dd></div>
+          </dl>
+          <a class="btn" href="comecar/">Pedir uma proposta <span aria-hidden="true">→</span></a>
+        </div>
+        <ul>
+          <li>Símbolo e versões da assinatura: horizontal, vertical e símbolo isolado</li>
+          <li>Paleta de cores e tipografia</li>
+          <li>Padrões gráficos e ícones</li>
+          <li>Manual da marca</li>
+          <li>Arquivos em SVG, PDF e PNG</li>
+          <li>Página online da marca, com o manual e os arquivos para baixar</li>
+        </ul>
+      </article>
+      <div class="svc-grid">
+        <article class="svc-card">
+          <span class="lbl">Site</span>
+          <h3>Site de cinco páginas</h3>
+          <p>Início, Sobre, Serviços, Galeria e Contato, adaptado para celular, com botão de WhatsApp, mapa e redes sociais. Fica no ar em 15 dias depois que o conteúdo chega, com o domínio no nome da sua empresa.</p>
+          <p class="muted small">Plano de manutenção opcional: site no ar com cadeado de segurança, backup, uma alteração pequena por mês e suporte pelo WhatsApp.</p>
+          <a class="lnk" href="https://wa.me/5521968642896?text=Ol%C3%A1%2C%20Caio!%20Gostaria%20de%20saber%20mais%20sobre%20o%20site%20feito%20pelo%20est%C3%BAdio." target="_blank" rel="noopener">Perguntar sobre o site <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="svc-card">
+          <span class="lbl">Redes sociais</span>
+          <h3>Posts junto com a marca</h3>
+          <p>Quatro posts por mês, criados junto com a identidade, para a marca nova começar a aparecer do jeito certo desde o lançamento.</p>
+          <p class="muted small">O estúdio cria os posts, mas não faz a gestão dos perfis.</p>
+          <a class="lnk" href="https://wa.me/5521968642896?text=Ol%C3%A1%2C%20Caio!%20Gostaria%20de%20saber%20mais%20sobre%20os%20posts%20para%20redes%20sociais." target="_blank" rel="noopener">Perguntar sobre os posts <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="svc-card">
+          <span class="lbl">Redesign</span>
+          <h3>Para marcas que já existem</h3>
+          <p>Quando a marca precisa evoluir sem perder o que as pessoas já reconhecem. O escopo sai de um diagnóstico da marca atual.</p>
+          <a class="lnk" href="https://wa.me/5521968642896?text=Ol%C3%A1%2C%20Caio!%20A%20minha%20empresa%20j%C3%A1%20tem%20uma%20marca%20e%20gostaria%20de%20conversar%20sobre%20um%20redesign." target="_blank" rel="noopener">Conversar sobre redesign <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="svc-card">
+          <span class="lbl">Aplicações extras</span>
+          <h3>Papelaria e embalagem</h3>
+          <p>Peças além do sistema principal, como papelaria e embalagem, orçadas depois do briefing.</p>
+          <a class="lnk" href="https://wa.me/5521968642896?text=Ol%C3%A1%2C%20Caio!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20aplica%C3%A7%C3%B5es%20da%20marca%2C%20como%20papelaria%20e%20embalagem." target="_blank" rel="noopener">Pedir um orçamento <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -343,18 +673,43 @@ input[type=range]{width:100%;accent-color:var(--ink)}
     <div class="wrap about">
       <div>
         <span class="lbl">Sobre</span>
-        <h2 id="h-sobre" style="margin-top:14px">Estúdio Caio Pires</h2>
+        <h2 id="h-sobre">Caio Pires</h2>
+        <p class="role lbl">Designer de marcas · 10 anos</p>
       </div>
       <div class="txt">
-        <p>Sou designer de marcas e conduzo um estúdio de identidade visual no Brasil. Meu foco são clínicas e consultórios, negócios em que a confiança precisa aparecer antes da primeira conversa.</p>
-        <p class="muted">Trabalho com um método próprio, <b style="color:var(--ink)">Substantivos de Marca</b>. Antes do desenho, a marca é resumida em poucas palavras, como Cuidado, Precisão e Confiança. Depois, cada forma precisa responder a uma delas.</p>
-        <p class="muted">Todo símbolo desta página começa num módulo geométrico, e esse módulo mede o resto: espessura, curva, respiro e encaixe.</p>
-        <div class="svc">
-          <div><b>Identidade visual</b><span>Conceito, nome, símbolo, logotipo, tipografia, cor e grafismos.</span></div>
-          <div><b>Manual de marca</b><span>Pranchas em PDF e arquivo .ai editável, com regras de uso e construção.</span></div>
-          <div><b>Brand hub</b><span>Página viva com arquivos para baixar, apresentação e gerador de grafismos.</span></div>
-          <div><b>Aplicações</b><span>Papelaria, embalagem, sinalização, uniforme e digital.</span></div>
-        </div>
+        <p>Sou designer de marcas há 10 anos e conduzo o Estúdio Caio Pires, com atendimento online para todo o Brasil. Trabalho com pequenas e médias empresas que já faturam, estão crescendo e sentem que a marca ficou amadora perto do que entregam.</p>
+        <p class="muted">A referência do estúdio é o modernismo dos anos 50 e 60, com construção racional, geometria e redução ao essencial. Marcas assim envelhecem bem e funcionam em qualquer tamanho, do bordado à fachada.</p>
+        <ul class="princ">
+          <li><b>O símbolo nasce da história da empresa</b><span>Por isso o projeto começa pelas palavras da marca, definidas com você, e não pelo gosto do designer.</span></li>
+          <li><b>Preto e branco antes da cor</b><span>A primeira escolha avalia só a força da forma. A cor entra depois, como parte do sistema.</span></li>
+          <li><b>Cada decisão tem um porquê</b><span>As escolhas de desenho são explicadas com argumentos ligados ao negócio e à estratégia da marca.</span></li>
+          <li><b>Feita para durar</b><span>Simples o bastante para ser lembrada e construída para funcionar do favicon ao letreiro.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="perguntas" class="sec" aria-labelledby="h-faq">
+    <div class="wrap faq-g">
+      <div class="faq-side">
+        <span class="lbl">Perguntas frequentes</span>
+        <h2 id="h-faq">Antes de começar</h2>
+        <p class="muted">As dúvidas que mais aparecem na primeira conversa. Se a sua não estiver aqui, é só perguntar.</p>
+        <a class="btn ghost" href="https://wa.me/5521968642896?text=Ol%C3%A1%2C%20Caio!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20processo%20de%20identidade%20visual." target="_blank" rel="noopener">Perguntar no WhatsApp <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="faq">
+        <details><summary>Quanto tempo leva uma identidade visual?<i aria-hidden="true"></i></summary><p class="a">De 1 a 2 meses, contados a partir da assinatura do contrato. Os dias em que o projeto aguarda uma resposta, uma aprovação ou um pagamento não entram nessa conta.</p></details>
+        <details><summary>Quanto custa?<i aria-hidden="true"></i></summary><p class="a">Depende do que a sua empresa precisa. Primeiro eu entendo o negócio numa conversa rápida e, depois, envio uma proposta com escopo, prazo e valores. A proposta vale por 7 dias.</p></details>
+        <details><summary>Como funciona o pagamento?<i aria-hidden="true"></i></summary><p class="a">Em duas parcelas. A primeira, de 50%, quando você escolhe os 3 símbolos na primeira apresentação. A segunda, de 50%, no fim do projeto, antes da entrega dos arquivos finais.</p></details>
+        <details><summary>Quantos ajustes estão incluídos?<i aria-hidden="true"></i></summary><p class="a">Além das duas apresentações do método, com os 15 símbolos e depois os 3 sistemas, está incluída uma rodada de ajuste na identidade escolhida. Ajustes além dessa rodada são combinados antes e cobrados à parte.</p></details>
+        <details><summary>Preciso participar do processo?<i aria-hidden="true"></i></summary><p class="a">Sim, e isso faz diferença no resultado. Você e as pessoas que aprovam a marca participam da definição das palavras da marca e das duas apresentações, que acontecem ao vivo, em reuniões online. Depois de cada apresentação, envio o material em PDF para vocês reverem com calma.</p></details>
+        <details><summary>O que eu recebo no final?<i aria-hidden="true"></i></summary><p class="a">Símbolo, versões da assinatura (horizontal, vertical e símbolo isolado), paleta de cores, tipografia, padrões gráficos, ícones e manual da marca, em arquivos SVG, PDF e PNG. Quando faz sentido para a marca, entra também um selo. Você recebe ainda uma página online da marca, com o manual e os arquivos para baixar.</p></details>
+        <details><summary>A marca fica sendo da minha empresa?<i aria-hidden="true"></i></summary><p class="a">Sim. Depois do pagamento integral, os direitos de uso da identidade final passam para a sua empresa, de forma definitiva. O registro no INPI não está incluído. O estúdio faz uma pesquisa visual de anterioridade e recomenda que o registro seja feito com um profissional especializado.</p></details>
+        <details><summary>Vocês atendem empresas de outras cidades?<i aria-hidden="true"></i></summary><p class="a">Sim. O atendimento é todo online, para empresas de qualquer lugar do Brasil e de qualquer segmento.</p></details>
+        <details><summary>O estúdio também faz o site?<i aria-hidden="true"></i></summary><p class="a">Sim. Um site de cinco páginas, adaptado para celular, que fica no ar em 15 dias depois que o conteúdo chega. O domínio fica no nome da sua empresa, e existe um plano de manutenção mensal opcional, com backup, cadeado de segurança e uma alteração pequena por mês.</p></details>
+        <details><summary>Vocês fazem gestão de redes sociais?<i aria-hidden="true"></i></summary><p class="a">Não. Se você quiser, o estúdio cria quatro posts por mês junto com a identidade, mas a administração dos perfis fica com a sua empresa.</p></details>
+        <details><summary>E a impressão dos materiais?<i aria-hidden="true"></i></summary><p class="a">A impressão não é o foco do estúdio, mas dá para conversar caso a caso.</p></details>
+        <details><summary>Os projetos do portfólio são de clientes?<i aria-hidden="true"></i></summary><p class="a">Os projetos marcados como Cliente são de clientes do estúdio, como a identidade da Dra. Jéssica Cardoso. Os marcados como Projeto conceitual usam marcas fictícias e foram criados para mostrar o método em segmentos diferentes, do kart à escola infantil.</p></details>
       </div>
     </div>
   </section>
@@ -362,129 +717,219 @@ input[type=range]{width:100%;accent-color:var(--ink)}
   <section id="contato" class="sec contact" aria-labelledby="h-cont">
     <div class="wrap">
       <span class="lbl">Contato</span>
-      <h2 id="h-cont" style="margin-top:16px">Tem um negócio que precisa de marca?</h2>
-      <p style="margin:18px 0 0;max-width:34em;color:color-mix(in srgb,var(--paper) 72%,transparent)">Responda o pré-briefing em uns 5 minutos e receba a proposta pelo WhatsApp.</p>
-      <p style="margin-top:24px"><a class="btn" href="comecar/">Começar um projeto <span aria-hidden="true">→</span></a></p>
+      <h2 id="h-cont">Tem um negócio que precisa de marca?</h2>
+      <p class="cl">Conte um pouco sobre a sua empresa e sobre o momento da marca. A partir daí, eu explico como o processo funciona para o seu caso.</p>
       <div class="mail">
-        <code id="mail">cpires.design@gmail.com</code>
-        <button class="btn" type="button" id="copyMail">Copiar e-mail</button>
-        <a class="btn ghost" href="mailto:cpires.design@gmail.com">Abrir no app de e-mail</a>
+        <code>+55 21 96864-2896</code>
+        <a class="btn" href="comecar/">Começar um projeto <span aria-hidden="true">→</span></a>
+        <a class="btn ghost" href="https://wa.me/5521968642896?text=Ol%C3%A1%2C%20Caio!%20Vi%20o%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20marca%20da%20minha%20empresa." target="_blank" rel="noopener">WhatsApp <span aria-hidden="true">↗</span></a>
       </div>
+      <ol class="start" aria-label="Como começar">
+        <li><span class="k">01</span>Você responde o pré-briefing, em uns 5 minutos.</li>
+        <li><span class="k">02</span>Eu leio com calma e, se precisar, marcamos uma conversa.</li>
+        <li><span class="k">03</span>Você recebe a proposta, válida por 7 dias.</li>
+        <li><span class="k">04</span>Com o contrato assinado eletronicamente, o projeto começa.</li>
+      </ol>
+      <dl class="chan">
+        <div><dt class="lbl">E-mail</dt><dd><a id="mail" href="mailto:cpires.design@gmail.com">cpires.design@gmail.com</a><button class="mini-btn" type="button" id="copyMail">Copiar</button></dd></div>
+        <div><dt class="lbl">Instagram</dt><dd><a href="https://www.instagram.com/caiopires.design/" target="_blank" rel="noopener">@caiopires.design</a></dd></div>
+        <div><dt class="lbl">Atendimento</dt><dd>Online, para todo o Brasil</dd></div>
+      </dl>
     </div>
   </section>
   <footer class="wrap foot">
     <span>© 2026 Estúdio Caio Pires</span>
-    <span>Todos os símbolos desenhados em vetor pelo estúdio.</span>
+    <span>Os projetos conceituais usam marcas fictícias. Símbolos desenhados em vetor pelo estúdio.</span>
   </footer>
 </main>
+
+<div class="case" id="case" hidden role="dialog" aria-modal="true" aria-labelledby="caseName">
+  <div class="case-bar"><div class="wrap">
+    <button class="ib" type="button" id="cBack"><span aria-hidden="true">←</span> Projetos</button>
+    <span class="nm" id="caseName"></span>
+    <span class="bar-r"><button class="ib" type="button" id="cPrev" aria-label="Projeto anterior">←</button><button class="ib" type="button" id="cNext" aria-label="Próximo projeto">→</button></span>
+  </div></div>
+  <div id="caseBody"></div>
+</div>
 
 <div class="sp" id="sp" hidden role="dialog" aria-modal="true" aria-labelledby="spT">
   <div class="sp-bar"><div class="wrap">
     <button class="ib" type="button" id="spBack"><span aria-hidden="true">←</span><span class="back-t">Todos os símbolos</span><span class="back-s">Símbolos</span></button>
     <span class="sp-no" id="spNo"></span>
-    <div class="sp-arr"><button class="ib" type="button" id="spP" aria-label="Símbolo anterior">←</button><button class="ib" type="button" id="spN" aria-label="Próximo símbolo">→</button></div>
+    <span class="bar-r"><button class="ib" type="button" id="spP" aria-label="Símbolo anterior">←</button><button class="ib" type="button" id="spN" aria-label="Próximo símbolo">→</button></span>
   </div></div>
   <div id="spBody"></div>
 </div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+  <span class="lbn" id="lbN"></span>
+  <button class="lbb x" type="button" id="lbX" aria-label="Fechar">✕</button>
+  <button class="lbb pv" type="button" id="lbP" aria-label="Imagem anterior">←</button>
+  <figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <button class="lbb nx" type="button" id="lbNx" aria-label="Próxima imagem">→</button>
+</div>
+<div class="peek" id="peek" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 const S = /*SYMS*/;
-const N = S.length, pad = i => String(i+1).padStart(2,'0');
+const CONC = /*CONC*/;
+const P = [{"slug": "jessica", "name": "Dra. Jéssica Cardoso", "short": "Jéssica Cardoso", "kind": "Cliente", "seg": "Odontologia estética e reabilitação oral", "city": "Copacabana, Rio de Janeiro", "tag": "Um sorriso bonito é o reflexo de uma vida feliz.", "intro": ["A Dra. Jéssica Cardoso é cirurgiã-dentista em Copacabana. O trabalho dela une odontologia estética e reabilitação oral: devolver ao paciente a função e a beleza do sorriso, com técnica precisa e um cuidado que acompanha cada fase do tratamento.", "A marca existe para que esse cuidado seja visto antes mesmo da primeira consulta: no cartão, na sala de espera e no feed."], "aud": "Pacientes que buscam estética e reabilitação, e que esperam ser ouvidos antes de qualquer procedimento.", "word": {"w": "A meia-flor", "c": "símbolo", "d": "O símbolo é metade de uma flor. A outra metade é o paciente: reabilitar é reconstruir junto."}, "nouns": ["Cuidado", "Precisão", "Naturalidade", "Confiança"], "voice": {"t": "Fala como quem cuida", "l": "Acolhe antes de explicar, explica sem jargão e promete só o que entrega. Segue o Código de Ética do CFO para publicidade.", "say": ["Vamos planejar juntos cada etapa do seu tratamento.", "Um sorriso que continua sendo seu."], "no": ["Transforme seu sorriso em um dia!", "Sorriso de cinema, dentes perfeitos."]}, "rule": "proporção 1 : 2", "ruleL": "eixo vertical · 4 meias-folhas a 90°, 180°, 225° e 270°", "steps": [["O eixo", "Uma linha vertical firme: estrutura, prumo e precisão. É o raciocínio do planejamento, o mesmo de quem posiciona um implante no eixo certo."], ["As folhas", "Quatro meias-folhas nascem do mesmo ponto e se abrem a 90°, 180°, 225° e 270°. Vida, leveza e naturalidade, sem traço agressivo."], ["A metade", "Cada meia-folha tem um lado reto sobre o eixo e um lado em curva que cresce até 14,9% do comprimento. O símbolo cabe numa proporção 1 : 2."], ["A flor", "Quando o símbolo se repete espelhado, as metades se completam e a flor aparece nos grafismos."]], "colors": [["Azul Copacabana", "#04183A", "C96 M79 Y49 K56"], ["Areia", "#D0CBAE", "C18 M20 Y32 K0"], ["Marfim", "#F6F8EE", "C3 M3 Y7 K0"], ["Oliva", "#79775A", "C45 M46 Y59 K14"]], "cnote": "Mar, areia, marfim e folha: quatro cores tiradas da paisagem em frente ao consultório. Os valores CMYK vêm do arquivo-mestre do estúdio.", "fonts": [{"n": "Fraunces", "r": "Títulos e frases · substitui a Swear Display no digital", "f": "'Fraunces',serif", "w": 300, "it": 1, "s": 50}, {"n": "Barlow Semi Condensed", "r": "Legendas · substitui a Olimpico no digital", "f": "'Barlow Semi Condensed',sans-serif", "w": 500, "s": 26, "up": 1}], "fnote": "As fontes oficiais, Swear Display e Olimpico, são licenciadas e ficam no estúdio. Para site, Canva e posts, a marca usa Fraunces e Barlow Semi Condensed, gratuitas no Google Fonts.", "th": {"b": "#04183A", "f": "#F6F8EE", "a": "#D0CBAE"}, "tile": {"b": "#04183A", "f": "#F6F8EE", "c": ["#D0CBAE", "#D0CBAE", "#D0CBAE", "#D0CBAE"]}, "deliv": ["Manual de identidade com 20 pranchas, em PDF e .ai", "Ativos extraídos do arquivo-mestre: assinaturas, selo, símbolo e grafismos", "Brand hub com criador de posts, gerador de grafismos e estúdio 3D", "Guia de tom de voz alinhado ao Código de Ética do CFO"], "build": [[3, "Símbolo"], [4, "Construção"], [5, "Assinaturas"], [12, "Selo"]], "pat": 11, "apps": [["p14", "Papelaria institucional"], ["p15", "Impressos clínicos"], ["p16", "Kit pós-tratamento"], ["p17", "Uniforme"], ["p18", "Sala 607: a marca vira lugar"], ["p19", "Digital"], ["p12", "Selo"], ["p13", "Tom de voz"]], "hover": ["p01", "p14", "p18", "p19"], "pages": ["Capa", "Essência", "A meia-flor", "Construção", "Assinaturas", "Versões e fundos", "Proteção", "Usos incorretos", "Tipografia", "Cor", "Grafismos", "Selo", "Tom de voz", "Papelaria", "Impressos clínicos", "Kit pós-tratamento", "Uniforme", "Ambiente", "Digital", "Encerramento"], "asp": 3.702, "geo": {"s": [0.0076, 0.0283, 0.1351, 0.9717], "n": [0.1694, 0.2638, 0.9924, 0.6799], "d": [0.24, 0.7488, 0.9167, 0.899]}}, {"slug": "quadrante", "name": "Quadrante", "kind": "Conceito", "seg": "Ladrilhos e revestimentos", "city": "Vila Madalena, São Paulo", "tag": "Um ladrilho. Infinitos desenhos.", "intro": ["A Quadrante é um ateliê de ladrilhos e revestimentos cerâmicos em São Paulo. As peças têm 20 × 20 cm, são esmaltadas à mão e se combinam em centenas de desenhos.", "A identidade parte da própria peça. O símbolo é um ladrilho visto de frente, e a marca inteira funciona como um jogo de paginação: girar, alternar e repetir."], "aud": "Arquitetos, designers de interiores e pessoas que estão reformando a casa e querem uma parede que seja só delas.", "word": {"w": "qua·dran·te", "c": "substantivo masculino", "d": "A quarta parte de um círculo. E a peça que, girada e repetida, desenha a parede inteira."}, "nouns": null, "voice": {"t": "Fala como quem mede duas vezes", "l": "Como um bom arquiteto: preciso, calmo, com medidas. Nada de \"luxo\" nem de \"exclusivo\".", "say": ["Q-05 girada a cada fileira forma ondas.", "25 peças por caixa, 1 m², junta de 2 mm."], "no": ["Uma peça sofisticada para ambientes exclusivos.", "Corra, últimas unidades!"]}, "rule": "u = ¼ do lado", "ruleL": "raio interno u · raio externo 2u · centros nos 4 cantos", "steps": [["O quadrante", "A peça básica é um quarto de anel. O raio interno mede ¼ e o externo ½ do lado do quadrado. É também o nome da marca."], ["O ladrilho", "Quatro quadrantes, um em cada canto, fecham o quadrado. O símbolo é uma peça de 20 × 20 cm vista de frente."], ["A estrela", "O vazio no centro forma uma estrela de quatro pontas, que representa o brilho do esmalte."], ["A parede", "Na parede, os quadrantes vizinhos se fecham em anéis. A peça desaparece e nasce o desenho."]], "colors": [["Cobalto", "#2443B5"], ["Terracota", "#C9583B"], ["Mostarda", "#E2A73A"], ["Grafite", "#1D1D1B"], ["Concreto", "#5E5D59"], ["Cimento", "#9B9A94"], ["Argamassa", "#D3D1CA"], ["Cal", "#ECEBE6"], ["Esmalte", "#FAFAF7"]], "cnote": "Três esmaltes e uma escala de cinza com nomes de material de obra. Cada superfície leva uma cor de esmalte; as três só aparecem juntas nas peças festivas.", "fonts": [{"n": "Sora", "r": "Logotipo e títulos · Google Fonts", "f": "'Sora',sans-serif", "w": 300, "s": 52}, {"n": "IBM Plex Mono", "r": "Fichas técnicas e códigos", "f": "'IBM Plex Mono',monospace", "w": 400, "s": 30, "up": 1}], "fnote": "Sora tem círculos perfeitos no O, Q, D e C, como os arcos do símbolo. O logotipo usa Sora Regular em caixa-alta com 12% de espacejamento.", "th": {"b": "#1D1D1B", "f": "#FAFAF7", "a": "#2443B5"}, "tile": {"b": "#ECEBE6", "f": "#1D1D1B", "c": ["#2443B5", "#C9583B", "#E2A73A", "#1D1D1B"]}, "deliv": ["Manual de identidade com 20 pranchas, em PDF e .ai", "Kit de arquivos SVG e PNG, com assinaturas e símbolos", "Coleção de 8 peças com códigos Q-01 a Q-08", "Brand hub com apresentação, gerador de paredes e estúdio 3D", "9 mockups 2D vetoriais"], "build": [[3, "Símbolo"], [4, "Construção"], [5, "Repetição"], [6, "Assinaturas"]], "pat": 12, "apps": [["m-cozinha", "Cozinha · padrão Anel"], ["m-banheiro", "Banheiro · padrão Trilha"], ["m-cartazes", "Cartazes · Gire. Repita. Desenhe."], ["m-flatlay", "Papelaria e amostras"], ["m-van", "Van de entrega"], ["m-abrigo", "Abrigo de ônibus"], ["m-feed", "Feed do Instagram"], ["m-mobile", "App no celular"], ["m-convite", "Convite de lançamento e caneca"], ["p15", "Embalagem"], ["p16", "Catálogo"], ["p17", "Showroom"], ["p18", "Uniforme e sacola"], ["p19", "Site e redes"]], "hover": ["p01", "m-cozinha", "p17", "m-cartazes"], "pages": ["Capa", "Conceito", "Símbolo", "Construção", "Repetição", "Assinaturas", "Versões", "Proteção", "Usos incorretos", "Tipografia", "Cor", "Grafismos", "Coleção", "Papelaria", "Embalagem", "Catálogo", "Showroom", "Uniforme e sacola", "Digital", "Encerramento"], "asp": 4.961, "geo": {"s": [0.0057, 0.0283, 0.1771, 0.8786], "n": [0.2511, 0.2641, 0.9898, 0.731], "d": [0.2488, 0.8479, 0.9943, 0.9717]}}, {"slug": "molar", "name": "Molar", "kind": "Conceito", "seg": "Clínica odontológica", "city": "Belo Horizonte, MG", "tag": "Sorriso planejado, dente por dente.", "intro": ["Clínica de odontologia geral e estética em Belo Horizonte. Cada tratamento começa com exame, fotos e um plano por escrito.", "A marca nasceu do símbolo nº 28 do logofolio. Um dente desenhado só com arcos e retângulos: a coroa redonda e as duas raízes abertas. Técnica e precisão, sem perder a simpatia."], "aud": "Famílias e adultos que adiaram o dentista por medo ou por falta de clareza no orçamento.", "word": {"w": "mo·lar", "c": "adjetivo e substantivo masculino", "d": "Dente largo do fundo da boca, feito para triturar. O que sustenta a mastigação."}, "nouns": ["Clareza", "Cuidado", "Precisão", "Leveza"], "voice": {"t": "Como a marca fala", "l": "Calma e clara, como uma boa dentista explicando o raio-x. Sem pressa e sem susto.", "say": ["Antes de tratar, a gente explica.", "Seu plano de tratamento cabe numa página."], "no": ["Sorriso perfeito em 1 dia!", "Preço imperdível no clareamento."]}, "rule": "m = maior lado ÷ 8", "ruleL": "grade de 8 × 8 módulos · proteção de 2 módulos", "steps": [["A coroa", "Um semicírculo largo: a parte do dente que aparece no sorriso."], ["As raízes", "Dois quartos de círculo abertos para fora, firmes como as raízes de um molar."], ["O centro", "O vazio retangular no meio é a câmara do dente. É ele que faz a forma ser lida como dente."]], "colors": [["Verde Água", "#1BA39C"], ["Coral", "#FF8A6B"], ["Profundo", "#10302F"], ["Esmalte", "#F0F7F6"], ["Névoa", "#E3EBEA"], ["Gesso", "#CCD7D6"], ["Pedra", "#8B9D9C"], ["Grafite", "#4F6867"]], "cnote": "Verde Água como cor principal, Coral como destaque, Profundo para textos e Esmalte como papel. Os quatro cinzas são misturas da tinta com o papel.", "fonts": [{"n": "Urbanist", "r": "Logotipo e títulos", "f": "'Urbanist',sans-serif", "w": 700, "s": 56}, {"n": "Urbanist Regular", "r": "Textos, rótulos e interfaces", "f": "'Urbanist',sans-serif", "w": 400, "s": 28}], "fnote": "Geométrica e arredondada, como os arcos do símbolo. Bold no logotipo e nos títulos; Regular nos textos; SemiBold em botões e destaques.", "th": {"b": "#1BA39C", "f": "#10302F", "a": "#FF8A6B"}, "deliv": ["Manual de identidade com 20 pranchas, em PDF e .ai", "Assinaturas, versões, paleta, tipografia e 4 famílias de grafismo", "8 pranchas de aplicação, 3 delas desenhadas para clínica odontológica"], "build": [[3, "Símbolo"], [4, "Construção"], [5, "Assinaturas"], [6, "Versões"]], "pat": 12, "apps": [["p14", "Jaleco, pijama e crachá"], ["p15", "Kit pós-consulta"], ["p16", "A recepção"], ["p13", "Papelaria"], ["p17", "Fachada"], ["p18", "Redes sociais"], ["p19", "Digital"]], "hover": ["p01", "p14", "p16", "p17"], "pages": ["Capa", "Essência", "Símbolo", "Construção e grade", "Assinaturas", "Versões e fundos", "Proteção e redução", "Usos incorretos", "Tipografia", "Cor", "Tom de voz", "Grafismos", "Papelaria", "Jaleco, pijama e crachá", "Kit pós-consulta", "A recepção", "Fachada", "Redes sociais", "Digital", "Encerramento"], "asp": 2.946, "geo": {"s": [0.0096, 0.0283, 0.3298, 0.9717], "n": [0.4396, 0.201, 0.9904, 0.6915], "d": [0.431, 0.8198, 0.8999, 0.9017]}}, {"slug": "apice", "name": "Ápice", "kind": "Conceito", "seg": "Kart indoor e escola de pilotagem", "city": "São Paulo", "tag": "Todo décimo conta.", "intro": ["A Ápice é um kartódromo indoor e escola de pilotagem em São Paulo. Baterias de 20 minutos, cronometragem ao milésimo e cursos do primeiro volante à licença de competição.", "A marca fala a língua da pista: técnica, número e décimo. Tudo o que ela mostra precisa ser lido em movimento."], "aud": "Quem nunca pilotou, grupos de empresa e aniversários, e pilotos de categoria atrás de técnica.", "word": {"w": "á·pi·ce", "c": "substantivo masculino", "d": "1. O ponto mais alto de algo. 2. No automobilismo, o ponto de tangência: onde o carro toca a parte interna da curva antes de acelerar."}, "nouns": ["Técnica", "Décimo", "Traçado", "Adrenalina", "Pódio"], "voice": {"t": "Instrutor no rádio", "l": "Curto, direto e com números. Encoraja sem exagero e corrige sem rodeio.", "say": ["Freia no 50. Tangência no zebra. Acelera.", "Sua melhor volta: 0:41.988. Faltam 3 décimos para o pódio."], "no": ["Viva uma experiência radical!", "Você foi incrível!!!"]}, "rule": "m = D ÷ 8", "ruleL": "raio de 4m · cada pixel da bandeirada mede 1m", "steps": [["A volta", "O círculo é uma volta completa na pista."], ["O último quarto", "O trecho final, onde a volta se decide, é recortado do círculo."], ["A bandeirada", "O quarto que falta vira o quadriculado da chegada, desenhado em pixels."], ["O ápice", "No canto onde a curva encontra os quadrados está o ponto exato de tangência, onde se ganha ou se perde o décimo."]], "colors": [["Laranja Ápice", "#FF5A1F"], ["Azul Box", "#13294B"], ["Grafite", "#1D1F23"], ["Cinza Pneu", "#4A4F57"], ["Cinza Asfalto", "#8A9099"], ["Cinza Zebra", "#D3D6DB"], ["Branco Pista", "#F1F2F4"]], "cnote": "Duas cores e uma escala de cinza. O laranja é o sinal: bandeira, zebra e botão, tudo o que precisa ser visto em movimento. O azul faz fundos, textos e estrutura.", "fonts": [{"n": "Barlow Condensed", "r": "Títulos · itálico bold, em caixa-alta", "f": "'Barlow Condensed',sans-serif", "w": 700, "it": 1, "s": 60, "up": 1}, {"n": "Barlow", "r": "Textos", "f": "'Barlow',sans-serif", "w": 400, "s": 28}, {"n": "IBM Plex Mono", "r": "Tempos e cronometragem", "f": "'IBM Plex Mono',monospace", "w": 500, "s": 30, "demo": "1:02.348 · 0:41.988"}], "fnote": "O logotipo foi desenhado com as duas formas do símbolo: os arcos do círculo e os quadrados da bandeirada. O acento do Á é um pixel do próprio símbolo.", "th": {"b": "#13294B", "f": "#FFFFFF", "a": "#FF5A1F"}, "tile": {"b": "#13294B", "f": "#FFFFFF", "c": ["#FFFFFF", "#FF5A1F", "#FF5A1F", "#FF5A1F"]}, "deliv": ["Manual de identidade com 20 pranchas, em PDF e .ai", "Kit de arquivos SVG e PNG, com versões sobre azul e sobre laranja", "Brand hub com apresentação, gerador de grafismos e estúdio 3D"], "build": [[3, "Símbolo"], [4, "Grade"], [5, "Assinaturas"], [8, "Tipografia"]], "pat": 11, "apps": [["p16", "Kart"], ["p14", "Bilheteria e cronometragem"], ["p18", "Pódio e premiação"], ["p15", "Uniforme e capacete"], ["p17", "Sinalização de pista"], ["p13", "Papelaria e crachá"], ["p12", "Cartazes"], ["p19", "Digital"], ["p10", "Combinações de cor"]], "hover": ["p01", "p16", "p14", "p18"], "pages": ["Capa", "Conceito", "O símbolo", "Grade", "Assinaturas", "Versões", "Proteção e redução", "Tipografia", "Duas cores", "Combinações", "Grafismos", "Cartazes", "Papelaria", "Bilheteria", "Uniforme", "Kart", "Pista", "Pódio", "Digital", "Encerramento"], "asp": 2.951, "geo": {"s": [0.0096, 0.0283, 0.3292, 0.9717], "n": [0.4092, 0.182, 0.9904, 0.7074], "d": [0.4109, 0.8083, 0.9888, 0.8912]}}, {"slug": "favo", "name": "Favo", "kind": "Conceito", "seg": "Apiário de mel e própolis artesanais", "city": "Serra da Mantiqueira, MG", "tag": "Da flor ao pote, sem pressa.", "intro": ["Apiário familiar na Serra da Mantiqueira. Mel de florada, própolis e cera, colhidos em pequenos lotes e envasados no próprio sítio.", "A marca nasceu do símbolo nº 08 do logofolio. Uma flor recortada dentro do hexágono do favo. A abelha está no meio do caminho entre as duas formas: é ela que transforma uma na outra."], "aud": "Quem lê o rótulo antes de comprar: empórios, cafés e famílias que querem saber de que flor veio o mel.", "word": {"w": "fa·vo", "c": "substantivo masculino", "d": "Cada um dos alvéolos de cera em que as abelhas guardam o mel. Por extensão, o conjunto deles."}, "nouns": ["Origem", "Paciência", "Florada", "Lote"], "voice": {"t": "Como a marca fala", "l": "Como um apicultor na feira: conta a florada, a colheita e o lote. Sem exagero e sem \"gourmet\".", "say": ["Mel de florada de laranjeira, lote 07, colhido em agosto.", "Cristalizou? É sinal de mel puro."], "no": ["O mel mais gourmet do Brasil!", "Superalimento milagroso."]}, "rule": "m = maior lado ÷ 8", "ruleL": "grade de 8 × 8 módulos · proteção de 2 módulos", "steps": [["O alvéolo", "Um hexágono de cantos arredondados: a célula de cera do favo."], ["A flor", "Seis pétalas vazadas, uma para cada lado do hexágono."], ["O caminho", "A abelha leva da flor ao favo. O símbolo junta as duas pontas da viagem."]], "colors": [["Mel", "#F2A900"], ["Campo", "#6F8F3A"], ["Própolis", "#3A2412"], ["Cera", "#FBF3DE"], ["Cera Clara", "#F1E9D4"], ["Palha", "#DED4BF"], ["Madeira", "#A49682"], ["Fuligem", "#705E4B"]], "cnote": "Mel como cor principal, Campo como destaque, Própolis para textos e Cera como papel. Os quatro cinzas são misturas da tinta com o papel.", "fonts": [{"n": "Young Serif", "r": "Logotipo e títulos", "f": "'Young Serif',sans-serif", "w": 400, "s": 56}, {"n": "Work Sans", "r": "Textos, rótulos e interfaces", "f": "'Work Sans',sans-serif", "w": 400, "s": 28}], "fnote": "Young Serif tem serifas grossas e cantos macios, como um rótulo antigo de mercearia. Work Sans faz rótulos, tabelas e textos.", "th": {"b": "#F2A900", "f": "#3A2412", "a": "#6F8F3A"}, "deliv": ["Manual de identidade com 20 pranchas, em PDF e .ai", "Assinaturas, versões, paleta, tipografia e 4 famílias de grafismo", "8 pranchas de aplicação, 3 delas desenhadas para mel e própolis"], "build": [[3, "Símbolo"], [4, "Construção"], [5, "Assinaturas"], [6, "Versões"]], "pat": 12, "apps": [["p14", "Potes e caixa"], ["p15", "Uniforme"], ["p16", "Banca de feira"], ["p13", "Papelaria"], ["p17", "Fachada"], ["p18", "Redes sociais"], ["p19", "Digital"]], "hover": ["p01", "p14", "p16", "p17"], "pages": ["Capa", "Essência", "Símbolo", "Construção e grade", "Assinaturas", "Versões e fundos", "Proteção e redução", "Usos incorretos", "Tipografia", "Cor", "Tom de voz", "Grafismos", "Papelaria", "Potes e caixa", "Uniforme", "Banca de feira", "Fachada", "Redes sociais", "Digital", "Encerramento"], "asp": 2.22, "geo": {"s": [0.0127, 0.0283, 0.3859, 0.9717], "n": [0.5195, 0.3091, 0.9873, 0.6412], "d": [0.5214, 0.7728, 0.9491, 0.8537]}}, {"slug": "volta", "name": "Volta", "kind": "Conceito", "seg": "Instalações elétricas e energia solar", "city": "Goiânia, GO", "tag": "Energia que passa pelo meio.", "intro": ["Projetos e instalação de energia solar e elétrica para casas, comércios e fazendas em Goiás.", "A marca nasceu do símbolo nº 23 do logofolio. Dois blocos deslocados criam um raio no vazio entre eles. A energia é o que passa no meio, de um lado para o outro."], "aud": "Famílias e pequenos negócios que querem pagar menos na conta de luz e precisam entender o investimento antes de assinar.", "word": {"w": "vol·ta", "c": "substantivo feminino", "d": "Movimento de ir e voltar ao ponto de partida. Na elétrica, o volt: a força que empurra a corrente."}, "nouns": ["Energia", "Economia", "Clareza", "Segurança"], "voice": {"t": "Como a marca fala", "l": "Como um engenheiro que mostra a conta: números, prazos e economia. Sem promessa vaga.", "say": ["Seu sistema de 4,2 kWp se paga em 3 anos e 8 meses.", "Instalação em 2 dias, no padrão da concessionária."], "no": ["Energia grátis para sempre!", "Tecnologia revolucionária de ponta."]}, "rule": "m = maior lado ÷ 8", "ruleL": "grade de 8 × 8 módulos · proteção de 2 módulos", "steps": [["Dois blocos", "Dois paralelogramos iguais, espelhados e deslocados na vertical."], ["O raio", "O vazio entre eles desenha um raio. A energia é o que passa no meio."], ["O hexágono", "Os cantos cortados fecham um hexágono: a célula do painel solar."]], "colors": [["Amarelo Volt", "#FFD21F"], ["Azul Painel", "#1B2A6B"], ["Cabo", "#0E1022"], ["Luz", "#F6F6F1"], ["Neblina", "#EAEAE7"], ["Alumínio", "#D1D1D0"], ["Concreto", "#8E8E94"], ["Cabo", "#4F505C"]], "cnote": "Amarelo Volt como cor principal, Azul Painel como destaque, Cabo para textos e Luz como papel. Os quatro cinzas são misturas da tinta com o papel.", "fonts": [{"n": "Unbounded", "r": "Logotipo e títulos", "f": "'Unbounded',sans-serif", "w": 700, "s": 56, "up": 1}, {"n": "Inter Tight", "r": "Textos, rótulos e interfaces", "f": "'Inter Tight',sans-serif", "w": 400, "s": 28}], "fnote": "Unbounded é larga e arredondada, com peso de placa de obra. Inter Tight faz textos, orçamentos e tabelas de economia.", "th": {"b": "#FFD21F", "f": "#0E1022", "a": "#1B2A6B"}, "deliv": ["Manual de identidade com 20 pranchas, em PDF e .ai", "Assinaturas, versões, paleta, tipografia e 4 famílias de grafismo", "8 pranchas de aplicação, 3 delas desenhadas para energia solar"], "build": [[3, "Símbolo"], [4, "Construção"], [5, "Assinaturas"], [6, "Versões"]], "pat": 12, "apps": [["p14", "Van de instalação"], ["p15", "Uniforme e EPI"], ["p16", "Placa de obra"], ["p13", "Papelaria"], ["p17", "Fachada"], ["p18", "Redes sociais"], ["p19", "Digital"]], "hover": ["p01", "p14", "p16", "p17"], "pages": ["Capa", "Essência", "Símbolo", "Construção e grade", "Assinaturas", "Versões e fundos", "Proteção e redução", "Usos incorretos", "Tipografia", "Cor", "Tom de voz", "Grafismos", "Papelaria", "Van de instalação", "Uniforme e EPI", "Placa de obra", "Fachada", "Redes sociais", "Digital", "Encerramento"], "asp": 3.106, "geo": {"s": [0.0091, 0.0283, 0.2754, 0.9717], "n": [0.367, 0.3335, 0.9909, 0.6691], "d": [0.3714, 0.8136, 0.6489, 0.8809]}}, {"slug": "samblagem", "name": "Samblagem", "kind": "Conceito", "seg": "Marcenaria de encaixe", "city": "Curitiba, PR", "tag": "Sem parafuso. Só encaixe.", "intro": ["A Samblagem é um ateliê de mobiliário autoral em Curitiba. Mesas, bancos, estantes e caixas são construídos só com encaixes tradicionais: rabo de andorinha, espiga e mecha, meia-esquadria. Nada de parafuso aparente.", "A marca nasce dessa decisão de oficina. O que sustenta a peça é o encaixe, e é isso que o símbolo desenha. Nesta etapa a marca vive em preto e branco."], "aud": "Arquitetos, designers de interiores e clientes que querem um móvel para durar gerações e passar adiante.", "word": {"w": "sam·bla·gem", "c": "substantivo feminino", "d": "Ato ou efeito de samblar: unir peças de madeira por encaixe, de modo que uma sustente a outra."}, "nouns": ["Encaixe", "Precisão", "Vazio", "Tempo", "Mão"], "voice": {"t": "Mestre de oficina", "l": "Fala pouco, com precisão e com medidas. Mostra o processo em vez de elogiar o resultado.", "say": ["Mesa Trava. 14 encaixes, 64 h de bancada.", "Freijó seco por 18 meses antes do primeiro corte."], "no": ["Uma mesa incrível, feita com muito amor.", "Qualidade premium e diferenciada."]}, "rule": "m = H ÷ 8", "ruleL": "ângulos de 0°, 45° e 90° · simetria de rotação de 180°", "steps": [["O bloco", "Um quadrado girado a 45°: o ângulo da meia-esquadria."], ["As peças", "Duas espigas idênticas, giradas 180° uma em relação à outra."], ["O vazio", "Travadas, as duas espigas desenham o S de Samblagem."], ["O encaixe", "O vazio é recortado do bloco. O que sobra é o símbolo."]], "colors": [["Preto Carvão", "#111111"], ["Branco Serragem", "#FFFFFF"], ["Cinza 5", "#F2F2F2"], ["Cinza 10", "#E3E3E3"], ["Cinza 25", "#C9C9C9"], ["Cinza 50", "#8C8C8C"], ["Cinza 75", "#4A4A4A"]], "cnote": "O sistema foi desenhado para funcionar em preto e branco. A paleta cromática pode entrar depois, por cima, sem mudar nada da estrutura.", "fonts": [{"n": "Space Grotesk", "r": "Textos e interfaces", "f": "'Space Grotesk',sans-serif", "w": 500, "s": 38}, {"n": "JetBrains Mono", "r": "Medidas, códigos de peça e etiquetas", "f": "'JetBrains Mono',monospace", "w": 400, "s": 26, "demo": "1.200 × 450 × 38 mm · PEÇA 0047"}], "fnote": "O logotipo e os títulos usam a Corte, um alfabeto próprio desenhado na mesma grade do símbolo: hastes de 1 módulo e cortes a 45°.", "corte": 1, "th": {"b": "#111111", "f": "#FFFFFF", "a": "#FFFFFF"}, "tile": {"b": "#111111", "f": "#FFFFFF", "c": ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"]}, "deliv": ["Manual de identidade com 20 pranchas, em PDF e .ai", "Alfabeto Corte, desenhado na grade do símbolo", "Kit de arquivos SVG e PNG, com versão espelhada para ferro de marcar", "Brand hub com apresentação, gerador de grafismos e estúdio 3D"], "build": [[3, "Símbolo"], [4, "Grade"], [5, "Assinaturas"], [8, "Alfabeto Corte"]], "pat": 11, "apps": [["p18", "Fachada e veículo"], ["p14", "Papelaria"], ["p17", "Embalagem e manual de montagem"], ["p15", "Etiquetas e lacres"], ["p16", "Produtos da oficina"], ["p13", "Selos e carimbos"], ["p12", "Cartazes"], ["p19", "Digital"]], "hover": ["p01", "p18", "p14", "p17"], "pages": ["Capa", "Conceito", "O símbolo", "Grade", "Assinaturas", "Versões", "Proteção e redução", "Samblagem Corte", "Tipografia de apoio", "Preto e branco", "Grafismos", "Cartazes", "Selos e carimbos", "Papelaria", "Etiquetas", "Produtos", "Embalagem", "Fachada e veículo", "Digital", "Encerramento"], "asp": 4.337, "geo": {"s": [0.0065, 0.0283, 0.2241, 0.9717], "n": [0.2839, 0.3369, 0.9935, 0.6671], "d": [0.2856, 0.767, 0.9915, 0.851]}}, {"slug": "arcos", "name": "Arcos", "kind": "Conceito", "seg": "Escola infantil de pedagogia Montessori", "city": "Florianópolis, SC", "tag": "Crescer em camadas.", "intro": ["Escola de educação infantil de 1 a 6 anos, com pedagogia Montessori, em Florianópolis. Turmas pequenas, materiais de madeira e muito tempo ao ar livre.", "A marca nasceu do símbolo nº 38 do logofolio. Os arcos do brinquedo de empilhar, espelhados em cima e embaixo. Cada camada encaixa na anterior, no tempo da criança."], "aud": "Famílias que querem uma escola que respeite o ritmo de cada criança.", "word": {"w": "ar·co", "c": "substantivo masculino", "d": "Linha curva entre dois pontos. No brinquedo de empilhar, cada peça que encaixa na anterior."}, "nouns": ["Autonomia", "Ritmo", "Natureza", "Cuidado"], "voice": {"t": "Como a marca fala", "l": "Calma e próxima, como uma educadora conversando na porta da sala. Frases curtas, sem pressa.", "say": ["Hoje a Helena serviu o próprio lanche.", "Cada criança no seu tempo."], "no": ["A melhor escola da cidade!", "Prepare seu filho para o vestibular desde já."]}, "rule": "m = maior lado ÷ 8", "ruleL": "grade de 8 × 8 módulos · proteção de 2 módulos", "steps": [["Os arcos", "Arcos concêntricos, como as peças do brinquedo de empilhar."], ["O espelho", "Os arcos se repetem em cima e embaixo, virados um para o outro."], ["O encontro", "No meio, as curvas se cruzam num X: o encontro entre duas fases da criança."]], "colors": [["Terracota", "#D46A43"], ["Sálvia", "#8FAF8C"], ["Madeira", "#2B2522"], ["Algodão Cru", "#F7F1E8"], ["Algodão", "#EDE7DE"], ["Linho", "#D8D2CA"], ["Argila", "#9B958F"], ["Casca", "#645E59"]], "cnote": "Terracota como cor principal, Sálvia como destaque, Madeira para textos e Algodão Cru como papel. Os quatro cinzas são misturas da tinta com o papel.", "fonts": [{"n": "Comfortaa", "r": "Logotipo e títulos", "f": "'Comfortaa',sans-serif", "w": 700, "s": 56}, {"n": "Nunito", "r": "Textos, rótulos e interfaces", "f": "'Nunito',sans-serif", "w": 400, "s": 28}], "fnote": "Comfortaa tem curvas iguais às dos arcos e lê bem em tamanhos grandes. Nunito é a letra dos bilhetes, cardápios e comunicados.", "th": {"b": "#D46A43", "f": "#2B2522", "a": "#8FAF8C"}, "deliv": ["Manual de identidade com 20 pranchas, em PDF e .ai", "Brand hub com arquivos, gerador de grafismos, criador de comunicados, estúdio 3D e apresentação", "Assinaturas, versões, paleta, tipografia e 5 famílias de grafismo", "8 pranchas de aplicação, 3 delas desenhadas para escola Montessori"], "build": [[3, "Símbolo"], [4, "Construção"], [5, "Assinaturas"], [6, "Versões"]], "pat": 12, "apps": [["p14", "Mochila, caderno e garrafinha"], ["p15", "Uniforme"], ["p16", "Sala de atividades"], ["p13", "Papelaria"], ["p17", "Fachada"], ["p18", "Redes sociais"], ["p19", "Digital"]], "hover": ["p01", "p14", "p16", "p17"], "pages": ["Capa", "Essência", "Símbolo", "Construção e grade", "Assinaturas", "Versões e fundos", "Proteção e redução", "Usos incorretos", "Tipografia", "Cor", "Tom de voz", "Grafismos", "Papelaria", "Mochila, caderno e garrafinha", "Uniforme", "Sala de atividades", "Fachada", "Redes sociais", "Digital", "Encerramento"], "asp": 3.502, "geo": {"s": [0.0081, 0.0283, 0.3223, 0.9717], "n": [0.429, 0.3137, 0.9919, 0.6951], "d": [0.4223, 0.8709, 0.8296, 0.9467]}}];
 
+const WA_NUM = '5521968642896';
+const wa = t => `https://wa.me/${WA_NUM}?text=${encodeURIComponent(t)}`;
+const PFONTS = 'https://fonts.googleapis.com/css2?family=Sora:wght@300&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:ital,wght@1,300&family=Barlow+Semi+Condensed:wght@500&family=Barlow+Condensed:ital,wght@1,700&family=Barlow:wght@400&family=Space+Grotesk:wght@500&family=Urbanist:wght@400;700&family=Young+Serif&family=Work+Sans:wght@400&family=Unbounded:wght@700&family=Comfortaa:wght@700&family=Nunito:wght@400&display=swap';
+const $ = s => document.querySelector(s);
+const pad = n => String(n).padStart(2,'0');
+const sno = i => pad(i+1);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine = matchMedia('(hover:hover) and (pointer:fine)');
+const BY = Object.fromEntries(P.map(p => [p.slug, p]));
+const img = (p,k,t) => `img/${p.slug}/${k}${t?'t':''}.webp`;
+const kindL = p => p.kind === 'Cliente' ? 'Cliente' : 'Projeto conceitual';
+const N = S.length;
+
+/* ---------- Aviso e cópia ---------- */
+const toastEl = $('#toast'); let tt;
+function say(m){ toastEl.textContent = m; toastEl.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove('on'), 1900); }
+async function copyText(text, msg, sel){
+  try { await navigator.clipboard.writeText(text); say(msg || 'Copiado'); }
+  catch(_){
+    if (sel){ const r = document.createRange(); r.selectNodeContents(sel); const s = getSelection(); s.removeAllRanges(); s.addRange(r); say('Selecionado: use Ctrl+C'); }
+    else say('Selecione e copie: ' + text);
+  }
+}
+$('#copyMail').addEventListener('click', () => copyText('cpires.design@gmail.com', 'E-mail copiado', $('#mail')));
+
+/* ---------- Camadas: menu, projeto, símbolo e lupa ---------- */
+const menu = $('#menu'), menuB = $('#menuB'), caseEl = $('#case'), sp = $('#sp'), lb = $('#lb');
+const overlayOpen = () => !caseEl.hidden || !sp.hidden;
+function syncLock(){ document.documentElement.classList.toggle('lock', !menu.hidden || overlayOpen()); }
+function setMenu(on){
+  menu.hidden = !on; menuB.setAttribute('aria-expanded', String(on)); syncLock();
+  if (on) $('#menuX').focus(); else menuB.focus({preventScroll:true});
+}
+menuB.addEventListener('click', () => setMenu(true));
+$('#menuX').addEventListener('click', () => setMenu(false));
+menu.addEventListener('click', e => { if (e.target.closest('a[href^="#"]')) { menu.hidden = true; menuB.setAttribute('aria-expanded','false'); syncLock(); } });
+
+/* Destaque do menu conforme a seção na tela */
+const navLinks = [...document.querySelectorAll('.nav a[href^="#"]')];
+if ('IntersectionObserver' in window){
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id));
+  }), {rootMargin:'-40% 0px -55% 0px'});
+  navLinks.forEach(a => { const s = document.getElementById(a.getAttribute('href').slice(1)); if (s) io.observe(s); });
+}
+
+
+/* ---------- Projetos ---------- */
+/* Assinatura em preto: mesma área visual para todas, medida pela proporção de cada uma */
+const lockW = p => Math.min(62, Math.sqrt(.12 * .5625 * p.asp) * 100);
+const lockup = p => {
+  const u = `url(svg/${p.slug}-ass.svg)`;
+  return `<span class="lock" role="img" aria-label="Assinatura de ${esc(p.name)}" style="width:${lockW(p).toFixed(1)}%;aspect-ratio:${p.asp};-webkit-mask-image:${u};mask-image:${u}"></span>`;
+};
+/* Linhas de construção na proporção do card (160 × 90): topo, eixo e base do símbolo,
+   bordas do símbolo, início do nome e linha do descritor */
+const gridOverlay = p => {
+  const g = p.geo, W = 160, H = 90, lw = W * lockW(p) / 100, lh = lw / p.asp, lx = (W - lw) / 2, ly = (H - lh) / 2;
+  const X = f => (lx + f * lw).toFixed(2), Y = f => (ly + f * lh).toFixed(2);
+  const hs = [[g.s[1], 'dash'], [(g.s[1] + g.s[3]) / 2, 'ax'], [g.s[3], 'dash']];
+  if (g.d[3] - g.s[3] > .04) hs.push([g.d[3], 'dash']);
+  const vs = [[g.s[0], 'dash'], [g.s[2], 'dash'], [g.n[0], 'dash'], [Math.max(g.n[2], g.d[2]), 'dash']];
+  let k = 0, out = '';
+  hs.forEach(([f,c]) => { out += `<line class="h ${c}" x1="0" y1="${Y(f)}" x2="${W}" y2="${Y(f)}" style="--d:${(k++ * .07).toFixed(2)}s"/>`; });
+  vs.forEach(([f,c]) => { out += `<line class="v ${c}" x1="${X(f)}" y1="0" x2="${X(f)}" y2="${H}" style="--d:${(k++ * .07).toFixed(2)}s"/>`; });
+  return `<svg class="cg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true">${out}</svg>`;
+};
+function renderProjects(){
+  const list = P;
+  $('#pgrid').innerHTML = list.map(p => `<button class="pcard" type="button" data-slug="${p.slug}">
+    <div class="ph">${gridOverlay(p)}<span class="badge">${kindL(p)}</span>${lockup(p)}</div>
+    <div class="meta"><div class="mt"><h3>${esc(p.name)}</h3><p class="seg-t">${esc(p.seg)}</p><span class="go">Ver projeto <span aria-hidden="true">→</span></span></div></div>
+  </button>`).join('');
+  $('#plist').innerHTML = list.map(p => `<button class="prow" type="button" data-slug="${p.slug}"><span class="nm">${esc(p.name)}</span><span class="sg">${esc(p.seg)}</span><span class="lbl kd">${kindL(p)}</span><span class="ar" aria-hidden="true">→</span></button>`).join('');
+  $('#pgrid').querySelectorAll('.pcard').forEach(c => c.addEventListener('click', () => openRoute('#' + c.dataset.slug, c)));
+  $('#plist').querySelectorAll('.prow').forEach(r => r.addEventListener('click', () => openRoute('#' + r.dataset.slug, r)));
+}
+renderProjects();
+/* Sem mouse (celular), a grade se desenha uma vez quando o card entra na tela */
+if (!matchMedia('(hover:hover)').matches && 'IntersectionObserver' in window){
+  const gio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('drawn'); gio.unobserve(e.target); } }), {threshold:.6});
+  $('#pgrid').querySelectorAll('.pcard').forEach(c => gio.observe(c));
+}
+function setView(v){
+  $('#vGrid').setAttribute('aria-pressed', String(v === 'grid')); $('#vList').setAttribute('aria-pressed', String(v === 'list'));
+  $('#pgrid').hidden = v !== 'grid'; $('#plist').hidden = v !== 'list';
+}
+$('#vGrid').onclick = () => setView('grid'); $('#vList').onclick = () => setView('list');
+const peek = $('#peek');
+$('#plist').addEventListener('pointermove', e => {
+  if (!fine.matches) return; const r = e.target.closest('.prow'); if (!r){ peek.classList.remove('on'); return; }
+  const p = BY[r.dataset.slug];
+  if (peek.dataset.slug !== p.slug){ peek.dataset.slug = p.slug; peek.innerHTML = lockup(p); }
+  peek.style.transform = `translate(${Math.min(e.clientX + 24, innerWidth - 360)}px,${Math.min(e.clientY - 90, innerHeight - 210)}px)`; peek.classList.add('on');
+});
+$('#plist').addEventListener('pointerleave', () => peek.classList.remove('on'));
+
+/* ---------- Símbolos ---------- */
 /* Cada símbolo vira um <symbol> com caixa quadrada centrada no próprio contorno.
    Formas alongadas ou vazadas ganham um pouco mais de corpo, para todas pesarem igual na grade. */
 (function sprite(){
-  const defs = document.getElementById('sprite'); let h = '';
-  S.forEach((s,i)=>{
+  let h = '';
+  S.forEach((s,i) => {
     const [x,y,w,hh] = s.bb, asp = w/hh;
     let k = .56;
     if (asp > 1.3 || asp < .77) k += .07;
     if (s.fill < .38) k += .04;
-    const side = Math.max(w,hh)/k, cx = x+w/2, cy = y+hh/2;
+    const side = Math.max(w,hh)/k, cx = x + w/2, cy = y + hh/2;
     h += `<symbol id="s${i}" viewBox="${(cx-side/2).toFixed(1)} ${(cy-side/2).toFixed(1)} ${side.toFixed(1)} ${side.toFixed(1)}">` +
-         s.d.map(d=>`<path d="${d}"${s.ev?' fill-rule="evenodd"':''} fill="currentColor"/>`).join('') + '</symbol>';
+         s.d.map(d => `<path d="${d}"${s.ev?' fill-rule="evenodd"':''} fill="currentColor"/>`).join('') + '</symbol>';
   });
-  defs.innerHTML = h;
+  $('#sprite').innerHTML = h;
 })();
 const use = (i, extra='') => `<svg viewBox="0 0 100 100" aria-hidden="true">${extra}<use href="#s${i}" width="100" height="100"/></svg>`;
-
-document.getElementById('fN').textContent = N;
-document.getElementById('hN').textContent = N;
-
-/* Grade */
-const grid = document.getElementById('grid');
-let order = [...Array(N).keys()];
+const sgrid = $('#sgrid'), bMore = $('#bMore'), FEW = 24;
+let order = [...Array(N).keys()], shuffled = false, showAll = false;
 function renderGrid(){
-  grid.innerHTML = order.map(i=>`<button class="tile" type="button" data-i="${i}" aria-label="Símbolo ${pad(i)}"><span class="no">${pad(i)}</span>${use(i)}</button>`).join('');
-  document.getElementById('cnt').textContent = `${N} símbolos`;
+  const list = showAll ? order : order.slice(0, FEW);
+  sgrid.innerHTML = list.map(i => `<button class="stile" type="button" data-i="${i}" aria-label="Símbolo ${sno(i)}"><span class="no">${sno(i)}</span>${use(i)}</button>`).join('');
+  $('#cnt').textContent = shuffled ? 'Ordem embaralhada' : 'Ordem original';
+  bMore.textContent = showAll ? 'Mostrar menos' : 'Ver todos os símbolos'; bMore.setAttribute('aria-expanded', String(showAll));
 }
 renderGrid();
-grid.addEventListener('click', e=>{ const t = e.target.closest('.tile'); if (t) openSP(+t.dataset.i); });
-
-document.querySelectorAll('.seg [data-size]').forEach(b=>b.addEventListener('click',()=>{
-  grid.dataset.size = b.dataset.size;
-  document.querySelectorAll('.seg [data-size]').forEach(x=>x.setAttribute('aria-pressed', x===b));
-}));
-const bNeg = document.getElementById('bNeg');
-bNeg.addEventListener('click',()=>{ const on = !grid.classList.contains('neg'); grid.classList.toggle('neg', on); bNeg.setAttribute('aria-pressed', on); });
-const bShuf = document.getElementById('bShuf'), ord = document.getElementById('ord');
-let shuffled = false;
-bShuf.addEventListener('click',()=>{
+sgrid.addEventListener('click', e => { const t = e.target.closest('.stile'); if (t) openRoute('#s' + sno(+t.dataset.i), t); });
+bMore.addEventListener('click', () => { showAll = !showAll; renderGrid(); if (!showAll) $('#simbolos').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'}); });
+$('#sizeSeg').addEventListener('click', e => {
+  const b = e.target.closest('[data-size]'); if (!b) return;
+  sgrid.dataset.size = b.dataset.size; $('#sizeSeg').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+});
+const bNeg = $('#bNeg');
+bNeg.addEventListener('click', () => { const on = !sgrid.classList.contains('neg'); sgrid.classList.toggle('neg', on); bNeg.setAttribute('aria-pressed', String(on)); });
+const bShuf = $('#bShuf');
+bShuf.addEventListener('click', () => {
   shuffled = !shuffled;
-  if (shuffled){ for (let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];} }
+  if (shuffled){ for (let i = order.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; } }
   else order = [...Array(N).keys()];
   bShuf.textContent = shuffled ? 'Ordem original' : 'Embaralhar';
-  ord.textContent = shuffled ? 'Ordem embaralhada' : 'Ordem original';
   renderGrid();
 });
 
-/* Prancheta da abertura */
-const stage = document.getElementById('stage'), stageNo = document.getElementById('stageNo'), bar = document.getElementById('stageBar');
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const DUR = 2600; let cur = Math.floor(Math.random()*N), paused = false, t0 = performance.now();
-function showStage(i){
-  const old = stage.querySelector('svg');
-  if (old){ old.classList.add('out'); setTimeout(()=>old.remove(), 460); }
-  stage.insertAdjacentHTML('beforeend', use(i));
-  const nw = stage.lastElementChild; nw.classList.add('out'); requestAnimationFrame(()=>requestAnimationFrame(()=>nw.classList.remove('out')));
-  stageNo.textContent = `nº ${pad(i)} / ${N}`;
-}
-showStage(cur);
-stage.addEventListener('click', ()=>openSP(cur));
-stage.addEventListener('pointerenter', ()=>paused=true);
-stage.addEventListener('pointerleave', ()=>{paused=false; t0=performance.now()-((parseFloat(bar.style.width)||0)/100)*DUR;});
-if (!reduce){
-  (function loop(now){
-    if (paused || document.hidden || !document.getElementById('sp').hidden) t0 = now - ((parseFloat(bar.style.width)||0)/100)*DUR;
-    const p = Math.min(1,(now-t0)/DUR); bar.style.width = (p*100)+'%';
-    if (p>=1){ cur = (cur+1)%N; showStage(cur); t0 = now; }
-    requestAnimationFrame(loop);
-  })(performance.now());
-}
-
-/* Contato */
-const toast = document.getElementById('toast'); let tt;
-function say(m){ toast.textContent=m; toast.classList.add('on'); clearTimeout(tt); tt=setTimeout(()=>toast.classList.remove('on'),1800); }
-document.getElementById('copyMail').addEventListener('click', async ()=>{
-  const m='cpires.design@gmail.com';
-  try{ await navigator.clipboard.writeText(m); say('E-mail copiado'); }
-  catch(_){ const r=document.createRange(); r.selectNodeContents(document.getElementById('mail')); const s=getSelection(); s.removeAllRanges(); s.addRange(r); say('Selecionado: use Ctrl+C'); }
-});
 /* ---------- Página do símbolo ---------- */
-const CONC = /*CONC*/;
-const sp = document.getElementById('sp'), spBody = document.getElementById('spBody'), spNo = document.getElementById('spNo');
-const INK = '#141513', PAPER = '#F3F4F1', GREY = '#8C8F88', SOFTG = '#E2E4DE';
+const spBody = $('#spBody');
+const INK = '#111111', PAPER = '#FAFAF8', GREY = '#A3A3A0', SOFTG = '#E6E6E3';
 const fmt = (n, d=1) => n.toFixed(d).replace('.', ',').replace(/,0$/, '');
-let cur_i = -1, savedY = 0, buildTimer = null;
+let cur_i = -1, buildTimer = null;
 
 /* Geometria: caixa justa (quadrada, centrada no contorno) */
 function geo(i){
-  const [x,y,w,h] = S[i].bb, M = Math.max(w,h), cx = x+w/2, cy = y+h/2;
+  const [x,y,w,h] = S[i].bb, M = Math.max(w,h), cx = x + w/2, cy = y + h/2;
   return {x,y,w,h,M,cx,cy,tx:cx-M/2,ty:cy-M/2};
 }
-const vbPad = (g, k) => { const s = g.M/k; return `${fmt(g.cx-s/2,2).replace(',','.')} ${fmt(g.cy-s/2,2).replace(',','.')} ${s.toFixed(2)} ${s.toFixed(2)}`; };
-const pathsRaw = i => S[i].d.map(d=>`<path d="${d}"${S[i].ev?' fill-rule="evenodd"':''}/>`).join('');
+const vbPad = (g, k) => { const s = g.M/k; return `${(g.cx-s/2).toFixed(2)} ${(g.cy-s/2).toFixed(2)} ${s.toFixed(2)} ${s.toFixed(2)}`; };
+const pathsRaw = i => S[i].d.map(d => `<path d="${d}"${S[i].ev?' fill-rule="evenodd"':''}/>`).join('');
 
 /* Leitura do desenho: pontos de ancoragem, alças e partes */
 function anatomy(i){
@@ -493,12 +938,12 @@ function anatomy(i){
     const t = d.match(/[a-zA-Z]|-?(?:\d*\.\d+|\d+\.?\d*)(?:e[-+]?\d+)?/g) || [];
     let k = 0, cmd = '', x = 0, y = 0, sx = 0, sy = 0, lc = null;
     const num = () => parseFloat(t[k++]);
-    const add = (px,py) => { const key = Math.round(px*2)+','+Math.round(py*2); if (!A.has(key)) A.set(key,[px,py]); };
+    const add = (px,py) => { const key = Math.round(px*2) + ',' + Math.round(py*2); if (!A.has(key)) A.set(key, [px,py]); };
     while (k < t.length){
       if (/[a-zA-Z]/.test(t[k])) cmd = t[k++];
       const rel = cmd === cmd.toLowerCase(), C = cmd.toUpperCase();
       if (C === 'Z'){ x = sx; y = sy; lc = null; continue; }
-      if (k >= t.length || /[a-zA-Z]/.test(t[k])) { continue; }
+      if (k >= t.length || /[a-zA-Z]/.test(t[k])) continue;
       const ox = rel ? x : 0, oy = rel ? y : 0;
       if (C === 'M'){ x = ox+num(); y = oy+num(); sx = x; sy = y; parts++; add(x,y); cmd = rel ? 'l' : 'L'; lc = null; }
       else if (C === 'L'){ x = ox+num(); y = oy+num(); add(x,y); lc = null; }
@@ -512,23 +957,22 @@ function anatomy(i){
       else k++;
     }
   }
-  return {anchors:[...A.values()], handles:H.filter(h=>Math.hypot(h[0]-h[2],h[1]-h[3])>.5), parts};
+  return {anchors:[...A.values()], handles:H.filter(h => Math.hypot(h[0]-h[2], h[1]-h[3]) > .5), parts};
 }
 
 /* Simetria medida em pixels: quanto a forma coincide com ela mesma espelhada ou girada */
 const P2 = {};
 function symmetry(i){
-  const g = geo(i), N = 140, cv = document.createElement('canvas'); cv.width = cv.height = N;
+  const g = geo(i), R = 140, cv = document.createElement('canvas'); cv.width = cv.height = R;
   const cx = cv.getContext('2d', {willReadFrequently:true});
-  const ps = P2[i] || (P2[i] = S[i].d.map(d=>new Path2D(d)));
-  const draw = tf => { cx.setTransform(1,0,0,1,0,0); cx.clearRect(0,0,N,N); cx.translate(N/2,N/2); tf(cx); const k = N/g.M*.94; cx.scale(k,k); cx.translate(-g.cx,-g.cy); ps.forEach(p=>cx.fill(p, S[i].ev?'evenodd':'nonzero')); return cx.getImageData(0,0,N,N).data; };
-  const base = draw(()=>{});
-  const iou = tf => { const o = draw(tf); let a=0,u=0; for (let q=3;q<o.length;q+=4){ const p=base[q]>127, r=o[q]>127; if(p&&r)a++; if(p||r)u++; } return u ? a/u : 0; };
-  return { v:iou(c=>c.scale(-1,1)), h:iou(c=>c.scale(1,-1)), r90:iou(c=>c.rotate(Math.PI/2)), r180:iou(c=>c.rotate(Math.PI)) };
+  const ps = P2[i] || (P2[i] = S[i].d.map(d => new Path2D(d)));
+  const draw = tf => { cx.setTransform(1,0,0,1,0,0); cx.clearRect(0,0,R,R); cx.translate(R/2,R/2); tf(cx); const k = R/g.M*.94; cx.scale(k,k); cx.translate(-g.cx,-g.cy); ps.forEach(p => cx.fill(p, S[i].ev ? 'evenodd' : 'nonzero')); return cx.getImageData(0,0,R,R).data; };
+  const base = draw(() => {});
+  const iou = tf => { const o = draw(tf); let a = 0, u = 0; for (let q = 3; q < o.length; q += 4){ const p = base[q] > 127, r = o[q] > 127; if (p && r) a++; if (p || r) u++; } return u ? a/u : 0; };
+  return { v:iou(c => c.scale(-1,1)), h:iou(c => c.scale(1,-1)), r90:iou(c => c.rotate(Math.PI/2)), r180:iou(c => c.rotate(Math.PI)) };
 }
 const verdict = p => p >= .97 ? 'Simétrico' : p >= .85 ? 'Quase simétrico' : p >= .6 ? 'Parcial' : 'Assimétrico';
 
-/* ---------- Montagem da página ---------- */
 function renderSP(i){
   const g = geo(i), an = anatomy(i), area = Math.round(S[i].fill*100), m = g.M/8;
   const wm = fmt(g.w/m), hm = fmt(g.h/m);
@@ -539,27 +983,27 @@ function renderSP(i){
 
   /* camadas da construção */
   const pd = g.M*.16, VB = `${g.tx-pd} ${g.ty-pd} ${g.M+pd*2} ${g.M+pd*2}`;
-  let grid = '';
-  for (let k=0;k<=8;k++){ const v = k*m, strong = k===0||k===4||k===8;
-    grid += `<line x1="${g.tx+v}" y1="${g.ty}" x2="${g.tx+v}" y2="${g.ty+g.M}" stroke-width="${sw*(strong?2.4:1.2)}" ${strong?'':`stroke-dasharray="${sw*8} ${sw*8}"`}/>`+
-            `<line x1="${g.tx}" y1="${g.ty+v}" x2="${g.tx+g.M}" y2="${g.ty+v}" stroke-width="${sw*(strong?2.4:1.2)}" ${strong?'':`stroke-dasharray="${sw*8} ${sw*8}"`}/>`; }
-  grid += `<circle cx="${g.cx}" cy="${g.cy}" r="${g.M/2}" stroke-width="${sw*1.2}" stroke-dasharray="${sw*8} ${sw*8}"/><circle cx="${g.cx}" cy="${g.cy}" r="${g.M/4}" stroke-width="${sw*1.2}" stroke-dasharray="${sw*8} ${sw*8}"/>`;
+  let gl = '';
+  for (let k = 0; k <= 8; k++){ const v = k*m, strong = k === 0 || k === 4 || k === 8;
+    gl += `<line x1="${g.tx+v}" y1="${g.ty}" x2="${g.tx+v}" y2="${g.ty+g.M}" stroke-width="${sw*(strong?2.4:1.2)}" ${strong?'':`stroke-dasharray="${sw*8} ${sw*8}"`}/>` +
+          `<line x1="${g.tx}" y1="${g.ty+v}" x2="${g.tx+g.M}" y2="${g.ty+v}" stroke-width="${sw*(strong?2.4:1.2)}" ${strong?'':`stroke-dasharray="${sw*8} ${sw*8}"`}/>`; }
+  gl += `<circle cx="${g.cx}" cy="${g.cy}" r="${g.M/2}" stroke-width="${sw*1.2}" stroke-dasharray="${sw*8} ${sw*8}"/><circle cx="${g.cx}" cy="${g.cy}" r="${g.M/4}" stroke-width="${sw*1.2}" stroke-dasharray="${sw*8} ${sw*8}"/>`;
   const fs = g.M*.034, off = g.M*.07;
-  const box = `<rect x="${g.x}" y="${g.y}" width="${g.w}" height="${g.h}" fill="none" stroke-width="${sw*3}"/>`+
-    `<g stroke-width="${sw*2}"><line x1="${g.x}" y1="${g.y-off}" x2="${g.x+g.w}" y2="${g.y-off}"/><line x1="${g.x}" y1="${g.y-off-fs*.5}" x2="${g.x}" y2="${g.y-off+fs*.5}"/><line x1="${g.x+g.w}" y1="${g.y-off-fs*.5}" x2="${g.x+g.w}" y2="${g.y-off+fs*.5}"/>`+
-    `<line x1="${g.x-off}" y1="${g.y}" x2="${g.x-off}" y2="${g.y+g.h}"/><line x1="${g.x-off-fs*.5}" y1="${g.y}" x2="${g.x-off+fs*.5}" y2="${g.y}"/><line x1="${g.x-off-fs*.5}" y1="${g.y+g.h}" x2="${g.x-off+fs*.5}" y2="${g.y+g.h}"/></g>`+
-    `<g stroke="none" fill="currentColor" font-family="JetBrains Mono, monospace" font-size="${fs}"><text x="${g.cx}" y="${g.y-off-fs*.6}" text-anchor="middle">${wm} m</text><text transform="translate(${g.x-off-fs*.6} ${g.cy}) rotate(-90)" text-anchor="middle">${hm} m</text>`+
+  const box = `<rect x="${g.x}" y="${g.y}" width="${g.w}" height="${g.h}" fill="none" stroke-width="${sw*3}"/>` +
+    `<g stroke-width="${sw*2}"><line x1="${g.x}" y1="${g.y-off}" x2="${g.x+g.w}" y2="${g.y-off}"/><line x1="${g.x}" y1="${g.y-off-fs*.5}" x2="${g.x}" y2="${g.y-off+fs*.5}"/><line x1="${g.x+g.w}" y1="${g.y-off-fs*.5}" x2="${g.x+g.w}" y2="${g.y-off+fs*.5}"/>` +
+    `<line x1="${g.x-off}" y1="${g.y}" x2="${g.x-off}" y2="${g.y+g.h}"/><line x1="${g.x-off-fs*.5}" y1="${g.y}" x2="${g.x-off+fs*.5}" y2="${g.y}"/><line x1="${g.x-off-fs*.5}" y1="${g.y+g.h}" x2="${g.x-off+fs*.5}" y2="${g.y+g.h}"/></g>` +
+    `<g stroke="none" fill="currentColor" font-family="JetBrains Mono, monospace" font-size="${fs}"><text x="${g.cx}" y="${g.y-off-fs*.6}" text-anchor="middle">${wm} m</text><text transform="translate(${g.x-off-fs*.6} ${g.cy}) rotate(-90)" text-anchor="middle">${hm} m</text>` +
     `<text x="${g.tx}" y="${g.ty+g.M+fs*1.8}">1 m = 1/8 do lado maior</text></g>`;
-  const outl = S[i].d.map(d=>`<path d="${d}" pathLength="1" fill="none" stroke-width="${sw*3}" stroke-linejoin="round"/>`).join('');
-  const hs = an.handles.length > 600 ? '' : an.handles.map(h=>`<line x1="${h[0]}" y1="${h[1]}" x2="${h[2]}" y2="${h[3]}" stroke-width="${sw*1.6}" opacity=".55"/><circle cx="${h[2]}" cy="${h[3]}" r="${sw*7}" fill="${INK}" stroke-width="${sw*2}"/>`).join('');
+  const outl = S[i].d.map(d => `<path d="${d}" pathLength="1" fill="none" stroke-width="${sw*3}" stroke-linejoin="round"/>`).join('');
+  const hs = an.handles.length > 600 ? '' : an.handles.map(h => `<line x1="${h[0]}" y1="${h[1]}" x2="${h[2]}" y2="${h[3]}" stroke-width="${sw*1.6}" opacity=".55"/><circle cx="${h[2]}" cy="${h[3]}" r="${sw*7}" fill="${INK}" stroke-width="${sw*2}"/>`).join('');
   const q = sw*10;
-  const as = an.anchors.map(p=>`<rect x="${p[0]-q/2}" y="${p[1]-q/2}" width="${q}" height="${q}" fill="currentColor" stroke="none"/>`).join('');
+  const as = an.anchors.map(p => `<rect x="${p[0]-q/2}" y="${p[1]-q/2}" width="${q}" height="${q}" fill="currentColor" stroke="none"/>`).join('');
 
   const stepsTxt = [
     ['Grade', `O símbolo cabe numa caixa de ${wm} × ${hm} módulos. O módulo é um oitavo do lado maior e mede tudo: espessura, corte e respiro.`],
-    ['Contorno', `${an.parts} ${an.parts>1?'contornos fechados desenham':'contorno fechado desenha'} a forma. Sem o preenchimento, aparece o caminho que a caneta percorre.`],
+    ['Contorno', `${an.parts} ${an.parts > 1 ? 'contornos fechados desenham' : 'contorno fechado desenha'} a forma. Sem o preenchimento, aparece o caminho que a caneta percorre.`],
     ['Pontos', `${an.anchors.length} pontos de ancoragem e ${an.handles.length} alças de curva. Cada ponto a menos deixa a curva mais limpa e o arquivo mais leve.`],
-    ['Forma', `Preenchida, a forma ocupa ${area}% da própria caixa. ${area>55?'É um símbolo de peso, firme em tamanhos pequenos.':area<35?'É um símbolo leve, que pede espaço em volta para respirar.':'Cheio e vazio estão equilibrados, e por isso ele funciona bem no positivo e no negativo.'}`]
+    ['Forma', `Preenchida, a forma ocupa ${area}% da própria caixa. ${area > 55 ? 'É um símbolo de peso, firme em tamanhos pequenos.' : area < 35 ? 'É um símbolo leve, que pede espaço em volta para respirar.' : 'Cheio e vazio estão equilibrados, e por isso ele funciona bem no positivo e no negativo.'}`]
   ];
 
   /* redução */
@@ -570,15 +1014,15 @@ function renderSP(i){
   spBody.innerHTML = `
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="pg">${pathsRaw(i)}</g></defs></svg>
   <section class="wrap sp-hero">
-    <div><div class="stage" role="img" aria-label="Símbolo ${pad(i)}"><i class="tick t1"></i><i class="tick t2"></i><i class="tick t3"></i><i class="tick t4"></i>${use(i)}</div></div>
+    <div><div class="stage" role="img" aria-label="Símbolo ${sno(i)}"><i class="tick t1"></i><i class="tick t2"></i><i class="tick t3"></i><i class="tick t4"></i>${use(i)}</div></div>
     <div>
-      <span class="lbl">Símbolo nº ${pad(i)} de ${N}</span>
-      <h1 id="spT">${head}</h1>
-      ${rest?`<p class="rest">${rest}</p>`:''}
+      <span class="lbl">Símbolo nº ${sno(i)}</span>
+      <h1 id="spT">${esc(head)}</h1>
+      ${rest ? `<p class="rest">${esc(rest)}</p>` : ''}
       <div class="specs">
         <div><b>${ratio}</b><span class="lbl">Proporção</span></div>
         <div><b>${an.anchors.length}</b><span class="lbl">Pontos</span></div>
-        <div><b>${an.parts}</b><span class="lbl">${an.parts>1?'Partes':'Parte'}</span></div>
+        <div><b>${an.parts}</b><span class="lbl">${an.parts > 1 ? 'Partes' : 'Parte'}</span></div>
         <div><b>${area}%</b><span class="lbl">Preenchido</span></div>
       </div>
     </div>
@@ -587,10 +1031,10 @@ function renderSP(i){
   <section class="blk dark" aria-labelledby="hB">
     <div class="wrap">
       <div class="blk-h"><div><span class="lbl">Construção</span><h2 id="hB">Do módulo à forma</h2><p class="muted">Quatro camadas do mesmo desenho. Escolha uma etapa ou deixe a construção rodar sozinha.</p></div></div>
-      <div class="build">
+      <div class="sbuild">
         <div class="cv" id="cv" data-s="1">
-          <svg viewBox="${VB}" role="img" aria-label="Construção do símbolo ${pad(i)}" style="color:${PAPER}">
-            <g class="L gridL" fill="none" stroke="currentColor" opacity=".35">${grid}</g>
+          <svg viewBox="${VB}" role="img" aria-label="Construção do símbolo ${sno(i)}" style="color:${PAPER}">
+            <g class="L gridL" fill="none" stroke="currentColor" opacity=".35">${gl}</g>
             <use href="#pg" class="L ghost" fill="currentColor" opacity=".12"/>
             <g class="L outl" stroke="currentColor">${outl}</g>
             <g class="L pts" stroke="currentColor">${hs}${as}</g>
@@ -599,8 +1043,8 @@ function renderSP(i){
           </svg>
         </div>
         <div>
-          <div class="steps" role="tablist" aria-label="Etapas da construção">
-            ${stepsTxt.map((s,k)=>`<button class="step" type="button" role="tab" data-s="${k+1}" aria-selected="${k===0}"><i>0${k+1}</i><b>${s[0]}</b><span>${s[1]}</span></button>`).join('')}
+          <div class="ssteps" role="tablist" aria-label="Etapas da construção">
+            ${stepsTxt.map((s,k) => `<button class="sstep" type="button" role="tab" data-s="${k+1}" aria-selected="${k === 0}"><i>0${k+1}</i><b>${s[0]}</b><span>${s[1]}</span></button>`).join('')}
           </div>
           <button class="btn play" type="button" id="bPlay">Reproduzir construção <span aria-hidden="true">▶</span></button>
         </div>
@@ -618,11 +1062,11 @@ function renderSP(i){
 
   <section class="blk" aria-labelledby="hR">
     <div class="wrap">
-      <div class="blk-h"><div><span class="lbl">Redução</span><h2 id="hR">Do outdoor ao favicon</h2><p class="muted">Um símbolo bom continua reconhecível com 16 pixels. Aqui ele aparece nos tamanhos em que a marca mais vive no dia a dia.</p></div></div>
+      <div class="blk-h"><div><span class="lbl">Redução</span><h2 id="hR">Do letreiro ao favicon</h2><p class="muted">Um símbolo bom continua reconhecível com 16 pixels. Aqui ele aparece nos tamanhos em que a marca mais vive no dia a dia.</p></div></div>
       <div class="red">
         <div class="sizes">
-          <div class="srow">${[96,48,32,24,16].map(p=>sz(p)).join('')}</div>
-          <div class="srow inv">${[96,48,32,24,16].map(p=>sz(p,1)).join('')}</div>
+          <div class="srow">${[96,48,32,24,16].map(p => sz(p)).join('')}</div>
+          <div class="srow inv">${[96,48,32,24,16].map(p => sz(p,1)).join('')}</div>
         </div>
         <div class="mock">
           <div class="tab" aria-label="Aba de navegador com o símbolo como favicon">
@@ -657,30 +1101,30 @@ function renderSP(i){
     </div>
   </section>
 
-  <section class="blk cta" aria-labelledby="hC">
+  <section class="blk spcta" aria-labelledby="hC">
     <div class="wrap">
       <div class="cta-g">
-        <div><span class="lbl">Próximo passo</span><h2 id="hC">Um símbolo assim pode começar a sua marca.</h2></div>
+        <div><span class="lbl">Próximo passo</span><h2 id="hC">A sua marca pode nascer de uma forma assim.</h2></div>
         <div class="row">
-          <a class="btn" href="comecar/?simbolo=${pad(i)}">Começar um projeto</a>
-          <button class="btn ghost" type="button" data-close>Ver todos</button>
+          <a class="btn" href="comecar/?simbolo=${sno(i)}">Quero uma marca assim <span aria-hidden="true">→</span></a>
+          <button class="btn ghost" type="button" data-close>Ver todos os símbolos</button>
         </div>
       </div>
       <div class="nextp">
-        <button class="nx" type="button" data-go="${prev}"><span class="mini">${use(prev)}</span><span><span class="lbl">Anterior</span><b>nº ${pad(prev)}</b></span></button>
-        <button class="nx r" type="button" data-go="${next}"><span class="mini">${use(next)}</span><span><span class="lbl">Próximo</span><b>nº ${pad(next)}</b></span></button>
+        <button class="nx" type="button" data-go="${prev}"><span class="mini">${use(prev)}</span><span><span class="lbl">Anterior</span><b>nº ${sno(prev)}</b></span></button>
+        <button class="nx r" type="button" data-go="${next}"><span class="mini">${use(next)}</span><span><span class="lbl">Próximo</span><b>nº ${sno(next)}</b></span></button>
       </div>
     </div>
   </section>`;
 
-  /* construção: etapas + reprodução */
-  const cv = document.getElementById('cv'), steps = [...spBody.querySelectorAll('.step')];
-  const setStep = s => { cv.dataset.s = s; steps.forEach(b=>b.setAttribute('aria-selected', b.dataset.s==s)); };
-  steps.forEach(b=>b.addEventListener('click', ()=>{ clearInterval(buildTimer); buildTimer=null; setStep(b.dataset.s); }));
-  const play = () => { clearInterval(buildTimer); let s = 1; setStep(1); buildTimer = setInterval(()=>{ s++; if (s>4){ clearInterval(buildTimer); buildTimer=null; return; } setStep(s); }, 2400); };
-  document.getElementById('bPlay').addEventListener('click', play);
+  /* construção: etapas e reprodução */
+  const cv = $('#cv'), steps = [...spBody.querySelectorAll('.sstep')];
+  const setStep = s => { cv.dataset.s = s; steps.forEach(b => b.setAttribute('aria-selected', String(b.dataset.s == s))); };
+  steps.forEach(b => b.addEventListener('click', () => { clearInterval(buildTimer); buildTimer = null; setStep(b.dataset.s); }));
+  const play = () => { clearInterval(buildTimer); let s = 1; setStep(1); buildTimer = setInterval(() => { s++; if (s > 4){ clearInterval(buildTimer); buildTimer = null; return; } setStep(s); }, 2400); };
+  $('#bPlay').addEventListener('click', play);
   if (!reduce && 'IntersectionObserver' in window){
-    const io = new IntersectionObserver(es=>{ if (es[0].isIntersecting){ io.disconnect(); play(); } }, {root:sp, threshold:.45});
+    const io = new IntersectionObserver(es => { if (es[0].isIntersecting){ io.disconnect(); play(); } }, {root:sp, threshold:.45});
     io.observe(cv);
   } else setStep(4);
 
@@ -692,25 +1136,22 @@ function renderSP(i){
     ['Giro de 90°', sy.r90, `transform="rotate(90 ${g.cx} ${g.cy})"`, `<circle cx="${g.cx}" cy="${g.cy}" r="${g.M*.03}" fill="currentColor"/>`],
     ['Giro de 180°', sy.r180, `transform="rotate(180 ${g.cx} ${g.cy})"`, `<circle cx="${g.cx}" cy="${g.cy}" r="${g.M*.03}" fill="currentColor"/>`]
   ];
-  document.getElementById('sym4').innerHTML = cards.map(([t,p,tf,ax])=>`<figure class="sc" style="margin:0"><div class="fig"><svg viewBox="${vb}" role="img" aria-label="${t}: ${Math.round(p*100)}%"><use href="#pg" fill="currentColor" opacity=".38"/><use href="#pg" fill="currentColor" opacity=".38" ${tf}/><g stroke="#8C8F88" stroke-width="${sw*3}" stroke-dasharray="${sw*14} ${sw*10}">${ax}</g></svg></div><div class="pc">${Math.round(p*100)}%</div><figcaption class="lbl v">${t} · ${verdict(p)}</figcaption><div class="meter"><i style="width:${Math.round(p*100)}%"></i></div></figure>`).join('');
+  $('#sym4').innerHTML = cards.map(([t,p,tf,ax]) => `<figure class="sc"><div class="fig"><svg viewBox="${vb}" role="img" aria-label="${t}: ${Math.round(p*100)}%"><use href="#pg" fill="currentColor" opacity=".38"/><use href="#pg" fill="currentColor" opacity=".38" ${tf}/><g stroke="${GREY}" stroke-width="${sw*3}" stroke-dasharray="${sw*14} ${sw*10}">${ax}</g></svg></div><div class="pc">${Math.round(p*100)}%</div><figcaption class="lbl v">${t} · ${verdict(p)}</figcaption><div class="meter"><i style="width:${Math.round(p*100)}%"></i></div></figure>`).join('');
   const parts = [];
-  if (sy.v>=.97 && sy.h>=.97) parts.push('é espelhada nos dois eixos');
-  else if (sy.v>=.97) parts.push('é espelhada no eixo vertical');
-  else if (sy.h>=.97) parts.push('é espelhada no eixo horizontal');
-  if (sy.r90>=.97) parts.push('volta a ser ela mesma a cada quarto de volta');
-  else if (sy.r180>=.97) parts.push('fica igual de cabeça para baixo');
-  const best = Math.max(sy.v,sy.h,sy.r90,sy.r180);
-  document.getElementById('symSum').textContent = parts.length
+  if (sy.v >= .97 && sy.h >= .97) parts.push('é espelhada nos dois eixos');
+  else if (sy.v >= .97) parts.push('é espelhada no eixo vertical');
+  else if (sy.h >= .97) parts.push('é espelhada no eixo horizontal');
+  if (sy.r90 >= .97) parts.push('volta a ser ela mesma a cada quarto de volta');
+  else if (sy.r180 >= .97) parts.push('fica igual de cabeça para baixo');
+  const best = Math.max(sy.v, sy.h, sy.r90, sy.r180);
+  $('#symSum').textContent = parts.length
     ? `A forma ${parts.join(' e ')}. Simetria passa estabilidade e faz o símbolo funcionar bem em padrões, selos e carimbos.`
-    : best >= .8 ? `A forma é quase simétrica: a regra está lá, mas um detalhe quebra o espelho e dá personalidade.`
-    : `A forma é assimétrica. Ela tem direção e movimento, e por isso cria desenhos novos quando gira no padrão.`;
+    : best >= .8 ? 'A forma é quase simétrica. A regra está lá, mas um detalhe quebra o espelho e dá personalidade.'
+    : 'A forma é assimétrica. Ela tem direção e movimento, e por isso cria desenhos novos quando gira no padrão.';
 
-  /* padrão */
   buildPatternUI(i);
-
-  /* navegação */
-  spBody.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click', ()=>go(+b.dataset.go)));
-  spBody.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click', closeSP));
+  spBody.querySelectorAll('[data-go]').forEach(b => b.addEventListener('click', () => openRoute('#s' + sno(+b.dataset.go))));
+  spBody.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeRoute));
 }
 
 /* ---------- Gerador de padrão ---------- */
@@ -726,79 +1167,216 @@ const MODES = {
 };
 const COLS = { tinta:['Tinta', PAPER, INK, INK], papel:['Papel', INK, PAPER, PAPER], cinza:['Cinza', SOFTG, INK, GREY] };
 function patternSVG(i, forExport){
-  const g = geo(i), W = 1200, H = 800, s = PS.size, step = Math.max(12, s+PS.gap), k = s/g.M;
+  const g = geo(i), W = 1200, H = 800, s = PS.size, step = Math.max(12, s + PS.gap), k = s/g.M;
   const [, bg, fg, alt] = COLS[PS.col];
   const R = PS.ang ? Math.hypot(W,H)/2 + step : Math.max(W,H)/2 + step;
-  const n = Math.ceil(R/step)+1;
+  const n = Math.ceil(R/step) + 1;
   let u = '';
-  for (let r=-n; r<=n; r++) for (let c=-n; c<=n; c++){
-    const odd = v => ((v%2)+2)%2;
-    let x = c*step + (PS.mode==='tijolo' && odd(r) ? step/2 : 0), y = r*step;
-    if (!PS.ang && (Math.abs(x) > W/2+step || Math.abs(y) > H/2+step)) continue;
-    let rot = 0, sx = 1, sy = 1, sc = 1, fill = (c+r)%2 && PS.col==='cinza' ? alt : fg;
-    if (PS.mode==='giro') rot = [0,90,270,180][odd(c)+2*odd(r)];
-    if (PS.mode==='espelho'){ sx = odd(c)?-1:1; sy = odd(r)?-1:1; }
-    if (PS.mode==='escala') sc = odd(c+r) ? .46 : 1;
-    if (PS.mode==='onda') rot = (c+r)*15;
-    if (PS.mode==='xadrez'){ const on = odd(c+r); if (on) u += `<rect x="${x-step/2}" y="${y-step/2}" width="${step}" height="${step}" fill="${fg}"/>`; fill = on ? bg : fg; }
+  for (let r = -n; r <= n; r++) for (let c = -n; c <= n; c++){
+    const odd = v => ((v % 2) + 2) % 2;
+    const x = c*step + (PS.mode === 'tijolo' && odd(r) ? step/2 : 0), y = r*step;
+    if (!PS.ang && (Math.abs(x) > W/2 + step || Math.abs(y) > H/2 + step)) continue;
+    let rot = 0, sx = 1, sy = 1, sc = 1, fill = (c + r) % 2 && PS.col === 'cinza' ? alt : fg;
+    if (PS.mode === 'giro') rot = [0,90,270,180][odd(c) + 2*odd(r)];
+    if (PS.mode === 'espelho'){ sx = odd(c) ? -1 : 1; sy = odd(r) ? -1 : 1; }
+    if (PS.mode === 'escala') sc = odd(c + r) ? .46 : 1;
+    if (PS.mode === 'onda') rot = (c + r)*15;
+    if (PS.mode === 'xadrez'){ const on = odd(c + r); if (on) u += `<rect x="${x-step/2}" y="${y-step/2}" width="${step}" height="${step}" fill="${fg}"/>`; fill = on ? bg : fg; }
     u += `<use href="#pt" fill="${fill}" transform="translate(${x} ${y}) rotate(${rot}) scale(${(sx*k*sc).toFixed(4)} ${(sy*k*sc).toFixed(4)}) translate(${-g.cx} ${-g.cy})"/>`;
   }
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"${forExport?` width="${W}" height="${H}"`:' role="img" aria-label="Padrão gerado com o símbolo"'}><defs><g id="pt">${pathsRaw(i)}</g></defs><rect width="${W}" height="${H}" fill="${bg}"/><g transform="translate(${W/2} ${H/2}) rotate(${PS.ang})">${u}</g></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"${forExport ? ` width="${W}" height="${H}"` : ' role="img" aria-label="Padrão gerado com o símbolo"'}><defs><g id="pt">${pathsRaw(i)}</g></defs><rect width="${W}" height="${H}" fill="${bg}"/><g transform="translate(${W/2} ${H/2}) rotate(${PS.ang})">${u}</g></svg>`;
 }
 let dlNS;
 function buildPatternUI(i){
-  const pv = document.getElementById('pv'), note = document.getElementById('pNote');
-  const pm = document.getElementById('pModes'), pc = document.getElementById('pCols');
-  pm.innerHTML = Object.entries(MODES).map(([k,[l]])=>`<button class="chip" type="button" data-m="${k}" aria-pressed="${PS.mode===k}">${l}</button>`).join('');
-  pc.innerHTML = Object.entries(COLS).map(([k,[l]])=>`<button class="chip" type="button" data-c="${k}" aria-pressed="${PS.col===k}">${l}</button>`).join('');
-  const oS = document.getElementById('oS'), oG = document.getElementById('oG'), oA = document.getElementById('oA');
+  const pv = $('#pv'), note = $('#pNote'), pm = $('#pModes'), pc = $('#pCols');
+  pm.innerHTML = Object.entries(MODES).map(([k,[l]]) => `<button class="chip" type="button" data-m="${k}" aria-pressed="${PS.mode === k}">${l}</button>`).join('');
+  pc.innerHTML = Object.entries(COLS).map(([k,[l]]) => `<button class="chip" type="button" data-c="${k}" aria-pressed="${PS.col === k}">${l}</button>`).join('');
+  const oS = $('#oS'), oG = $('#oG'), oA = $('#oA');
   let raf = 0;
-  const draw = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(()=>{ pv.innerHTML = patternSVG(i); }); note.textContent = MODES[PS.mode][1]; oS.textContent = PS.size+' px'; oG.textContent = PS.gap+' px'; oA.textContent = PS.ang+'°'; };
-  pm.addEventListener('click', e=>{ const b = e.target.closest('[data-m]'); if (!b) return; PS.mode = b.dataset.m; pm.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', x===b)); draw(); });
-  pc.addEventListener('click', e=>{ const b = e.target.closest('[data-c]'); if (!b) return; PS.col = b.dataset.c; pc.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', x===b)); draw(); });
-  [['pSize','size'],['pGap','gap'],['pAng','ang']].forEach(([id,key])=>document.getElementById(id).addEventListener('input', e=>{ PS[key] = +e.target.value; draw(); }));
+  const draw = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(() => { pv.innerHTML = patternSVG(i); }); note.textContent = MODES[PS.mode][1]; oS.textContent = PS.size + ' px'; oG.textContent = PS.gap + ' px'; oA.textContent = PS.ang + '°'; };
+  pm.addEventListener('click', e => { const b = e.target.closest('[data-m]'); if (!b) return; PS.mode = b.dataset.m; pm.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); draw(); });
+  pc.addEventListener('click', e => { const b = e.target.closest('[data-c]'); if (!b) return; PS.col = b.dataset.c; pc.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); draw(); });
+  [['pSize','size'],['pGap','gap'],['pAng','ang']].forEach(([id,key]) => document.getElementById(id).addEventListener('input', e => { PS[key] = +e.target.value; draw(); }));
   draw();
-  const dl = document.getElementById('pDl');
-  const ready = ns => { if (!ns) return; dl.hidden = false; dl.onclick = async ()=>{
-    try { await ns.save({filename:`simbolo-${pad(i)}-padrao-${PS.mode}.svg`, data:new Blob([patternSVG(i,true)],{type:'image/svg+xml'})}); say('Padrão salvo'); }
-    catch(err){ if (err && err.code==='declined') return; if (err && (err.code==='unavailable'||err.code==='not_granted')) { dl.hidden = true; return; } say('Não foi possível salvar agora'); } }; };
+  const dl = $('#pDl');
+  const ready = ns => { if (!ns) return; dl.hidden = false; dl.onclick = async () => {
+    try { await ns.save({filename:`simbolo-${sno(i)}-padrao-${PS.mode}.svg`, data:new Blob([patternSVG(i,true)], {type:'image/svg+xml'})}); say('Padrão salvo'); }
+    catch(err){ if (err && err.code === 'declined') return; if (err && (err.code === 'unavailable' || err.code === 'not_granted')){ dl.hidden = true; return; } say('Não foi possível salvar agora'); } }; };
   /* Dentro do Claude usa o recurso de download do artefato; num site comum, o download normal do navegador. */
-  const browserDL = { save: async ({filename, data}) => { const u = URL.createObjectURL(data), a = document.createElement('a'); a.href = u; a.download = filename; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u), 3000); } };
+  const browserDL = { save: async ({filename, data}) => { const u = URL.createObjectURL(data), a = document.createElement('a'); a.href = u; a.download = filename; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 3000); } };
   if (dlNS !== undefined) ready(dlNS);
-  else if (window.claude && claude.use) claude.use('downloads').then(ns=>{ dlNS = ns; ready(ns); }).catch(()=>{ dlNS = null; });
+  else if (window.claude && claude.use) claude.use('downloads').then(ns => { dlNS = ns; ready(ns); }).catch(() => { dlNS = null; });
   else { dlNS = browserDL; ready(dlNS); }
 }
 
-/* ---------- Abrir, navegar, fechar ---------- */
-function openSP(i, fromHash){
-  if (sp.hidden) savedY = scrollY;
-  cur_i = i; spNo.textContent = `nº ${pad(i)} / ${N}`;
-  renderSP(i);
-  sp.hidden = false; document.body.style.overflow = 'hidden'; sp.scrollTop = 0;
-  if (!fromHash && location.hash !== '#s'+pad(i)) { try { history.pushState(null,'','#s'+pad(i)); } catch(_){} }
-  document.getElementById('spBack').focus({preventScroll:true});
+/* ---------- Lupa ---------- */
+const LB = {set:[], i:0, ret:null};
+function openLB(set, i, ret){ LB.set = set; LB.i = i; LB.ret = ret || document.activeElement; lb.hidden = false; showLB(); $('#lbX').focus(); }
+function showLB(){
+  const it = LB.set[LB.i]; $('#lbImg').src = it.src; $('#lbImg').alt = it.cap; $('#lbCap').textContent = it.cap; $('#lbN').textContent = `${pad(LB.i+1)} / ${pad(LB.set.length)}`;
+  const nx = LB.set[(LB.i+1) % LB.set.length]; if (nx){ const im = new Image(); im.src = nx.src; }
 }
-function go(i){ clearInterval(buildTimer); buildTimer=null; openSP(i); }
-function closeSP(){
-  if (sp.hidden) return;
-  clearInterval(buildTimer); buildTimer=null;
-  sp.hidden = true; document.body.style.overflow = ''; spBody.innerHTML = '';
-  if (location.hash.startsWith('#s')) { try { history.pushState(null,'',location.pathname+location.search); } catch(_){} }
-  scrollTo(0, savedY);
-  grid.querySelector(`.tile[data-i="${cur_i}"]`)?.focus({preventScroll:true});
-}
-function fromHash(){ const m = location.hash.match(/^#s(\d{2})$/); if (m && +m[1]>=1 && +m[1]<=N) openSP(+m[1]-1, true); else closeSP(); }
-addEventListener('popstate', fromHash);
-addEventListener('hashchange', fromHash);
-document.getElementById('spBack').addEventListener('click', closeSP);
-document.getElementById('spP').addEventListener('click', ()=>go(order[(order.indexOf(cur_i)-1+N)%N]));
-document.getElementById('spN').addEventListener('click', ()=>go(order[(order.indexOf(cur_i)+1)%N]));
-document.addEventListener('keydown', e=>{
-  if (sp.hidden || /INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
-  if (e.key==='Escape') closeSP();
-  else if (e.key==='ArrowRight') go(order[(order.indexOf(cur_i)+1)%N]);
-  else if (e.key==='ArrowLeft') go(order[(order.indexOf(cur_i)-1+N)%N]);
-});
-if (location.hash) fromHash();
+function stepLB(d){ LB.i = (LB.i + d + LB.set.length) % LB.set.length; showLB(); }
+function closeLB(){ if (lb.hidden) return; lb.hidden = true; $('#lbImg').removeAttribute('src'); if (LB.ret && LB.ret.isConnected) LB.ret.focus(); }
+$('#lbX').onclick = closeLB; $('#lbP').onclick = () => stepLB(-1); $('#lbNx').onclick = () => stepLB(1);
+lb.addEventListener('click', e => { if (e.target === lb) closeLB(); });
+let lbx = null;
+$('#lbImg').addEventListener('pointerdown', e => { lbx = e.clientX; });
+$('#lbImg').addEventListener('pointerup', e => { if (lbx === null) return; const d = e.clientX - lbx; lbx = null; if (Math.abs(d) > 50) stepLB(d < 0 ? 1 : -1); });
 
+/* ---------- Página do projeto ---------- */
+let CUR = null, fontsOn = false;
+function loadProjectFonts(){
+  if (fontsOn) return; fontsOn = true;
+  const l = document.createElement('link'); l.rel = 'stylesheet'; l.href = PFONTS; document.head.appendChild(l);
+}
+function caseHTML(p){
+  const i = P.indexOf(p), nx = P[(i+1) % P.length], nm = p.short || p.name, cli = p.kind === 'Cliente';
+  const apps = p.apps.map(([k,c]) => ({src:img(p,k), th:img(p,k,1), cap:`${nm} · ${c}`}));
+  const pages = p.pages.map((t,k) => ({src:img(p,'p'+pad(k+1)), th:img(p,'p'+pad(k+1),1), cap:`Manual ${nm} · ${pad(k+1)} · ${t}`}));
+  CUR = {p, apps, pages};
+  const fspec = p.fonts.map((f,k) => `<div class="fspec"><div><b>${esc(f.n)}</b><small>${esc(f.r)}</small></div><div class="s" data-fk="${k}" style="font-family:${f.f};font-weight:${f.w};font-style:${f.it ? 'italic' : 'normal'};font-size:clamp(22px,${(f.s/14).toFixed(2)}vw,${f.s}px);${f.up ? 'text-transform:uppercase;letter-spacing:.04em;' : ''}">${esc(f.demo || p.tag)}</div></div>`).join('');
+  return `
+  <section class="chero" style="--b:${p.th.b};--f:${p.th.f}"><div class="wrap">
+    <div class="row"><span class="lbl">${kindL(p)} · Identidade visual · 2026</span><span class="lbl">${esc(p.city)}</span></div>
+    <img class="sig" src="svg/${p.slug}-neg.svg" alt="Assinatura de ${esc(p.name)}">
+    <p class="tag">${esc(p.tag)}</p>
+    <dl><div><dt>Segmento</dt><dd>${esc(p.seg)}</dd></div><div><dt>Local</dt><dd>${esc(p.city)}</dd></div><div><dt>Módulo</dt><dd>${esc(p.rule)}</dd></div><div><dt>Cores</dt><dd>${p.colors.length} na paleta</dd></div></dl>
+  </div></section>
+
+  <section class="cs"><div class="wrap two">
+    <div class="prose"><span class="lbl">O projeto</span>${p.intro.map(t => `<p>${esc(t)}</p>`).join('')}<p class="muted"><b style="color:var(--ink)">Para quem:</b> ${esc(p.aud)}</p>${cli ? '' : '<p class="note">Projeto conceitual. A marca e o negócio são fictícios, criados para mostrar o método num segmento diferente.</p>'}</div>
+    <aside class="verb"><span class="lbl">${p.word.c === 'símbolo' ? 'Conceito' : 'Verbete'}</span><span class="w">${esc(p.word.w)}</span><i>${esc(p.word.c)}</i><p>${esc(p.word.d)}</p></aside>
+  </div></section>
+
+  <section class="cs"><div class="wrap">
+    <div class="cs-h"><span class="lbl">${p.nouns ? 'Palavras-núcleo e voz' : 'Tom de voz'}</span><h3>${esc(p.voice.t)}</h3></div>
+    ${p.nouns ? `<div class="nouns">${p.nouns.map(n => `<span>${esc(n)}</span>`).join('')}</div>` : ''}
+    <p class="muted" style="max-width:42em;margin-bottom:22px;font-size:18px">${esc(p.voice.l)}</p>
+    <div class="say"><div><span class="lbl">Dizemos</span>${p.voice.say.map(s => `<q>${esc(s)}</q>`).join('')}</div><div class="no"><span class="lbl">Evitamos</span>${p.voice.no.map(s => `<q>${esc(s)}</q>`).join('')}</div></div>
+  </div></section>
+
+  <section class="cs"><div class="wrap">
+    <div class="cs-h"><span class="lbl">Símbolo e construção</span><h3>Uma forma, uma regra</h3></div>
+    <div class="cbuild">
+      <figure><div class="seg" role="group" aria-label="Prancha" id="bTabs">${p.build.map(([n,l],k) => `<button type="button" data-pg="${n}" aria-pressed="${k === 0}">${esc(l)}</button>`).join('')}</div>
+        <button class="imgb" type="button" id="bImgB" aria-label="Ampliar prancha"><img id="bImg" src="${img(p,'p'+pad(p.build[0][0]))}" alt="${esc(p.pages[p.build[0][0]-1])}"></button></figure>
+      <div><ol class="bsteps">${p.steps.map((s,k) => `<li><span class="k">${pad(k+1)}</span><div><b>${esc(s[0])}</b><p>${esc(s[1])}</p></div></li>`).join('')}</ol><p class="rulebig">${esc(p.rule)}</p><p class="note">${esc(p.ruleL)}</p></div>
+    </div>
+  </div></section>
+
+  <section class="cs"><div class="wrap">
+    <div class="cs-h"><span class="lbl">Cor</span><div><h3>${p.colors.length} cores</h3><p class="muted" style="margin-top:10px;max-width:40em">${esc(p.cnote)} Clique numa cor para copiar o código.</p></div></div>
+    <div class="sw">${p.colors.map(c => `<button type="button" class="swc" data-hex="${c[1]}"><span class="c" style="background:${c[1]}"></span><span class="i"><b>${esc(c[0])}</b><span>${c[1]}</span>${c[2] ? `<span>${c[2]}</span>` : ''}</span></button>`).join('')}</div>
+  </div></section>
+
+  <section class="cs"><div class="wrap">
+    <div class="cs-h"><span class="lbl">Tipografia</span><div><h3>${p.fonts.map(f => esc(f.n)).join(' + ')}</h3><p class="muted" style="margin-top:10px;max-width:40em">${esc(p.fnote)}</p></div></div>
+    ${p.corte ? '<div class="corte"><img src="svg/samblagem-corte.svg" alt="Alfabeto Corte, desenhado na grade do símbolo da Samblagem"></div>' : ''}
+    <div class="spec"><label class="lbl" for="specIn">Escreva para testar</label><input id="specIn" type="text" value="${esc(p.tag)}" maxlength="80" autocomplete="off">${fspec}</div>
+  </div></section>
+
+  <section class="cs"><div class="wrap">
+    <div class="cs-h"><span class="lbl">Grafismos</span><h3>O símbolo repetido vira padrão</h3></div>
+    <button class="imgb" type="button" id="patB" aria-label="Ampliar a prancha de grafismos"><img src="${img(p,'p'+pad(p.pat))}" alt="Prancha de grafismos de ${esc(p.name)}" loading="lazy" style="width:100%"></button>
+  </div></section>
+
+  <section class="cs"><div class="wrap">
+    <div class="cs-h"><span class="lbl">Aplicações</span><h3>${apps.length} peças</h3></div>
+    <div class="mason" id="apps">${apps.map((a,k) => `<button type="button" data-k="${k}"><img src="${a.th}" alt="${esc(a.cap)}" loading="lazy"><span>${esc(a.cap.split(' · ').slice(1).join(' · '))}</span></button>`).join('')}</div>
+  </div></section>
+
+  <section class="cs"><div class="wrap">
+    <div class="cs-h"><span class="lbl">Manual</span><div><h3>${pages.length} pranchas</h3><p class="muted" style="margin-top:10px">Role para o lado e clique para folhear em tela cheia. As setas do teclado também funcionam.</p></div></div>
+    <div class="strip" id="pages">${pages.map((a,k) => `<button type="button" data-k="${k}"><img src="${a.th}" alt="${esc(a.cap)}" loading="lazy"><span>${pad(k+1)} · ${esc(p.pages[k])}</span></button>`).join('')}</div>
+  </div></section>
+
+  <section class="cs"><div class="wrap deliv" style="--acc:${/^#f{6}$/i.test(p.th.a) ? 'var(--ink)' : p.th.a}">
+    <div><div class="cs-h" style="grid-template-columns:1fr;margin-bottom:18px"><span class="lbl">${cli ? 'Entregas' : 'Escopo'}</span><h3>${cli ? 'O que foi entregue' : 'O que foi feito'}</h3></div><ul>${p.deliv.map(d => `<li>${esc(d)}</li>`).join('')}</ul></div>
+    <div class="ccta"><span class="lbl">Próximo passo</span><p class="big">Quer uma marca assim para a sua empresa?</p><p class="sm">Conte um pouco sobre o seu negócio. Eu explico como o método funciona para o seu caso.</p><a class="btn" href="comecar/">Começar um projeto <span aria-hidden="true">↗</span></a></div>
+  </div></section>
+
+  <button class="next" type="button" id="nextP" style="--b:${nx.th.b};--f:${nx.th.f}"><div class="wrap"><div><span class="lbl">Próximo projeto</span><b>${esc(nx.name)}</b></div><span class="ar" aria-hidden="true">→</span></div></button>`;
+}
+function wireCase(p){
+  const body = $('#caseBody');
+  $('#bTabs').addEventListener('click', e => {
+    const b = e.target.closest('[data-pg]'); if (!b) return;
+    $('#bTabs').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    const n = +b.dataset.pg; $('#bImg').src = img(p,'p'+pad(n)); $('#bImg').alt = p.pages[n-1]; $('#bImgB').dataset.k = n-1;
+  });
+  $('#bImgB').dataset.k = p.build[0][0] - 1;
+  $('#bImgB').onclick = e => openLB(CUR.pages, +e.currentTarget.dataset.k, e.currentTarget);
+  $('#patB').onclick = e => openLB(CUR.pages, p.pat - 1, e.currentTarget);
+  $('#apps').addEventListener('click', e => { const b = e.target.closest('[data-k]'); if (b) openLB(CUR.apps, +b.dataset.k, b); });
+  $('#pages').addEventListener('click', e => { const b = e.target.closest('[data-k]'); if (b) openLB(CUR.pages, +b.dataset.k, b); });
+  body.querySelectorAll('.swc').forEach(b => b.addEventListener('click', () => copyText(b.dataset.hex, `${b.dataset.hex} copiado`)));
+  $('#specIn').addEventListener('input', e => { const v = e.target.value || p.tag; body.querySelectorAll('.fspec .s').forEach(s => { if (!p.fonts[+s.dataset.fk].demo) s.textContent = v; }); });
+  $('#nextP').onclick = () => openRoute('#' + P[(P.indexOf(p) + 1) % P.length].slug);
+}
+
+/* ---------- Rotas: #slug abre um projeto, #s07 abre um símbolo ---------- */
+const OVT = 'ov' + Math.random().toString(36).slice(2);
+let pushed = false, retFocus = null;
+function openRoute(h, from){
+  if (from) retFocus = from;
+  try {
+    if (overlayOpen()) history.replaceState({ov:OVT}, '', h);
+    else { history.pushState({ov:OVT}, '', h); pushed = true; }
+  } catch(_){}
+  route(h);
+}
+function closeRoute(){
+  closeLB();
+  if (pushed && history.state && history.state.ov === OVT){ pushed = false; history.back(); return; }
+  try { history.replaceState(null, '', location.pathname + location.search); } catch(_){}
+  route('');
+}
+function showCase(slug){
+  const p = BY[slug]; if (!p) return;
+  if (!caseEl.hidden && CUR && CUR.p === p) return;
+  loadProjectFonts();
+  $('#caseName').textContent = p.name; $('#caseBody').innerHTML = caseHTML(p); wireCase(p);
+  caseEl.hidden = false; caseEl.scrollTop = 0; $('#cBack').focus({preventScroll:true});
+}
+function hideCase(){ if (caseEl.hidden) return false; caseEl.hidden = true; $('#caseBody').innerHTML = ''; CUR = null; return true; }
+function showSP(i){
+  if (!sp.hidden && cur_i === i) return;
+  clearInterval(buildTimer); buildTimer = null;
+  cur_i = i; $('#spNo').textContent = `nº ${sno(i)}`;
+  renderSP(i); sp.hidden = false; sp.scrollTop = 0; $('#spBack').focus({preventScroll:true});
+}
+function hideSP(){ if (sp.hidden) return false; clearInterval(buildTimer); buildTimer = null; sp.hidden = true; spBody.innerHTML = ''; cur_i = -1; return true; }
+function route(h){
+  if (typeof h !== 'string') h = location.hash;
+  const m = h.match(/^#s(\d{2})$/), slug = h.slice(1);
+  if (m && +m[1] >= 1 && +m[1] <= N){ hideCase(); showSP(+m[1] - 1); }
+  else if (BY[slug]){ hideSP(); showCase(slug); }
+  else {
+    const a = hideCase(), b = hideSP();
+    if ((a || b) && retFocus && retFocus.isConnected) retFocus.focus({preventScroll:true});
+    if (a || b) retFocus = null;
+  }
+  syncLock();
+}
+addEventListener('popstate', () => { if (!(history.state && history.state.ov === OVT)) pushed = false; route(); });
+addEventListener('hashchange', () => route());
+$('#cBack').addEventListener('click', closeRoute);
+$('#spBack').addEventListener('click', closeRoute);
+const caseGo = d => { const i = P.indexOf(CUR.p); openRoute('#' + P[(i + d + P.length) % P.length].slug); };
+$('#cPrev').addEventListener('click', () => caseGo(-1));
+$('#cNext').addEventListener('click', () => caseGo(1));
+const spGo = d => openRoute('#s' + sno(order[(order.indexOf(cur_i) + d + N) % N]));
+$('#spP').addEventListener('click', () => spGo(-1));
+$('#spN').addEventListener('click', () => spGo(1));
+document.addEventListener('keydown', e => {
+  if (!lb.hidden){ if (e.key === 'Escape') closeLB(); else if (e.key === 'ArrowRight') stepLB(1); else if (e.key === 'ArrowLeft') stepLB(-1); return; }
+  if (!menu.hidden){ if (e.key === 'Escape') setMenu(false); return; }
+  if (/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)) return;
+  if (!sp.hidden){ if (e.key === 'Escape') closeRoute(); else if (e.key === 'ArrowRight') spGo(1); else if (e.key === 'ArrowLeft') spGo(-1); return; }
+  if (!caseEl.hidden && e.key === 'Escape') closeRoute();
+});
+if (location.hash) route();
 </script>
+
+</body></html>
