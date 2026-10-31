@@ -1,11 +1,11 @@
-"""Gera o blog Radar de Marca a partir de radar/posts.json.
+"""Gera o blog do estúdio a partir de blog/posts.json.
 
 Saídas:
-  radar/index.html          lista de posts
-  radar/<slug>/index.html   uma página por post
-  radar/feed.xml            feed RSS
-  radar/simbolos.svg        símbolos usados nas capas de reserva
-  bloco da página inicial   (devolvido para o build.py colocar no lugar de /*RADAR*/)
+  blog/index.html          lista de posts
+  blog/<slug>/index.html   uma página por post
+  blog/feed.xml            feed RSS
+  blog/simbolos.svg        símbolos usados nas capas de reserva
+  bloco da página inicial   (devolvido para o build.py colocar no lugar de /*BLOG*/)
 
 Cada post em posts.json tem: slug, data (AAAA-MM-DD), titulo, linha_fina, texto (lista de
 parágrafos), por_que_importa, fonte, url, imagem (endereço da imagem de capa da matéria
@@ -51,7 +51,7 @@ def capa(p, base, n):
     k = simbolo_do_post(p['slug'], n) + 1
     img = (f'<img src="{e(p["imagem"])}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">' if p.get('imagem') else '')
     return (f'<div class="rc-img"><svg class="cover" viewBox="0 0 100 100" aria-hidden="true"><use href="{base}simbolos.svg#s{k:02d}" width="100" height="100" fill="currentColor"/></svg>'
-            f'<span class="cover-l">Radar de Marca</span>{img}</div>')
+            f'<span class="cover-l">Estúdio Caio Pires</span>{img}</div>')
 
 
 def cartao(p, base_link, base_sprite, n, tag='h3'):
@@ -131,11 +131,11 @@ def pagina(titulo, desc, raiz, corpo, canonical, ativo=True):
 <title>{e(titulo)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{e(canonical)}">
-<link rel="alternate" type="application/rss+xml" title="Radar de Marca" href="{raiz}radar/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Blog do Estúdio Caio Pires" href="{raiz}blog/feed.xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="{raiz}radar/radar.css">
+<link rel="stylesheet" href="{raiz}blog/blog.css">
 </head>
 <body>
 <header class="top"><div class="wrap bar">
@@ -143,7 +143,7 @@ def pagina(titulo, desc, raiz, corpo, canonical, ativo=True):
   <nav class="nav" aria-label="Seções">
     <a class="hide-s" href="{raiz}#projetos">Projetos</a>
     <a class="hide-s" href="{raiz}#simbolos">Símbolos</a>
-    <a href="{raiz}radar/"{' aria-current="page"' if ativo else ''}>Blog</a>
+    <a href="{raiz}blog/"{' aria-current="page"' if ativo else ''}>Blog</a>
     <a class="btn" href="{raiz}comecar/">Começar<span class="lng"> um projeto</span></a>
   </nav>
 </div></header>
@@ -160,12 +160,12 @@ def pagina(titulo, desc, raiz, corpo, canonical, ativo=True):
 
 
 def gerar(root, syms):
-    root = Path(root); rd = root / 'radar'
+    root = Path(root); rd = root / 'blog'
     posts = json.loads((rd / 'posts.json').read_text(encoding='utf-8'))
     posts.sort(key=lambda p: (p['data'], p['slug']), reverse=True)
     n = len(syms)
     (rd / 'simbolos.svg').write_text(sprite(syms), encoding='utf-8')
-    (rd / 'radar.css').write_text(CSS.strip() + '\n', encoding='utf-8')
+    (rd / 'blog.css').write_text(CSS.strip() + '\n', encoding='utf-8')
 
     # páginas de post (apaga as que não existem mais em posts.json)
     slugs = {p['slug'] for p in posts}
@@ -178,7 +178,7 @@ def gerar(root, syms):
                f'<figcaption class="lbl">{"Imagem: " + e(p["fonte"]) if p.get("imagem") else "Capa: grafismo do Estúdio Caio Pires"}</figcaption></figure>')
         corpo = f"""<main class="wrap">
 <article class="post">
-  <a class="back" href="../">← Radar de Marca</a>
+  <a class="back" href="../">← Blog</a>
   <h1>{e(p['titulo'])}</h1>
   <p class="lf">{e(p['linha_fina'])}</p>
   <div class="meta"><span class="lbl">{data_longa(p['data'])}</span><span class="lbl">Fonte: {e(p['fonte'])}</span></div>
@@ -188,43 +188,43 @@ def gerar(root, syms):
   <div class="fonte"><a class="btn" href="{e(p['url'])}" target="_blank" rel="noopener">Ler a matéria completa em {e(p['fonte'])} <span aria-hidden="true">↗</span></a></div>
   <div class="tags" style="margin-top:24px">{''.join(f'<span>{e(t)}</span>' for t in p.get('tags', []))}</div>
 </article>
-{f'<section class="mais"><span class="lbl">Mais do Radar</span><div class="grid">{"".join(cartao(q, "../", "../", n) for q in outros)}</div></section>' if outros else ''}
+{f'<section class="mais"><span class="lbl">Mais do blog</span><div class="grid">{"".join(cartao(q, "../", "../", n) for q in outros)}</div></section>' if outros else ''}
 </main>"""
         dest = rd / p['slug']; dest.mkdir(exist_ok=True)
-        (dest / 'index.html').write_text(pagina(f"{p['titulo']} · Radar de Marca", p['linha_fina'], '../../', corpo, f"{SITE}radar/{p['slug']}/"), encoding='utf-8')
+        (dest / 'index.html').write_text(pagina(f"{p['titulo']} · Blog do Estúdio Caio Pires", p['linha_fina'], '../../', corpo, f"{SITE}blog/{p['slug']}/"), encoding='utf-8')
 
     lista = ''.join(cartao(p, '', '', n, 'h2') for p in posts) or ''
     corpo = f"""<main class="wrap">
-<section class="head"><span class="lbl">Blog · Radar de Marca</span><h1>O que está mudando nas marcas.</h1>
+<section class="head"><span class="lbl">Blog</span><h1>O que está mudando nas marcas.</h1>
 <p>Notícias de logo, branding e design gráfico, resumidas em português pelo estúdio, com o link para a matéria original. Atualizado de segunda a sexta.</p></section>
 {f'<div class="grid">{lista}</div>' if posts else '<p class="empty">Os primeiros posts chegam em breve.</p>'}
 </main>"""
-    (rd / 'index.html').write_text(pagina('Radar de Marca · Estúdio Caio Pires', 'Notícias de logo, branding e design gráfico, resumidas em português pelo Estúdio Caio Pires.', '../', corpo, f'{SITE}radar/'), encoding='utf-8')
+    (rd / 'index.html').write_text(pagina('Blog · Estúdio Caio Pires', 'Notícias de logo, branding e design gráfico, resumidas em português pelo Estúdio Caio Pires.', '../', corpo, f'{SITE}blog/'), encoding='utf-8')
 
-    itens = ''.join(f"""<item><title>{e(p['titulo'])}</title><link>{SITE}radar/{e(p['slug'])}/</link><guid>{SITE}radar/{e(p['slug'])}/</guid><pubDate>{format_datetime(datetime.fromisoformat(p['data']).replace(hour=10, tzinfo=timezone.utc))}</pubDate><description>{e(p['linha_fina'])}</description></item>""" for p in posts[:30])
-    (rd / 'feed.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Radar de Marca</title><link>{SITE}radar/</link><description>Notícias de logo, branding e design gráfico, resumidas pelo Estúdio Caio Pires.</description><language>pt-BR</language>{itens}</channel></rss>\n', encoding='utf-8')
+    itens = ''.join(f"""<item><title>{e(p['titulo'])}</title><link>{SITE}blog/{e(p['slug'])}/</link><guid>{SITE}blog/{e(p['slug'])}/</guid><pubDate>{format_datetime(datetime.fromisoformat(p['data']).replace(hour=10, tzinfo=timezone.utc))}</pubDate><description>{e(p['linha_fina'])}</description></item>""" for p in posts[:30])
+    (rd / 'feed.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>Blog do Estúdio Caio Pires</title><link>{SITE}blog/</link><description>Notícias de logo, branding e design gráfico, resumidas pelo Estúdio Caio Pires.</description><language>pt-BR</language>{itens}</channel></rss>\n', encoding='utf-8')
 
     # bloco da página inicial: os 3 posts mais recentes
     if not posts:
         return ''
-    cards = ''.join(cartao(p, 'radar/', 'radar/', n) for p in posts[:3])
-    return f"""<section id="radar" class="sec" aria-labelledby="h-radar">
+    cards = ''.join(cartao(p, 'blog/', 'blog/', n) for p in posts[:3])
+    return f"""<section id="blog" class="sec" aria-labelledby="h-blog">
 <style>
-#radar .rgrid{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}}
-@media (max-width:900px){{#radar .rgrid{{grid-template-columns:1fr}}}}
-#radar .rc{{text-decoration:none;display:flex;flex-direction:column;gap:14px}}
-#radar .rc-img{{position:relative;aspect-ratio:1200/630;background:#111111;color:#FAFAF8;overflow:hidden;border:1px solid var(--line)}}
-#radar .rc-img .cover{{position:absolute;inset:0;width:100%;height:100%}}
-#radar .rc-img .cover-l{{position:absolute;left:14px;bottom:12px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.6}}
-#radar .rc-img img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--soft)}}
-#radar .rc h3{{font-size:21px;line-height:1.15;margin-top:8px}}
-#radar .rc p{{color:var(--mute);font-size:15px;line-height:1.5;margin:8px 0 0}}
-#radar .rc:hover h3{{text-decoration:underline;text-underline-offset:4px}}
+#blog .rgrid{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}}
+@media (max-width:900px){{#blog .rgrid{{grid-template-columns:1fr}}}}
+#blog .rc{{text-decoration:none;display:flex;flex-direction:column;gap:14px}}
+#blog .rc-img{{position:relative;aspect-ratio:1200/630;background:#111111;color:#FAFAF8;overflow:hidden;border:1px solid var(--line)}}
+#blog .rc-img .cover{{position:absolute;inset:0;width:100%;height:100%}}
+#blog .rc-img .cover-l{{position:absolute;left:14px;bottom:12px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.6}}
+#blog .rc-img img{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--soft)}}
+#blog .rc h3{{font-size:21px;line-height:1.15;margin-top:8px}}
+#blog .rc p{{color:var(--mute);font-size:15px;line-height:1.5;margin:8px 0 0}}
+#blog .rc:hover h3{{text-decoration:underline;text-underline-offset:4px}}
 </style>
 <div class="wrap">
-  <div class="sec-head"><div><span class="lbl">Blog · Radar de Marca</span><h2 id="h-radar">O que está mudando nas marcas</h2>
+  <div class="sec-head"><div><span class="lbl">Blog</span><h2 id="h-blog">O que está mudando nas marcas</h2>
   <p class="muted">Notícias de logo, branding e design gráfico, resumidas em português pelo estúdio.</p></div>
-  <a class="btn ghost" href="radar/">Ver todas <span aria-hidden="true">→</span></a></div>
+  <a class="btn ghost" href="blog/">Ver todos os posts <span aria-hidden="true">→</span></a></div>
   <div class="rgrid">{cards}</div>
 </div>
 </section>
