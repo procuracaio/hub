@@ -56,8 +56,10 @@ def main():
         texts.append(conc.get(num, 'Conceito em breve.'))
     page = (ROOT/'src'/'pagina.html').read_text(encoding='utf-8')
     page = page.replace('/*SYMS*/', json.dumps(syms, separators=(',', ':'))).replace('/*CONC*/', json.dumps(texts, ensure_ascii=False))
+    import radar_build
+    page = page.replace('/*RADAR*/', radar_build.gerar(ROOT, syms))
     (ROOT/'index.html').write_text(page, encoding='utf-8')
-    print(f'index.html gerado com {len(syms)} símbolos.')
+    print(f'index.html gerado com {len(syms)} símbolos e o Radar de Marca.')
     if faltando: print('Sem conceito em conceitos.txt:', ', '.join(faltando))
 
 if __name__ == '__main__':

@@ -506,6 +506,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
       <a href="#servicos">Serviços</a>
       <a href="#sobre">Sobre</a>
       <a href="#perguntas">Perguntas</a>
+      <a href="radar/">Radar</a>
       <a class="btn" href="comecar/">Começar um projeto</a>
     </nav>
     <button class="ib menu-b" type="button" id="menuB" aria-expanded="false" aria-controls="menu">Menu</button>
@@ -522,6 +523,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
       <a href="#servicos">Serviços</a>
       <a href="#sobre">Sobre</a>
       <a href="#perguntas">Perguntas</a>
+      <a href="radar/">Radar</a>
       <a href="#contato">Contato</a>
     </nav>
     <a class="btn" href="comecar/">Começar um projeto <span aria-hidden="true">→</span></a>
@@ -713,6 +715,27 @@ input[type=range]{width:100%;accent-color:var(--ink)}
       </div>
     </div>
   </section>
+
+<section id="radar" class="sec" aria-labelledby="h-radar">
+<style>
+#radar .rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+@media (max-width:900px){#radar .rgrid{grid-template-columns:1fr}}
+#radar .rc{text-decoration:none;display:flex;flex-direction:column;gap:14px}
+#radar .rc-img{position:relative;aspect-ratio:1200/630;background:#111111;color:#FAFAF8;overflow:hidden;border:1px solid var(--line)}
+#radar .rc-img .cover{position:absolute;inset:0;width:100%;height:100%}
+#radar .rc-img .cover-l{position:absolute;left:14px;bottom:12px;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.6}
+#radar .rc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--soft)}
+#radar .rc h3{font-size:21px;line-height:1.15;margin-top:8px}
+#radar .rc p{color:var(--mute);font-size:15px;line-height:1.5;margin:8px 0 0}
+#radar .rc:hover h3{text-decoration:underline;text-underline-offset:4px}
+</style>
+<div class="wrap">
+  <div class="sec-head"><div><span class="lbl">Radar de Marca</span><h2 id="h-radar">O que está mudando nas marcas</h2>
+  <p class="muted">Notícias de logo, branding e design gráfico, resumidas em português pelo estúdio.</p></div>
+  <a class="btn ghost" href="radar/">Ver todas <span aria-hidden="true">→</span></a></div>
+  <div class="rgrid"><a class="rc" href="radar/2026-10-21-sunlife-simplifica-o-sol/"><div class="rc-img"><svg class="cover" viewBox="0 0 100 100" aria-hidden="true"><use href="radar/simbolos.svg#s17" width="100" height="100" fill="currentColor"/></svg><span class="cover-l">Radar de Marca</span></div><div class="rc-b"><span class="lbl">21.10.2026 · Creative Bloq</span><h3>Sunlife simplifica o sol e junta o nome numa palavra só</h3><p>O redesenho foi pensado para o digital, mas reacendeu o debate sobre logos minimalistas demais.</p></div></a><a class="rc" href="radar/2026-10-21-apple-music-logo-feito-de-som/"><div class="rc-img"><svg class="cover" viewBox="0 0 100 100" aria-hidden="true"><use href="radar/simbolos.svg#s10" width="100" height="100" fill="currentColor"/></svg><span class="cover-l">Radar de Marca</span><img src="https://9to5mac.com/wp-content/uploads/sites/6/2026/10/apple-music-rebrand-logo-new.jpg?quality=82&amp;strip=all&amp;resize=1200,628" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></div><div class="rc-b"><span class="lbl">21.10.2026 · 9to5Mac</span><h3>Apple Music apresenta um logo feito, literalmente, com som</h3><p>A nova marca foi filmada em câmera, sem computação gráfica, a partir de uma composição de Fred again.. com a NEST Acoustics.</p></div></a><a class="rc" href="radar/2026-10-01-vauxhall-grifo-mais-simples/"><div class="rc-img"><svg class="cover" viewBox="0 0 100 100" aria-hidden="true"><use href="radar/simbolos.svg#s38" width="100" height="100" fill="currentColor"/></svg><span class="cover-l">Radar de Marca</span><img src="https://cdn.mos.cms.futurecdn.net/dssXVXXYHcByfh2PhotWJY-1200-80.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()"></div><div class="rc-b"><span class="lbl">01.10.2026 · Creative Bloq</span><h3>Vauxhall redesenha o grifo e tira a bandeira depois de mais de 100 anos</h3><p>O 13º logo da montadora britânica é mais plano e anguloso, pensado para ser iluminado na frente dos carros elétricos.</p></div></a></div>
+</div>
+</section>
 
   <section id="contato" class="sec contact" aria-labelledby="h-cont">
     <div class="wrap">

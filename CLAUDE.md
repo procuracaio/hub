@@ -8,6 +8,7 @@ O Caio não programa. Ele pede mudanças em linguagem natural; você faz, mostra
 - `src/pagina.html`: o site inteiro (projetos, símbolos, processo, serviços, sobre, perguntas e contato), com os marcadores `/*SYMS*/` e `/*CONC*/` preenchidos pelo build. Todo o CSS e JS está nele. Os dados dos projetos ficam em `const P = [...]` dentro dele.
 - `img/<projeto>/`: pranchas dos projetos (`p01.webp` a `p20.webp`, e a versão pequena `p01t.webp`). `svg/`: assinaturas (`<projeto>-ass.svg`) e negativos dos projetos.
 - `comecar/index.html`: página do pré-briefing ("Começar um projeto"). É um arquivo pronto, editado direto (não passa pelo build). Envia as respostas para o bot do WhatsApp do estúdio (`https://bot-whatsapp-791312662225.southamerica-east1.run.app/pre-briefing`), que guarda no Supabase e avisa o Caio. As opções de cada pergunta precisam ser iguais às de `OPCOES` em `src/pre-briefing.js` do bot (pasta `estudio-caio/00_estudio/bot do whatsapp/`). Aceita `?simbolo=NN` para registrar de qual símbolo o cliente veio.
+- `radar/posts.json`: os posts do blog **Radar de Marca**. O `build.py` chama o `radar_build.py`, que gera `radar/index.html`, uma página por post em `radar/<slug>/`, o feed `radar/feed.xml`, a capa de reserva (`radar/simbolos.svg`) e o bloco com os 3 posts mais recentes na página inicial (marcador `/*RADAR*/` em `src/pagina.html`). O passo a passo da publicação diária está em `radar/COMO-PUBLICAR.md`.
 - `build.py`: `pip install svgelements cairosvg pillow --break-system-packages` e depois `python3 build.py`. Gera `index.html`.
 
 ## Regras
