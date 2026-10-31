@@ -60,11 +60,11 @@ def cartao(p, base_link, base_sprite, n, tag='h3'):
 
 
 CSS = """
-:root{--paper:#FAFAF8;--soft:#F1F1EE;--card:#FFFFFF;--line:#E6E6E3;--ink:#111111;--mute:#5C5C5A;
+:root{--paper:#FAFAF8;--soft:#F1F1EE;--card:#FFFFFF;--line:#E6E6E3;--line2:#D2D2CE;--ink:#111111;--mute:#5C5C5A;
 --display:'Inter Tight','Helvetica Neue',Arial,system-ui,sans-serif;--body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
 --gut:max(clamp(16px,4vw,44px),env(safe-area-inset-left,0px));--gutr:max(clamp(16px,4vw,44px),env(safe-area-inset-right,0px))}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#111111;--soft:#1A1A19;--card:#161615;--line:#262624;--ink:#FAFAF8;--mute:#A3A3A0;color-scheme:dark}}
-:root[data-theme="dark"]{--paper:#111111;--soft:#1A1A19;--card:#161615;--line:#262624;--ink:#FAFAF8;--mute:#A3A3A0;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#111111;--soft:#1A1A19;--card:#161615;--line:#262624;--line2:#3A3A37;--ink:#FAFAF8;--mute:#A3A3A0;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#111111;--soft:#1A1A19;--card:#161615;--line:#262624;--line2:#3A3A37;--ink:#FAFAF8;--mute:#A3A3A0;color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
 a{color:inherit}
@@ -80,10 +80,11 @@ h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.03em;margin
 .nav a:hover{background:var(--soft)}
 .nav a[aria-current]{background:var(--soft)}
 .nav .tema{margin-left:6px}
-.tema{width:42px;height:42px;flex:none;border-radius:50%;border:1.5px solid var(--line);background:transparent;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.tema{width:42px;height:42px;flex:none;border-radius:50%;border:1.5px solid var(--line2,#D2D2CE);background:transparent;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
 .tema:hover{border-color:var(--ink)}
-.tema .sol{display:none}
-.tema.escuro .sol{display:block}.tema.escuro .lua{display:none}
+.tema svg{transition:transform .35s ease}
+.tema.escuro svg{transform:rotate(180deg)}
+@media (prefers-reduced-motion:reduce){.tema svg{transition:none}}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);font:600 15px/1 var(--body);text-decoration:none}
 .btn.ghost{background:transparent;color:var(--ink)}
 .nav .btn{padding:10px 16px;font-size:14px;color:var(--paper)}
@@ -151,7 +152,7 @@ def pagina(titulo, desc, raiz, corpo, canonical, ativo=True):
     <a class="hide-s" href="{raiz}#simbolos">Símbolos</a>
     <a href="{raiz}blog/"{' aria-current="page"' if ativo else ''}>Blog</a>
     <a class="btn" href="{raiz}comecar/"><span>Começar<span class="lng"> um projeto</span></span></a>
-    <button class="tema" type="button" id="temaB" aria-label="Mudar para o tema escuro"><svg class="lua" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><svg class="sol" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    <button class="tema" type="button" id="temaB" aria-label="Mudar para o tema escuro"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 3.8a8.2 8.2 0 0 1 0 16.4Z" fill="currentColor"/></svg></button>
   </nav>
 </div></header>
 {corpo}
