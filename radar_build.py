@@ -114,7 +114,7 @@ h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.03em;margin
 .tags span{border:1px solid var(--line);border-radius:999px;padding:5px 10px;font:500 12px/1 var(--mono);color:var(--mute)}
 .mais{border-top:1px solid var(--line);padding-block:40px 80px}
 .mais .grid{padding-bottom:0;margin-top:22px}
-.cta{background:#111111;color:#FAFAF8;padding-block:clamp(40px,6vw,72px)}
+.cta{background:#111111;color:#FAFAF8;padding-block:clamp(40px,6vw,72px);border-top:1px solid var(--line)}
 .cta .lbl{color:#A3A3A0}
 .cta h2{font-size:clamp(28px,3.6vw,46px);line-height:1.05;margin-top:12px;max-width:16em}
 .cta .btn{background:#FAFAF8;color:#111111;border-color:#FAFAF8;margin-top:24px}

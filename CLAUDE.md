@@ -1,6 +1,6 @@
 # Instruções para o Claude: hub do Estúdio Caio Pires
 
-O Caio não programa. Ele pede mudanças em linguagem natural; você faz, mostra a prévia e só publica (commit + push na branch `main`) depois do ok dele. O GitHub Pages publica o `index.html` da raiz automaticamente.
+O Caio não programa. Ele pede mudanças em linguagem natural; você faz, mostra a prévia e só publica (commit + push na branch `main`) depois do ok dele. **Exceção:** os posts diários do Radar de Marca vão ao ar sem aprovação, por decisão do Caio, seguindo `radar/COMO-PUBLICAR.md`. O GitHub Pages publica o `index.html` da raiz automaticamente.
 
 ## Estrutura
 - `simbolos/NN.svg`: um símbolo por arquivo; o número define a ordem e o número exibido. Qualquer SVG com formas preenchidas serve (o `build.py` converte retângulos, polígonos e transformações em paths e ignora formas brancas).
