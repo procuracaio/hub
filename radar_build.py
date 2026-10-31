@@ -143,7 +143,7 @@ def pagina(titulo, desc, raiz, corpo, canonical, ativo=True):
   <nav class="nav" aria-label="Seções">
     <a class="hide-s" href="{raiz}#projetos">Projetos</a>
     <a class="hide-s" href="{raiz}#simbolos">Símbolos</a>
-    <a href="{raiz}radar/"{' aria-current="page"' if ativo else ''}>Radar</a>
+    <a href="{raiz}radar/"{' aria-current="page"' if ativo else ''}>Blog</a>
     <a class="btn" href="{raiz}comecar/">Começar<span class="lng"> um projeto</span></a>
   </nav>
 </div></header>
@@ -195,7 +195,7 @@ def gerar(root, syms):
 
     lista = ''.join(cartao(p, '', '', n, 'h2') for p in posts) or ''
     corpo = f"""<main class="wrap">
-<section class="head"><span class="lbl">Radar de Marca</span><h1>O que está mudando nas marcas.</h1>
+<section class="head"><span class="lbl">Blog · Radar de Marca</span><h1>O que está mudando nas marcas.</h1>
 <p>Notícias de logo, branding e design gráfico, resumidas em português pelo estúdio, com o link para a matéria original. Atualizado de segunda a sexta.</p></section>
 {f'<div class="grid">{lista}</div>' if posts else '<p class="empty">Os primeiros posts chegam em breve.</p>'}
 </main>"""
@@ -222,7 +222,7 @@ def gerar(root, syms):
 #radar .rc:hover h3{{text-decoration:underline;text-underline-offset:4px}}
 </style>
 <div class="wrap">
-  <div class="sec-head"><div><span class="lbl">Radar de Marca</span><h2 id="h-radar">O que está mudando nas marcas</h2>
+  <div class="sec-head"><div><span class="lbl">Blog · Radar de Marca</span><h2 id="h-radar">O que está mudando nas marcas</h2>
   <p class="muted">Notícias de logo, branding e design gráfico, resumidas em português pelo estúdio.</p></div>
   <a class="btn ghost" href="radar/">Ver todas <span aria-hidden="true">→</span></a></div>
   <div class="rgrid">{cards}</div>
