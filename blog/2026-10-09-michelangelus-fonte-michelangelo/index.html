@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<script>try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>A caligrafia de Michelangelo virou fonte digital, gratuita · Blog do Estúdio Caio Pires</title>
 <meta name="description" content="A Michelangelus foi encomendada pela Fabbrica di San Pietro para os 400 anos da Basílica de São Pedro e chega ao Microsoft 365.">
@@ -19,7 +20,8 @@
     <a class="hide-s" href="../../#projetos">Projetos</a>
     <a class="hide-s" href="../../#simbolos">Símbolos</a>
     <a href="../../blog/" aria-current="page">Blog</a>
-    <a class="btn" href="../../comecar/">Começar<span class="lng"> um projeto</span></a>
+    <a class="btn" href="../../comecar/"><span>Começar<span class="lng"> um projeto</span></span></a>
+    <button class="tema" type="button" id="temaB" aria-label="Mudar para o tema escuro"><svg class="lua" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><svg class="sol" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
   </nav>
 </div></header>
 <main class="wrap">
@@ -42,5 +44,10 @@
   <a class="btn" href="../../comecar/">Começar um projeto <span aria-hidden="true">→</span></a>
 </div></section>
 <footer class="wrap foot"><span>© 2026 Estúdio Caio Pires</span><span>Resumos escritos pelo estúdio. Imagens e matérias completas pertencem às fontes citadas.</span></footer>
+<script>(function(){var b=document.getElementById('temaB');if(!b)return;var r=document.documentElement,m=matchMedia('(prefers-color-scheme: dark)');
+function escuro(){var t=r.getAttribute('data-theme');return t?t==='dark':m.matches}
+function pinta(){var d=escuro();b.classList.toggle('escuro',d);b.setAttribute('aria-label',d?'Mudar para o tema claro':'Mudar para o tema escuro');b.title=d?'Tema claro':'Tema escuro'}
+b.addEventListener('click',function(){var n=escuro()?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('tema',n)}catch(e){}pinta()});
+m.addEventListener&&m.addEventListener('change',pinta);pinta()})();</script>
 </body>
 </html>

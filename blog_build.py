@@ -79,6 +79,11 @@ h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.03em;margin
 .nav a{text-decoration:none;font:500 14px/1 var(--body);padding:10px 12px;border-radius:999px;white-space:nowrap}
 .nav a:hover{background:var(--soft)}
 .nav a[aria-current]{background:var(--soft)}
+.nav .tema{margin-left:6px}
+.tema{width:42px;height:42px;flex:none;border-radius:50%;border:1.5px solid var(--line);background:transparent;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.tema:hover{border-color:var(--ink)}
+.tema .sol{display:none}
+.tema.escuro .sol{display:block}.tema.escuro .lua{display:none}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);font:600 15px/1 var(--body);text-decoration:none}
 .btn.ghost{background:transparent;color:var(--ink)}
 .nav .btn{padding:10px 16px;font-size:14px;color:var(--paper)}
@@ -127,6 +132,7 @@ def pagina(titulo, desc, raiz, corpo, canonical, ativo=True):
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
+<script>try{{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}}catch(e){{}}</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{e(titulo)}</title>
 <meta name="description" content="{e(desc)}">
@@ -144,7 +150,8 @@ def pagina(titulo, desc, raiz, corpo, canonical, ativo=True):
     <a class="hide-s" href="{raiz}#projetos">Projetos</a>
     <a class="hide-s" href="{raiz}#simbolos">Símbolos</a>
     <a href="{raiz}blog/"{' aria-current="page"' if ativo else ''}>Blog</a>
-    <a class="btn" href="{raiz}comecar/">Começar<span class="lng"> um projeto</span></a>
+    <a class="btn" href="{raiz}comecar/"><span>Começar<span class="lng"> um projeto</span></span></a>
+    <button class="tema" type="button" id="temaB" aria-label="Mudar para o tema escuro"><svg class="lua" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><svg class="sol" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
   </nav>
 </div></header>
 {corpo}
@@ -154,6 +161,11 @@ def pagina(titulo, desc, raiz, corpo, canonical, ativo=True):
   <a class="btn" href="{raiz}comecar/">Começar um projeto <span aria-hidden="true">→</span></a>
 </div></section>
 <footer class="wrap foot"><span>© {date.today().year} Estúdio Caio Pires</span><span>Resumos escritos pelo estúdio. Imagens e matérias completas pertencem às fontes citadas.</span></footer>
+<script>(function(){{var b=document.getElementById('temaB');if(!b)return;var r=document.documentElement,m=matchMedia('(prefers-color-scheme: dark)');
+function escuro(){{var t=r.getAttribute('data-theme');return t?t==='dark':m.matches}}
+function pinta(){{var d=escuro();b.classList.toggle('escuro',d);b.setAttribute('aria-label',d?'Mudar para o tema claro':'Mudar para o tema escuro');b.title=d?'Tema claro':'Tema escuro'}}
+b.addEventListener('click',function(){{var n=escuro()?'light':'dark';r.setAttribute('data-theme',n);try{{localStorage.setItem('tema',n)}}catch(e){{}}pinta()}});
+m.addEventListener&&m.addEventListener('change',pinta);pinta()}})();</script>
 </body>
 </html>
 """
