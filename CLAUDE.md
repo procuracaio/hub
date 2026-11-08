@@ -1,5 +1,7 @@
 # Instruções para o Claude: hub do Estúdio Caio Pires
 
+**Mapa geral do estúdio** (como o site se liga ao bot do WhatsApp, ao banco e ao sistema interno; contas, decisões e pendências): `MAPA-DO-ESTUDIO.md` no repositório privado `procuracaio/sistema`.
+
 O Caio não programa. Ele pede mudanças em linguagem natural; você faz, mostra a prévia e só publica (commit + push na branch `main`) depois do ok dele. **Exceção:** os posts diários do blog vão ao ar sem aprovação, por decisão do Caio, seguindo `blog/COMO-PUBLICAR.md`. O GitHub Pages publica o `index.html` da raiz automaticamente.
 
 ## Estrutura
