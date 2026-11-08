@@ -56,7 +56,7 @@ h1,h2{font-family:var(--display);font-weight:600;letter-spacing:-.03em;margin:0;
 .prog i{flex:1;height:3px;background:var(--soft)}
 .prog i.on{background:var(--ink)}
 .stepno{margin-bottom:22px}
-.step[hidden]{display:none}
+.step[hidden],.f[hidden]{display:none}
 .step h2{font-size:clamp(26px,2.6vw,34px);line-height:1.05;margin-bottom:6px}
 .step>p{color:var(--mute);margin:0 0 26px}
 .f{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;border:0;padding:0;min-width:0}
@@ -67,6 +67,7 @@ input[type=text],input[type=tel],input[type=email],textarea{width:100%;backgroun
 textarea{resize:vertical;min-height:96px;line-height:1.5}
 input:focus,textarea:focus{outline:none;border-bottom-color:var(--ink)}
 .choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:4px}
+.choices.uma{grid-template-columns:1fr}
 .choice{position:relative}
 .choice input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
 .choice>span{display:flex;align-items:center;min-height:54px;padding:12px 16px;border:1.5px solid var(--line);font-size:16px;transition:border-color .15s,background .15s,color .15s}
@@ -121,7 +122,7 @@ input:focus,textarea:focus{outline:none;border-bottom-color:var(--ink)}
 
   <section class="card" aria-live="polite">
     <form id="form" novalidate>
-      <div class="prog" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="prog" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
       <p class="lbl stepno" id="stepNo"></p>
 
       <div class="step" data-step="1">
@@ -133,34 +134,35 @@ input:focus,textarea:focus{outline:none;border-bottom-color:var(--ink)}
       </div>
 
       <div class="step" data-step="2" hidden>
-        <h2>Sobre a empresa</h2>
+        <h2>Sobre o negócio</h2>
         <p>Quanto mais concreto, melhor a proposta.</p>
         <div class="f" data-f="empresa"><label for="empresa">Nome da empresa ou marca</label><input type="text" id="empresa" name="empresa" autocomplete="organization" maxlength="100"><span class="err">Escreva o nome da empresa ou marca.</span></div>
-        <div class="f" data-f="oQueFaz"><label for="oQueFaz">O que a empresa faz e para quem?</label><span class="hint">Ex.: padaria de fermentação natural para as famílias do bairro.</span><textarea id="oQueFaz" name="oQueFaz" maxlength="600"></textarea><span class="err">Conte um pouco mais, em uma ou duas frases.</span></div>
+        <div class="f" data-f="oQueFaz"><label for="oQueFaz">O que a empresa vende ou faz?</label><span class="hint">Ex.: pães de fermentação natural, roupas masculinas multimarcas, contabilidade para pequenas empresas.</span><textarea id="oQueFaz" name="oQueFaz" maxlength="600" rows="2"></textarea><span class="err">Conte um pouco mais, em uma frase.</span></div>
+        <div class="f" data-f="publico"><label for="publico">Quem é o cliente da empresa?</label><span class="hint">Ex.: famílias do bairro; homens de 25 a 45 anos que querem se vestir bem sem perder tempo.</span><textarea id="publico" name="publico" maxlength="300" rows="2"></textarea><span class="err">Conte em poucas palavras para quem a empresa vende.</span></div>
         <fieldset class="f" data-f="momento"><legend>Em que momento o negócio está?</legend>
           <div class="choices">
-            <label class="choice"><input type="radio" name="momento" value="Já está faturando"><span>Já está faturando</span></label>
-            <label class="choice"><input type="radio" name="momento" value="Vai abrir em breve"><span>Vai abrir em breve</span></label>
+            <label class="choice"><input type="radio" name="momento" value="Já está faturando"><span>Já está funcionando e faturando</span></label>
+            <label class="choice"><input type="radio" name="momento" value="Vai abrir em breve"><span>Vai abrir nos próximos meses</span></label>
             <label class="choice"><input type="radio" name="momento" value="Ainda é uma ideia"><span>Ainda é uma ideia</span></label>
           </div><span class="err">Escolha uma opção.</span></fieldset>
-        <div class="f" data-f="cidade"><label for="cidade">Cidade e estado <span class="opt">(opcional)</span></label><input type="text" id="cidade" name="cidade" autocomplete="address-level2" maxlength="80"></div>
         <div class="f" data-f="link"><label for="link">Site ou Instagram atual <span class="opt">(opcional)</span></label><input type="text" id="link" name="link" maxlength="200" placeholder="@suaempresa"></div>
+        <div class="f" data-f="cidade"><label for="cidade">Cidade e estado <span class="opt">(opcional)</span></label><input type="text" id="cidade" name="cidade" autocomplete="address-level2" maxlength="80"></div>
       </div>
 
       <div class="step" data-step="3" hidden>
         <h2>O que você precisa</h2>
         <p>Se ainda não tiver certeza, tudo bem: a gente decide junto.</p>
-        <fieldset class="f" data-f="busca"><legend>O que você está buscando?</legend>
-          <div class="choices">
-            <label class="choice"><input type="radio" name="busca" value="Marca do zero"><span>Marca do zero</span></label>
-            <label class="choice"><input type="radio" name="busca" value="Reformular a marca"><span>Reformular a marca</span></label>
-            <label class="choice"><input type="radio" name="busca" value="Só o site"><span><span>Só o site<small>já tenho uma marca</small></span></span></label>
+        <fieldset class="f" data-f="busca"><legend>O que você procura?</legend>
+          <div class="choices uma">
+            <label class="choice"><input type="radio" name="busca" value="Marca do zero"><span><span>Criar a marca do zero<small>ainda não tenho logo, ou o atual foi improvisado</small></span></span></label>
+            <label class="choice"><input type="radio" name="busca" value="Reformular a marca"><span><span>Reformular a marca que já existe<small>tenho uma marca, mas ela não representa mais a empresa</small></span></span></label>
+            <label class="choice"><input type="radio" name="busca" value="Só o site"><span><span>Só o site<small>já tenho uma marca e preciso do site</small></span></span></label>
           </div><span class="err">Escolha uma opção.</span></fieldset>
         <fieldset class="f" data-f="entrega" data-if="marca" hidden><legend>O que você precisa receber?</legend>
           <div class="choices">
-            <label class="choice"><input type="radio" name="entrega" value="Identidade completa"><span><span>Identidade completa<small>logo, cores, tipografia e manual</small></span></span></label>
+            <label class="choice"><input type="radio" name="entrega" value="Identidade completa"><span><span>Identidade completa<small>símbolo, cores, tipografia e manual</small></span></span></label>
             <label class="choice"><input type="radio" name="entrega" value="Só o logo"><span>Só o logo</span></label>
-            <label class="choice"><input type="radio" name="entrega" value="Ainda não sei"><span>Ainda não sei</span></label>
+            <label class="choice"><input type="radio" name="entrega" value="Ainda não sei"><span><span>Ainda não sei<small>quero uma orientação</small></span></span></label>
           </div><span class="err">Escolha uma opção.</span></fieldset>
         <fieldset class="f" data-f="precisaSite" data-if="marca" hidden><legend>Você também precisa de site?</legend>
           <div class="choices">
@@ -174,17 +176,44 @@ input:focus,textarea:focus{outline:none;border-bottom-color:var(--ink)}
             <label class="choice"><input type="radio" name="paginas" value="Mais de 5 páginas"><span>Mais de 5 páginas</span></label>
             <label class="choice"><input type="radio" name="paginas" value="Ainda não sei"><span>Ainda não sei</span></label>
           </div><span class="err">Escolha uma opção.</span></fieldset>
-        <div class="f" data-f="porQueAgora"><label for="porQueAgora">Por que agora? O que precisa mudar? <span class="opt">(opcional)</span></label><span class="hint">Ex.: vamos abrir a segunda loja e a marca atual não passa a qualidade do produto.</span><textarea id="porQueAgora" name="porQueAgora" maxlength="800"></textarea></div>
       </div>
 
       <div class="step" data-step="4" hidden>
+        <h2>Sobre a marca</h2>
+        <p>Três perguntas rápidas. São elas que deixam a proposta com a cara do seu negócio.</p>
+        <fieldset class="f" data-f="motivo"><legend>O que te fez procurar o estúdio agora?</legend>
+          <div class="choices uma">
+            <label class="choice"><input type="radio" name="motivo" value="Vou abrir o negócio ou uma nova unidade"><span>Vou abrir o negócio ou uma nova unidade</span></label>
+            <label class="choice"><input type="radio" name="motivo" value="A marca atual não passa a qualidade do que eu entrego"><span>A marca atual não passa a qualidade do que eu entrego</span></label>
+            <label class="choice"><input type="radio" name="motivo" value="Quero atrair outro tipo de cliente"><span>Quero atrair outro tipo de cliente</span></label>
+            <label class="choice"><input type="radio" name="motivo" value="Preciso parecer mais profissional"><span>Preciso parecer mais profissional</span></label>
+            <label class="choice"><input type="radio" name="motivo" value="Outro motivo"><span>Outro motivo</span></label>
+          </div><span class="err">Escolha a opção mais próxima.</span></fieldset>
+        <div class="f" data-f="porQueAgora"><label for="porQueAgora">Quer contar mais? <span class="opt">(opcional)</span></label><span class="hint">Ex.: vamos abrir a segunda loja e o logo atual foi feito às pressas.</span><textarea id="porQueAgora" name="porQueAgora" maxlength="800" rows="2"></textarea></div>
+        <div class="f" data-f="palavras"><label for="palavras">Em 3 palavras, como você quer que vejam a sua marca? <span class="opt">(opcional)</span></label><span class="hint">Ex.: confiável, moderna, acolhedora. É assim que começa o método Palavras de Marca.</span><input type="text" id="palavras" name="palavras" maxlength="120"></div>
+        <fieldset class="f" data-f="aprovacao"><legend>Quem vai aprovar a marca?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="aprovacao" value="Só eu"><span>Só eu</span></label>
+            <label class="choice"><input type="radio" name="aprovacao" value="Eu e sócio(s)"><span>Eu e sócio(s)</span></label>
+            <label class="choice"><input type="radio" name="aprovacao" value="Outra pessoa ou equipe"><span>Outra pessoa ou equipe</span></label>
+          </div><span class="err">Escolha uma opção.</span></fieldset>
+      </div>
+
+      <div class="step" data-step="5" hidden>
         <h2>Para fechar</h2>
         <p>Último passo.</p>
         <fieldset class="f" data-f="prazo"><legend>Para quando você precisa disso pronto?</legend>
+          <span class="hint">O processo completo de uma identidade visual leva de 4 a 8 semanas.</span>
           <div class="choices">
-            <label class="choice"><input type="radio" name="prazo" value="Até 30 dias"><span>Até 30 dias</span></label>
+            <label class="choice"><input type="radio" name="prazo" value="Até 30 dias"><span>Em até 30 dias</span></label>
             <label class="choice"><input type="radio" name="prazo" value="Em 1 a 3 meses"><span>Em 1 a 3 meses</span></label>
             <label class="choice"><input type="radio" name="prazo" value="Sem data definida"><span>Sem data definida</span></label>
+          </div><span class="err">Escolha uma opção.</span></fieldset>
+        <fieldset class="f" data-f="investimento"><legend>Os projetos do estúdio começam em R$ 1.000. Esse investimento cabe no seu planejamento agora?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="investimento" value="Sim"><span>Sim</span></label>
+            <label class="choice"><input type="radio" name="investimento" value="Quero entender melhor"><span>Quero entender melhor</span></label>
+            <label class="choice"><input type="radio" name="investimento" value="Ainda não"><span>Ainda não</span></label>
           </div><span class="err">Escolha uma opção.</span></fieldset>
         <fieldset class="f" data-f="origem"><legend>Como você conheceu o estúdio? <span class="opt">(opcional)</span></legend>
           <div class="choices">
@@ -247,12 +276,16 @@ const rules = {
   email: () => !val('email') || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email')),
   empresa: () => val('empresa').length >= 2,
   oQueFaz: () => val('oQueFaz').length >= 10,
+  publico: () => val('publico').length >= 5,
   momento: () => !!val('momento'),
   busca: () => !!val('busca'),
   entrega: () => !!val('entrega'),
   precisaSite: () => !!val('precisaSite'),
   paginas: () => !!val('paginas'),
+  motivo: () => !!val('motivo'),
+  aprovacao: () => !!val('aprovacao'),
   prazo: () => !!val('prazo'),
+  investimento: () => !!val('investimento'),
   consentimento: () => val('consentimento') === true,
 };
 function check(stepEl){
@@ -286,7 +319,7 @@ form.addEventListener('submit', async e => {
   if (!check(steps[cur])) return;
   if (cur < steps.length - 1) return show(cur + 1);
   const data = {};
-  ['nome','whatsapp','email','empresa','oQueFaz','cidade','link','momento','busca','entrega','precisaSite','paginas','porQueAgora','prazo','origem','origemOutro','site_url'].forEach(n => data[n] = val(n));
+  ['nome','whatsapp','email','empresa','oQueFaz','publico','cidade','link','momento','busca','entrega','precisaSite','paginas','motivo','porQueAgora','palavras','aprovacao','prazo','investimento','origem','origemOutro','site_url'].forEach(n => data[n] = val(n));
   data.consentimento = val('consentimento') === true;
   if (simbolo) data.simbolo = simbolo;
   bNext.disabled = true; bNext.textContent = 'Enviando…'; alertBox.hidden = true;
