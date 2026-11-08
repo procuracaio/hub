@@ -137,13 +137,20 @@ input:focus,textarea:focus{outline:none;border-bottom-color:var(--ink)}
         <h2>Sobre o negócio</h2>
         <p>Quanto mais concreto, melhor a proposta.</p>
         <div class="f" data-f="empresa"><label for="empresa">Nome da empresa ou marca</label><input type="text" id="empresa" name="empresa" autocomplete="organization" maxlength="100"><span class="err">Escreva o nome da empresa ou marca.</span></div>
-        <div class="f" data-f="oQueFaz"><label for="oQueFaz">O que a empresa vende ou faz?</label><span class="hint">Ex.: pães de fermentação natural, roupas masculinas multimarcas, contabilidade para pequenas empresas.</span><textarea id="oQueFaz" name="oQueFaz" maxlength="600" rows="2"></textarea><span class="err">Conte um pouco mais, em uma frase.</span></div>
+        <div class="f" data-f="oQueFaz"><label for="oQueFaz">Conte um pouco sobre a sua empresa</label><span class="hint">O que vende, há quanto tempo existe, como funciona e o que a diferencia. Ex.: loja de roupas masculinas multimarcas, aberta há 3 anos. Vendemos na loja e pelo Instagram, e o diferencial é a consultoria de estilo no atendimento.</span><textarea id="oQueFaz" name="oQueFaz" maxlength="1000" rows="4"></textarea><span class="err">Conte um pouco mais: duas ou três frases já ajudam muito.</span></div>
         <div class="f" data-f="publico"><label for="publico">Quem é o cliente da empresa?</label><span class="hint">Ex.: famílias do bairro; homens de 25 a 45 anos que querem se vestir bem sem perder tempo.</span><textarea id="publico" name="publico" maxlength="300" rows="2"></textarea><span class="err">Conte em poucas palavras para quem a empresa vende.</span></div>
         <fieldset class="f" data-f="momento"><legend>Em que momento o negócio está?</legend>
           <div class="choices">
             <label class="choice"><input type="radio" name="momento" value="Já está faturando"><span>Já está funcionando e faturando</span></label>
             <label class="choice"><input type="radio" name="momento" value="Vai abrir em breve"><span>Vai abrir nos próximos meses</span></label>
             <label class="choice"><input type="radio" name="momento" value="Ainda é uma ideia"><span>Ainda é uma ideia</span></label>
+          </div><span class="err">Escolha uma opção.</span></fieldset>
+        <fieldset class="f" data-f="equipe"><legend>Quantas pessoas trabalham na empresa?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="equipe" value="Só eu"><span>Só eu</span></label>
+            <label class="choice"><input type="radio" name="equipe" value="2 a 5 pessoas"><span>2 a 5 pessoas</span></label>
+            <label class="choice"><input type="radio" name="equipe" value="6 a 20 pessoas"><span>6 a 20 pessoas</span></label>
+            <label class="choice"><input type="radio" name="equipe" value="Mais de 20 pessoas"><span>Mais de 20 pessoas</span></label>
           </div><span class="err">Escolha uma opção.</span></fieldset>
         <div class="f" data-f="link"><label for="link">Site ou Instagram atual <span class="opt">(opcional)</span></label><input type="text" id="link" name="link" maxlength="200" placeholder="@suaempresa"></div>
         <div class="f" data-f="cidade"><label for="cidade">Cidade e estado <span class="opt">(opcional)</span></label><input type="text" id="cidade" name="cidade" autocomplete="address-level2" maxlength="80"></div>
@@ -275,8 +282,9 @@ const rules = {
   whatsapp: () => { const d = digits(val('whatsapp')); return d.length >= 10 && d.length <= 13; },
   email: () => !val('email') || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('email')),
   empresa: () => val('empresa').length >= 2,
-  oQueFaz: () => val('oQueFaz').length >= 10,
+  oQueFaz: () => val('oQueFaz').length >= 40,
   publico: () => val('publico').length >= 5,
+  equipe: () => !!val('equipe'),
   momento: () => !!val('momento'),
   busca: () => !!val('busca'),
   entrega: () => !!val('entrega'),
@@ -319,7 +327,7 @@ form.addEventListener('submit', async e => {
   if (!check(steps[cur])) return;
   if (cur < steps.length - 1) return show(cur + 1);
   const data = {};
-  ['nome','whatsapp','email','empresa','oQueFaz','publico','cidade','link','momento','busca','entrega','precisaSite','paginas','motivo','porQueAgora','palavras','aprovacao','prazo','investimento','origem','origemOutro','site_url'].forEach(n => data[n] = val(n));
+  ['nome','whatsapp','email','empresa','oQueFaz','publico','equipe','cidade','link','momento','busca','entrega','precisaSite','paginas','motivo','porQueAgora','palavras','aprovacao','prazo','investimento','origem','origemOutro','site_url'].forEach(n => data[n] = val(n));
   data.consentimento = val('consentimento') === true;
   if (simbolo) data.simbolo = simbolo;
   bNext.disabled = true; bNext.textContent = 'Enviando…'; alertBox.hidden = true;
