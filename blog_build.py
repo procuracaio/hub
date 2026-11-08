@@ -18,7 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
-SITE = 'https://procuracaio.github.io/hub/'
+SITE = 'https://caiopires.com.br/'
 e = lambda t: html.escape(str(t or ''), quote=True)
 
 
