@@ -167,6 +167,7 @@ function escuro(){{var t=r.getAttribute('data-theme');return t?t==='dark':m.matc
 function pinta(){{var d=escuro();b.classList.toggle('escuro',d);b.setAttribute('aria-label',d?'Mudar para o tema claro':'Mudar para o tema escuro');b.title=d?'Tema claro':'Tema escuro'}}
 b.addEventListener('click',function(){{var n=escuro()?'light':'dark';r.setAttribute('data-theme',n);try{{localStorage.setItem('tema',n)}}catch(e){{}}pinta()}});
 m.addEventListener&&m.addEventListener('change',pinta);pinta()}})();</script>
+<script src="/visitas.js" defer></script>
 </body>
 </html>
 """
