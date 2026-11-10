@@ -747,6 +747,114 @@ input[type=range]{width:100%;accent-color:var(--ink)}
 </div>
 </section>
 
+  <section id="instagram" class="sec" aria-labelledby="h-ig" hidden>
+<style>
+#instagram .ig-g{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.25fr);gap:clamp(28px,5vw,88px);align-items:start}
+#instagram .ig-side{position:sticky;top:calc(96px + var(--top))}
+#instagram .ig-side h2{margin-top:14px}
+#instagram .ig-side p{margin-top:18px;max-width:28em}
+#instagram .ig-side .btn{margin-top:26px}
+#instagram .ig-grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;list-style:none;margin:0;padding:0}
+#instagram .ig-it{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:var(--soft);text-decoration:none;color:#FAFAF8;outline-offset:3px}
+#instagram .ig-it img,#instagram .ig-it video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+#instagram .ig-it video{opacity:0;transition:opacity .4s,transform .5s cubic-bezier(.2,.7,.2,1)}
+#instagram .ig-it video.on{opacity:1}
+#instagram .ig-tp{position:absolute;top:9px;right:9px;width:18px;height:18px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45));pointer-events:none}
+#instagram .ig-lg{position:absolute;inset:auto 0 0;padding:44px 14px 13px;background:linear-gradient(to top,rgba(10,10,10,.82),rgba(10,10,10,0));font:400 13.5px/1.4 var(--body);opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s;pointer-events:none}
+#instagram .ig-lg .lbl{display:block;color:rgba(250,250,248,.72);margin-bottom:5px;font-size:10.5px}
+@media (hover:hover){#instagram .ig-it:hover img,#instagram .ig-it:hover video{transform:scale(1.035)}#instagram .ig-it:hover .ig-lg,#instagram .ig-it:focus-visible .ig-lg{opacity:1;transform:none}}
+@media (max-width:860px){#instagram .ig-g{grid-template-columns:1fr}#instagram .ig-side{position:static}#instagram .ig-grade{gap:3px}#instagram .ig-lg{display:none}#instagram .ig-tp{top:6px;right:6px;width:15px;height:15px}}
+@media (prefers-reduced-motion:reduce){#instagram .ig-it img,#instagram .ig-it video{transition:none}}
+</style>
+    <div class="wrap ig-g">
+      <div class="ig-side">
+        <span class="lbl">Instagram</span>
+        <h2 id="h-ig">O estúdio em movimento</h2>
+        <p class="muted">Símbolos em construção, projetos novos e o processo em vídeo. Os últimos posts do <span id="igUser">@caiopires.design</span>.</p>
+        <a class="btn ghost" href="https://www.instagram.com/caiopires.design/" target="_blank" rel="noopener" id="igSeguir">Seguir no Instagram <span aria-hidden="true">↗</span></a>
+      </div>
+      <ul class="ig-grade" id="igGrade" aria-label="Últimos posts do Instagram"></ul>
+    </div>
+<script>
+// Faixa "No Instagram": os 9 últimos posts, buscados pela função instagram-site do Supabase (que guarda a chave
+// do Meta). Os vídeos tocam sem som, em repetição, só enquanto estão visíveis. Se a busca falhar, a faixa fica escondida.
+(function () {
+  'use strict';
+  var FONTE = 'https://ggbpjskoclyaecdpidvh.supabase.co/functions/v1/instagram-site';
+  var sec = document.getElementById('instagram'), grade = document.getElementById('igGrade');
+  if (!sec || !grade || !window.fetch) return;
+  var calmo = false, economia = false;
+  try { calmo = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  try { economia = !!(navigator.connection && navigator.connection.saveData); } catch (e) {}
+  var https = function (u) { return typeof u === 'string' && /^https:\/\//.test(u) ? u : ''; };
+  var NS = 'http://www.w3.org/2000/svg';
+  function icone(tipo) {
+    var s = document.createElementNS(NS, 'svg'); s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('class', 'ig-tp'); s.setAttribute('aria-hidden', 'true');
+    var p = document.createElementNS(NS, 'path'); p.setAttribute('fill', '#FAFAF8');
+    p.setAttribute('d', tipo === 'video' ? 'M7 4.5v15l12.5-7.5z' : 'M8 3h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM4 7h1.5v12.5H18V21H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z');
+    s.appendChild(p); return s;
+  }
+  function dataCurta(iso) {
+    var d = new Date(iso); if (isNaN(d)) return '';
+    try { return d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'short' }).replace('.', ''); } catch (e) { return ''; }
+  }
+  function montar(posts) {
+    var videos = [];
+    posts.forEach(function (p) {
+      var link = https(p.link), img = https(p.imagem), vid = https(p.video);
+      if (!link || (!img && !vid)) return;
+      var li = document.createElement('li'), a = document.createElement('a');
+      a.className = 'ig-it'; a.href = link; a.target = '_blank'; a.rel = 'noopener';
+      var tipoTxt = p.tipo === 'video' ? 'Vídeo' : p.tipo === 'carrossel' ? 'Carrossel' : 'Post';
+      var quando = dataCurta(p.data);
+      a.setAttribute('aria-label', tipoTxt + ' no Instagram' + (quando ? ', ' + quando : '') + (p.legenda ? ': ' + p.legenda : ''));
+      if (img) { var im = document.createElement('img'); im.src = img; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; im.onerror = function () { li.remove(); }; a.appendChild(im); }
+      if (vid && !calmo && !economia) {
+        var v = document.createElement('video'); v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'none';
+        v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('aria-hidden', 'true'); v.dataset.src = vid;
+        v.addEventListener('playing', function () { v.classList.add('on'); });
+        a.appendChild(v); videos.push(v);
+      }
+      if (p.tipo === 'video' || p.tipo === 'carrossel') a.appendChild(icone(p.tipo));
+      if (p.legenda) {
+        var lg = document.createElement('span'); lg.className = 'ig-lg';
+        if (quando) { var q = document.createElement('span'); q.className = 'lbl'; q.textContent = quando; lg.appendChild(q); }
+        lg.appendChild(document.createTextNode(p.legenda)); a.appendChild(lg);
+      }
+      li.appendChild(a); grade.appendChild(li);
+    });
+    if (!videos.length) return;
+    // O vídeo só carrega quando chega perto da tela, e só toca enquanto está visível.
+    if (!('IntersectionObserver' in window)) return;
+    var obs = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting && e.intersectionRatio >= 0.35) {
+          if (!v.src) { v.src = v.dataset.src; v.onerror = function () { v.remove(); }; }
+          var r = v.play(); if (r && r.catch) r.catch(function () {});
+        } else if (!v.paused) v.pause();
+      });
+    }, { threshold: [0, 0.35, 0.7] });
+    videos.forEach(function (v) { obs.observe(v); });
+  }
+  function buscar() {
+    fetch(FONTE).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+      var posts = (d && Array.isArray(d.posts)) ? d.posts : [];
+      if (posts.length < 3) return; // pouco ou nada: a faixa continua escondida
+      if (d.usuario && /^[\w.]+$/.test(d.usuario)) {
+        document.getElementById('igUser').textContent = '@' + d.usuario;
+        document.getElementById('igSeguir').href = 'https://www.instagram.com/' + d.usuario + '/';
+      }
+      montar(posts.slice(0, 9));
+      if (grade.children.length >= 3) sec.hidden = false;
+    }).catch(function () {});
+  }
+  // Busca quando a página termina de carregar, sem atrasar o resto.
+  var ir = function () { (window.requestIdleCallback || function (f) { setTimeout(f, 300); })(buscar); };
+  if (document.readyState === 'complete') ir(); else window.addEventListener('load', ir);
+})();
+</script>
+  </section>
   <section id="contato" class="sec contact" aria-labelledby="h-cont">
     <div class="wrap">
       <span class="lbl">Contato</span>
