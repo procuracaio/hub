@@ -58,6 +58,9 @@ def main():
     page = page.replace('/*SYMS*/', json.dumps(syms, separators=(',', ':'))).replace('/*CONC*/', json.dumps(texts, ensure_ascii=False))
     import blog_build
     page = page.replace('/*BLOG*/', blog_build.gerar(ROOT, syms))
+    import seo_build
+    ld, cartoes = seo_build.gerar(ROOT, page)
+    page = page.replace('<!--LDJSON-->', ld).replace('<div class="pgrid" id="pgrid"></div>', f'<div class="pgrid" id="pgrid">{cartoes}</div>')
     (ROOT/'index.html').write_text(page, encoding='utf-8')
     print(f'index.html gerado com {len(syms)} símbolos e o blog.')
     if faltando: print('Sem conceito em conceitos.txt:', ', '.join(faltando))

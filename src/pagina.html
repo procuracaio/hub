@@ -3,11 +3,22 @@
 <meta charset="utf-8">
 <script>try{var t=localStorage.getItem('tema');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Estúdio Caio Pires</title>
+<title>Identidade visual para empresas | Estúdio Caio Pires</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Estúdio Caio Pires: identidade visual para pequenas e médias empresas, com o método Palavras de Marca. Atendimento online para todo o Brasil.">
-<meta property="og:title" content="Estúdio Caio Pires">
+<meta name="description" content="Identidade visual para pequenas e médias empresas: símbolo, cores, tipografia e manual, com o método Palavras de Marca. Atendimento online para todo o Brasil.">
+<link rel="canonical" href="https://caiopires.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Estúdio Caio Pires">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://caiopires.com.br/">
+<meta property="og:title" content="Estúdio Caio Pires · Identidade visual para empresas">
 <meta property="og:description" content="Identidade visual para pequenas e médias empresas. 50 esboços, 15 símbolos, 3 sistemas e uma marca final.">
+<meta property="og:image" content="https://caiopires.com.br/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<!--LDJSON-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -116,7 +127,7 @@ h3{font-size:clamp(22px,2.2vw,30px);line-height:1.1;letter-spacing:-.02em}
 
 /* Projetos */
 .pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(30px,3.4vw,48px) clamp(18px,2.4vw,32px)}
-.pcard{display:flex;flex-direction:column;gap:16px;cursor:pointer;background:none;border:0;padding:0;text-align:left;min-width:0;color:var(--ink)}
+.pcard{display:flex;flex-direction:column;gap:16px;cursor:pointer;background:none;border:0;padding:0;text-align:left;min-width:0;color:var(--ink);text-decoration:none}
 .pcard .ph{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:3px;overflow:hidden;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink);transition:background .35s,color .35s,border-color .35s}
 .lock{display:block;max-width:100%;background:currentColor;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .pcard:hover .ph,.pcard:focus-visible .ph{background:var(--ink);border-color:var(--ink);color:var(--paper)}
@@ -141,7 +152,7 @@ h3{font-size:clamp(22px,2.2vw,30px);line-height:1.1;letter-spacing:-.02em}
 .pcard:hover .go span{transform:translateX(5px)}
 @media (max-width:720px){.pgrid{grid-template-columns:1fr}}
 .plist{border-top:1.5px solid var(--ink)}
-.prow{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1.4fr) minmax(0,.9fr) auto;gap:18px;align-items:center;width:100%;padding:22px 4px;border:0;border-bottom:1px solid var(--line);background:none;text-align:left;cursor:pointer;color:var(--ink);transition:padding .25s,background .25s}
+.prow{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1.4fr) minmax(0,.9fr) auto;gap:18px;align-items:center;width:100%;padding:22px 4px;border:0;border-bottom:1px solid var(--line);background:none;text-align:left;cursor:pointer;color:var(--ink);text-decoration:none;transition:padding .25s,background .25s}
 .prow:hover{padding-left:14px;background:var(--soft)}
 .prow .nm{font:600 clamp(22px,2.6vw,36px)/1 var(--display);letter-spacing:-.035em}
 .prow .sg{color:var(--mute)}
@@ -967,13 +978,15 @@ const gridOverlay = p => {
 };
 function renderProjects(){
   const list = P;
-  $('#pgrid').innerHTML = list.map(p => `<button class="pcard" type="button" data-slug="${p.slug}">
+  $('#pgrid').innerHTML = list.map(p => `<a class="pcard" href="/projetos/${p.slug}/" data-slug="${p.slug}">
     <div class="ph">${gridOverlay(p)}<span class="badge">${kindL(p)}</span>${lockup(p)}</div>
     <div class="meta"><div class="mt"><h3>${esc(p.name)}</h3><p class="seg-t">${esc(p.seg)}</p><span class="go">Ver projeto <span aria-hidden="true">→</span></span></div></div>
-  </button>`).join('');
-  $('#plist').innerHTML = list.map(p => `<button class="prow" type="button" data-slug="${p.slug}"><span class="nm">${esc(p.name)}</span><span class="sg">${esc(p.seg)}</span><span class="lbl kd">${kindL(p)}</span><span class="ar" aria-hidden="true">→</span></button>`).join('');
-  $('#pgrid').querySelectorAll('.pcard').forEach(c => c.addEventListener('click', () => openRoute('#' + c.dataset.slug, c)));
-  $('#plist').querySelectorAll('.prow').forEach(r => r.addEventListener('click', () => openRoute('#' + r.dataset.slug, r)));
+  </a>`).join('');
+  $('#plist').innerHTML = list.map(p => `<a class="prow" href="/projetos/${p.slug}/" data-slug="${p.slug}"><span class="nm">${esc(p.name)}</span><span class="sg">${esc(p.seg)}</span><span class="lbl kd">${kindL(p)}</span><span class="ar" aria-hidden="true">→</span></a>`).join('');
+  /* O cartão é um link para a página própria do projeto (buscadores e "abrir em nova aba"); o clique normal abre o projeto aqui mesmo. */
+  const abre = el => ev => { if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button) return; ev.preventDefault(); openRoute('#' + el.dataset.slug, el); };
+  $('#pgrid').querySelectorAll('.pcard').forEach(c => c.addEventListener('click', abre(c)));
+  $('#plist').querySelectorAll('.prow').forEach(r => r.addEventListener('click', abre(r)));
 }
 renderProjects();
 /* Sem mouse (celular), a grade se desenha uma vez quando o card entra na tela */
