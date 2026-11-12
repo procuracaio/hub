@@ -612,10 +612,11 @@ window.cpInstagram = window.cpInstagram || fetch('https://ggbpjskoclyaecdpidvh.s
 
   function medir() {
     var r = sec.getBoundingClientRect(); W = r.width; H = r.height;
+    var L = Math.min(W, 1600);   // em telas muito largas, o anel mantém a proporção de uma tela de 1600 px
     N = curto() ? 14 : 20;
-    cw = curto() ? Math.max(56, Math.min(80, W * 0.155)) : Math.max(108, Math.min(150, W * 0.098));
+    cw = curto() ? Math.max(56, Math.min(80, L * 0.155)) : Math.max(108, Math.min(156, L * 0.098));
     var ch = cw * 1.25;
-    rx = Math.max(120, W / 2 - cw / 2 - (curto() ? 4 : Math.max(16, W * 0.02)));
+    rx = Math.max(120, L / 2 - cw / 2 - (curto() ? 4 : Math.max(16, L * 0.02)));
     ry = Math.max(140, H / 2 - ch / 2 - (curto() ? 10 : 14));
     anel.style.setProperty('--cw', cw.toFixed(1) + 'px');
     // Tabela do contorno da elipse: os posts ficam a distâncias iguais ao longo do anel (sem amontoar nas laterais).
