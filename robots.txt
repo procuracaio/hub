@@ -1,0 +1,5 @@
+# Estúdio Caio Pires: o site inteiro pode ser lido por buscadores e assistentes.
+User-agent: *
+Allow: /
+
+Sitemap: https://caiopires.com.br/sitemap.xml
