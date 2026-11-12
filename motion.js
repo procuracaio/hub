@@ -169,9 +169,10 @@
       acende(st.progress);
     };
     cria();
-    var refaz = function () { cria(); };
-    ScrollTrigger.addEventListener('refreshInit', refaz);
-    return function () { ScrollTrigger.removeEventListener('refreshInit', refaz); if (st) st.kill(); if (tl) tl.kill(); svg.remove(); flow.classList.remove('vivo'); itens.forEach(function (li) { li.classList.remove('on'); }); };
+    // Depois que a página recalcula as posições (fontes, tamanho da janela, pilha fixada), só redesenha a linha.
+    var refaz = function () { if (!st) return; monta(); var pr = st.progress; tl.invalidate(); tl.progress(pr); acende(pr); };
+    ScrollTrigger.addEventListener('refresh', refaz);
+    return function () { ScrollTrigger.removeEventListener('refresh', refaz); if (st) st.kill(); if (tl) tl.kill(); svg.remove(); flow.classList.remove('vivo'); itens.forEach(function (li) { li.classList.remove('on'); }); };
   });
 
   /* ---------- 8. Rastro de símbolos atrás do cursor no contato (Cursor trail) ---------- */
