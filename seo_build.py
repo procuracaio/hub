@@ -85,7 +85,6 @@ def cabeca(titulo, desc, url, imagem, ld, tipo='website'):
 <header class="top"><div class="wrap bar">
   <a class="wm" href="/">{NOME}</a>
   <nav class="nav" aria-label="Seções">
-    <a class="hide-s" href="/projetos/">Projetos</a>
     <a class="hide-s" href="/#simbolos">Símbolos</a>
     <a href="/blog/">Blog</a>
     <a class="btn" href="/comecar/"><span>Começar<span class="lng"> um projeto</span></span></a>
@@ -100,7 +99,7 @@ RODAPE = f"""<section class="cta"><div class="wrap">
   <h2>Tem um negócio que precisa de marca?</h2>
   <a class="btn" href="/comecar/">Começar um projeto <span aria-hidden="true">→</span></a>
 </div></section>
-<footer class="wrap foot"><span>© {date.today().year} {NOME}</span><span>Os projetos conceituais usam marcas fictícias. Símbolos desenhados em vetor pelo estúdio.</span></footer>
+<footer class="wrap foot"><span>© {date.today().year} {NOME}</span><span>Símbolos desenhados em vetor pelo estúdio.</span></footer>
 <script>(function(){{var b=document.getElementById('temaB');if(!b)return;var r=document.documentElement,m=matchMedia('(prefers-color-scheme: dark)');
 function escuro(){{var t=r.getAttribute('data-theme');return t?t==='dark':m.matches}}
 function pinta(){{var d=escuro();b.classList.toggle('escuro',d);b.setAttribute('aria-label',d?'Mudar para o tema claro':'Mudar para o tema escuro');b.title=d?'Tema claro':'Tema escuro'}}
@@ -238,10 +237,7 @@ O estúdio desenha identidades visuais simples e geométricas, com referência n
 5. Segunda apresentação: 3 sistemas completos aplicados ao negócio; o cliente escolhe a marca final.
 6. Entrega: ajuste final, padrões, ícones, manual e arquivos.
 
-## Projetos
-{proj}
-
-## Perguntas frequentes
+{('## Projetos' + chr(10) + proj + chr(10) + chr(10)) if proj else ''}## Perguntas frequentes
 {perguntas}
 
 ## Contato
@@ -253,31 +249,34 @@ O estúdio desenha identidades visuais simples e geométricas, com referência n
 """
 
 
+PROJETOS = False  # páginas próprias dos projetos (desligadas em nov/2026, quando a seção saiu do site)
+
 ERRO404 = cabeca('Página não encontrada | Estúdio Caio Pires', 'Esta página não existe mais. Veja os projetos, o blog ou comece um projeto com o Estúdio Caio Pires.', SITE, SITE + 'og.png',
                  {'@context': 'https://schema.org', '@type': 'WebPage', 'name': 'Página não encontrada'}).replace('<link rel="canonical" href="https://caiopires.com.br/">\n', '<meta name="robots" content="noindex">\n') + """<main class="wrap">
 <section class="head"><span class="lbl">Erro 404</span><h1>Esta página não existe.</h1>
 <p>O endereço pode ter mudado com o site novo. Os caminhos mais procurados estão aqui embaixo.</p></section>
-<ul class="outros"><li><a href="/"><b>Página inicial</b><span class="muted">O estúdio, o processo e os serviços</span></a></li><li><a href="/projetos/"><b>Projetos</b><span class="muted">Identidades visuais completas</span></a></li><li><a href="/blog/"><b>Blog</b><span class="muted">Notícias de identidade visual</span></a></li><li><a href="/comecar/"><b>Começar um projeto</b><span class="muted">Conte sobre o seu negócio</span></a></li></ul>
+<ul class="outros"><li><a href="/"><b>Página inicial</b><span class="muted">O estúdio, o processo e os serviços</span></a></li><li><a href="/#simbolos"><b>Símbolos</b><span class="muted">O acervo de símbolos do estúdio</span></a></li><li><a href="/blog/"><b>Blog</b><span class="muted">Notícias de identidade visual</span></a></li><li><a href="/comecar/"><b>Começar um projeto</b><span class="muted">Conte sobre o seu negócio</span></a></li></ul>
 </main>""" + RODAPE
 
 
 def gerar(root, src):
     root = Path(root)
     ps = ler_projetos(src); faq = ler_faq(src)
-    (root / 'projetos').mkdir(exist_ok=True)
-    (root / 'projetos' / 'index.html').write_text(pagina_lista(root, ps), encoding='utf-8')
-    for p in ps:
-        d = root / 'projetos' / p['slug']; d.mkdir(exist_ok=True)
-        (d / 'index.html').write_text(pagina_projeto(root, p, ps), encoding='utf-8')
+    if PROJETOS:
+        (root / 'projetos').mkdir(exist_ok=True)
+        (root / 'projetos' / 'index.html').write_text(pagina_lista(root, ps), encoding='utf-8')
+        for p in ps:
+            d = root / 'projetos' / p['slug']; d.mkdir(exist_ok=True)
+            (d / 'index.html').write_text(pagina_projeto(root, p, ps), encoding='utf-8')
     posts = json.loads((root / 'blog' / 'posts.json').read_text(encoding='utf-8'))
     hoje = date.today().isoformat()
-    urls = [(SITE, hoje, '1.0'), (SITE + 'projetos/', hoje, '0.9')] + [(f'{SITE}projetos/{p["slug"]}/', hoje, '0.8') for p in ps] + \
+    urls = [(SITE, hoje, '1.0')] + ([(SITE + 'projetos/', hoje, '0.9')] + [(f'{SITE}projetos/{p["slug"]}/', hoje, '0.8') for p in ps] if PROJETOS else []) + \
            [(SITE + 'comecar/', hoje, '0.7'), (SITE + 'blog/', max((x['data'] for x in posts), default=hoje), '0.6')] + \
            [(f'{SITE}blog/{x["slug"]}/', x['data'], '0.5') for x in sorted(posts, key=lambda x: x['data'], reverse=True)]
     (root / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
         ''.join(f'  <url><loc>{e(u)}</loc><lastmod>{d}</lastmod><priority>{pr}</priority></url>\n' for u, d, pr in urls) + '</urlset>\n', encoding='utf-8')
     (root / 'robots.txt').write_text(f'# Estúdio Caio Pires: o site inteiro pode ser lido por buscadores e assistentes.\nUser-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n', encoding='utf-8')
-    (root / 'llms.txt').write_text(llms(ps, faq), encoding='utf-8')
+    (root / 'llms.txt').write_text(llms(ps if PROJETOS else [], faq), encoding='utf-8')
     (root / '404.html').write_text(ERRO404, encoding='utf-8')
-    print(f'SEO: {len(ps)} páginas de projeto, sitemap com {len(urls)} endereços, robots.txt, llms.txt e 404.html.')
-    return dados_home(faq), cartoes_estaticos(ps)
+    print(f'SEO: {len(ps) if PROJETOS else 0} páginas de projeto, sitemap com {len(urls)} endereços, robots.txt, llms.txt e 404.html.')
+    return dados_home(faq), cartoes_estaticos(ps) if PROJETOS else ''

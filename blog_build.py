@@ -148,7 +148,6 @@ def pagina(titulo, desc, raiz, corpo, canonical, ativo=True):
 <header class="top"><div class="wrap bar">
   <a class="wm" href="{raiz}">Estúdio Caio Pires</a>
   <nav class="nav" aria-label="Seções">
-    <a class="hide-s" href="{raiz}#projetos">Projetos</a>
     <a class="hide-s" href="{raiz}#simbolos">Símbolos</a>
     <a href="{raiz}blog/"{' aria-current="page"' if ativo else ''}>Blog</a>
     <a class="btn" href="{raiz}comecar/"><span>Começar<span class="lng"> um projeto</span></span></a>
