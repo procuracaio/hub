@@ -553,20 +553,171 @@ input[type=range]{width:100%;accent-color:var(--ink)}
 </div>
 
 <main id="inicio">
-  <section class="hero wrap" aria-labelledby="h1">
-      <p class="lbl">Estúdio de identidade visual · Atendimento online para todo o Brasil</p>
+  <section class="hero hero-anel" id="heroAnel" aria-labelledby="h1">
+<style>
+/* Hero com anel de posts do Instagram: as imagens saem empilhadas do centro, abrem num anel em volta do texto
+   e giram devagar. O texto fica sempre por cima e legível. */
+.hero-anel{position:relative;min-height:clamp(640px,calc(100svh - 66px),980px);display:grid;place-items:center;padding:clamp(40px,6vh,72px) 0;overflow:hidden;isolation:isolate}
+.hero-anel .anel{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-anel .ac{position:absolute;left:0;top:0;width:var(--cw,120px);aspect-ratio:4/5;border-radius:4px;overflow:hidden;background:var(--soft);
+  box-shadow:0 1px 2px rgba(0,0,0,.06),0 10px 30px -12px rgba(0,0,0,.28);pointer-events:auto;will-change:transform,opacity;opacity:0;display:block;outline-offset:3px}
+.hero-anel .ac img,.hero-anel .ac video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hero-anel .ac video{opacity:0;transition:opacity .5s}
+.hero-anel .ac video.on{opacity:1}
+.hero-anel .hero-c{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;max-width:min(40em,62vw)}
+.hero-anel .hero-c::before{content:"";position:absolute;inset:-28px -40px;z-index:-1;background:radial-gradient(closest-side,var(--paper) 62%,transparent);pointer-events:none}
+.hero-anel h1{font-size:clamp(34px,4vw,60px);max-width:13em;margin-inline:auto}
+.hero-anel .lede{margin-inline:auto;max-width:30em}
+.hero-anel .hero-cta{justify-content:center}
+.hero-facts{padding-bottom:clamp(40px,6vw,72px)}
+.hero-facts .facts{margin-top:0}
+@media (max-width:720px){
+  .hero-anel{min-height:calc(100svh - 66px);padding:0}
+  .hero-anel .hero-c{max-width:64vw;padding:0}
+  .hero-anel .hero-c .lbl .longo{display:none}
+  .hero-anel h1{font-size:clamp(26px,7.6vw,34px)}
+  .hero-anel .lede{font-size:15.5px;margin-top:16px}
+  .hero-anel .lede .longo{display:none}
+  .hero-anel .hero-cta{margin-top:20px}
+  .hero-anel .hero-cta .ghost{display:none}
+}
+</style>
+    <div class="anel" id="anel" aria-hidden="true"></div>
+    <div class="hero-c wrap">
+      <p class="lbl">Estúdio de identidade visual<span class="longo"> · Atendimento online para todo o Brasil</span></p>
       <h1 id="h1">Marcas à altura do que a sua empresa entrega.</h1>
-      <p class="lede">Sou <b>Caio Pires</b>, designer de marcas há 10 anos. Desenho identidades visuais simples e geométricas para pequenas e médias empresas que cresceram mais que a própria marca. Você acompanha cada etapa, do primeiro esboço ao manual.</p>
+      <p class="lede">Sou <b>Caio Pires</b>, designer de marcas há 10 anos. Desenho identidades visuais simples e geométricas para pequenas e médias empresas<span class="longo"> que cresceram mais que a própria marca. Você acompanha cada etapa, do primeiro esboço ao manual</span>.</p>
       <div class="hero-cta">
         <a class="btn" href="comecar/">Começar um projeto <span aria-hidden="true">→</span></a>
         <a class="btn ghost" href="#projetos">Ver projetos <span aria-hidden="true">↓</span></a>
       </div>
+    </div>
+<script>
+/* Anel do hero. Os posts vêm da função instagram-site (a mesma da faixa "No Instagram", buscada uma vez só).
+   Se o Instagram não responder em 3,5 s, o anel usa as capas dos projetos. Sem movimento para quem pediu menos movimento. */
+window.cpInstagram = window.cpInstagram || fetch('https://ggbpjskoclyaecdpidvh.supabase.co/functions/v1/instagram-site')
+  .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+(function () {
+  'use strict';
+  var sec = document.getElementById('heroAnel'), anel = document.getElementById('anel');
+  if (!sec || !anel) return;
+  var calmo = false, economia = false;
+  try { calmo = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  try { economia = !!(navigator.connection && navigator.connection.saveData); } catch (e) {}
+  var https = function (u) { return typeof u === 'string' && /^https:\/\//.test(u) ? u : ''; };
+  var cards = [], N = 0, W = 0, H = 0, rx = 0, ry = 0, cw = 120, fase = 0.75, vel = 0, alvoVel = 0, tab = [];
+  var mx = 0, my = 0, px = 0, py = 0, inicio = 0, visivel = true, sobre = null, raf = 0, ultimo = 0, montado = false;
+  var curto = function () { return innerWidth <= 720; };
+
+  function medir() {
+    var r = sec.getBoundingClientRect(); W = r.width; H = r.height;
+    N = curto() ? 12 : 16;
+    cw = curto() ? Math.max(50, Math.min(76, W * 0.15)) : Math.max(90, Math.min(132, W * 0.085));
+    var ch = cw * 1.25;
+    rx = Math.max(120, W / 2 - cw / 2 - (curto() ? 6 : Math.max(24, W * 0.03)));
+    ry = Math.max(140, H / 2 - ch / 2 - (curto() ? 14 : 22));
+    anel.style.setProperty('--cw', cw.toFixed(1) + 'px');
+    // Tabela do contorno da elipse: os posts ficam a distâncias iguais ao longo do anel (sem amontoar nas laterais).
+    tab = [0]; var K = 360, ant = [rx, 0];
+    for (var k = 1; k <= K; k++) { var t = k / K * Math.PI * 2, pt = [Math.cos(t) * rx, Math.sin(t) * ry]; tab.push(tab[k - 1] + Math.hypot(pt[0] - ant[0], pt[1] - ant[1])); ant = pt; }
+  }
+  // Fração do contorno (0 a 1) para o ângulo da elipse.
+  function angulo(u) {
+    u = ((u % 1) + 1) % 1; var L = u * tab[tab.length - 1], lo = 0, hi = tab.length - 1;
+    while (hi - lo > 1) { var m = (lo + hi) >> 1; if (tab[m] < L) lo = m; else hi = m; }
+    var f = (L - tab[lo]) / ((tab[hi] - tab[lo]) || 1);
+    return (lo + f) / (tab.length - 1) * Math.PI * 2;
+  }
+
+  function montar(itens) {
+    if (montado) return; montado = true;
+    medir();
+    var lista = []; for (var i = 0; i < N; i++) lista.push(itens[i % itens.length]);
+    lista.forEach(function (p, i) {
+      var a = document.createElement('a'); a.className = 'ac'; a.href = p.link; a.tabIndex = -1;
+      if (!p.interno) { a.target = '_blank'; a.rel = 'noopener'; }
+      var im = document.createElement('img'); im.src = p.imagem; im.alt = ''; im.decoding = 'async';
+      im.onerror = function () { a.style.visibility = 'hidden'; };
+      a.appendChild(im);
+      if (p.video && !calmo && !economia) {
+        var v = document.createElement('video'); v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'none';
+        v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.dataset.src = p.video;
+        v.addEventListener('playing', function () { v.classList.add('on'); });
+        a.appendChild(v);
+      }
+      a.addEventListener('pointerenter', function () { sobre = i; });
+      a.addEventListener('pointerleave', function () { if (sobre === i) sobre = null; });
+      anel.appendChild(a);
+      cards.push({ el: a, giro: (Math.random() - 0.5) * 24, atraso: i * 38 });
+    });
+    inicio = performance.now() + 120;
+    if (calmo) { quadro(inicio + 99999); return; }
+    raf = requestAnimationFrame(quadro);
+    setTimeout(videos, 1400);
+  }
+
+  function videos() {
+    anel.querySelectorAll('video').forEach(function (v) {
+      if (visivel) { if (!v.src) v.src = v.dataset.src; var r = v.play(); if (r && r.catch) r.catch(function () {}); }
+      else if (!v.paused) v.pause();
+    });
+  }
+
+  var suave = function (x) { return 1 - Math.pow(1 - x, 4); };
+  function quadro(agora) {
+    raf = 0;
+    var dt = ultimo ? Math.min(64, agora - ultimo) : 16; ultimo = agora;
+    alvoVel = sobre === null ? 1 / 95000 : 0;    // uma volta a cada ~95 s; para quando o mouse está num post
+    vel += (alvoVel - vel) * 0.06; if (!calmo) fase += vel * dt;
+    px += (mx - px) * 0.05; py += (my - py) * 0.05;                   // o anel acompanha o mouse de leve
+    var rol = Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / (H || 1)));
+    var abre = 1 + rol * 0.35, cx = W / 2 + px * 26, cy = H / 2 + py * 18 - rol * H * 0.08;
+    for (var i = 0; i < cards.length; i++) {
+      var c = cards[i], k = calmo ? 1 : suave(Math.min(1, Math.max(0, (agora - inicio - c.atraso) / 1100)));
+      var a = angulo(fase + i / cards.length), s = Math.sin(a), co = Math.cos(a);
+      var x = cx + co * rx * abre, y = cy + s * ry * abre;
+      var esc = (0.86 + 0.14 * (s + 1) / 2) * (sobre === i ? 1.08 : 1);
+      var rot = co * -5 + s * 2;
+      // intro: do monte no centro até o lugar no anel
+      var X = W / 2 + (x - W / 2) * k, Y = H / 2 + (y - H / 2) * k, R = c.giro * (1 - k) + rot * k, S = (0.62 + 0.38 * k) * esc;
+      c.el.style.transform = 'translate3d(' + (X - cw / 2).toFixed(1) + 'px,' + (Y - cw * 0.625).toFixed(1) + 'px,0) rotate(' + R.toFixed(2) + 'deg) scale(' + S.toFixed(3) + ')';
+      c.el.style.opacity = (Math.min(1, k * 1.6) * (1 - rol * 0.9)).toFixed(3);
+      c.el.style.zIndex = sobre === i ? 50 : Math.round((s + 1) * 10);
+    }
+    if (!calmo && visivel) raf = requestAnimationFrame(quadro);
+  }
+  function acorda() { if (!raf && !calmo && montado) { ultimo = 0; raf = requestAnimationFrame(quadro); } }
+
+  addEventListener('resize', function () { medir(); if (calmo) quadro(performance.now() + 99999); });
+  sec.addEventListener('pointermove', function (e) { if (e.pointerType !== 'mouse') return; var r = sec.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width - 0.5; my = (e.clientY - r.top) / r.height - 0.5; });
+  sec.addEventListener('pointerleave', function () { mx = 0; my = 0; });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visivel = es[0].isIntersecting; if (montado) { videos(); acorda(); } }).observe(sec);
+
+  function reserva() {
+    try { return P.map(function (p) { return { imagem: 'img/' + p.slug + '/p01t.webp', link: '#' + p.slug, interno: true }; }); } catch (e) { return []; }
+  }
+  function comecar() {
+    var pronto = false;
+    var porReserva = setTimeout(function () { if (!pronto) { pronto = true; var r = reserva(); if (r.length) montar(r); } }, 3500);
+    window.cpInstagram.then(function (d) {
+      if (pronto) return;
+      var posts = ((d && d.posts) || []).map(function (p) { return { imagem: https(p.imagem), video: https(p.video), link: https(p.link) }; })
+        .filter(function (p) { return p.imagem && p.link; });
+      pronto = true; clearTimeout(porReserva);
+      montar(posts.length >= 4 ? posts : reserva());
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', comecar); else comecar();
+})();
+</script>
+  </section>
+  <div class="wrap hero-facts">
       <dl class="facts">
         <div><dt>10</dt><dd class="lbl">anos desenhando marcas</dd></div>
         <div><dt>50+</dt><dd class="lbl">esboços por projeto</dd></div>
         <div><dt>1 a 2</dt><dd class="lbl">meses por identidade</dd></div>
       </dl>
-  </section>
+  </div>
 
   <section id="projetos" class="sec" aria-labelledby="h-proj">
     <div class="wrap">
@@ -829,7 +980,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
     videos.forEach(function (v) { obs.observe(v); });
   }
   function buscar() {
-    fetch(FONTE).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+    (window.cpInstagram || fetch(FONTE).then(function (r) { return r.ok ? r.json() : null; })).then(function (d) {
       var posts = (d && Array.isArray(d.posts)) ? d.posts : [];
       if (posts.length < 3) return; // pouco ou nada: a faixa continua escondida
       if (d.usuario && /^[\w.]+$/.test(d.usuario)) {
