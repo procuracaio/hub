@@ -113,6 +113,19 @@ h3{font-size:clamp(22px,2.2vw,30px);line-height:1.1;letter-spacing:-.02em}
 .quique{position:absolute;left:0;top:-100px;width:100%;height:200px;pointer-events:none;z-index:0;overflow:visible}
 .quique path{fill:var(--ink)}
 
+/* Página do símbolo com GSAP (simbolo-motion.js) */
+.sp-prog{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--ink);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+.specs.sp-linha{border-top-color:transparent;position:relative}
+.specs.sp-linha::before{content:"";position:absolute;left:0;right:0;top:-1.5px;height:1.5px;background:var(--ink);transform:scaleX(var(--linha,1));transform-origin:0 50%}
+.stage{transform-style:preserve-3d;will-change:transform}
+#pv{overflow:hidden}
+.sp-marq{margin-top:clamp(40px,6vw,72px);overflow:hidden;display:grid;gap:10px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq-t{display:flex;gap:10px;width:max-content;will-change:transform}
+.mq{width:clamp(52px,6vw,76px);aspect-ratio:1;flex:none;position:relative;padding:0;border:1px solid color-mix(in srgb,var(--paper) 16%,transparent);background:transparent;color:var(--paper);cursor:pointer;transition:background .25s,color .25s}
+.mq svg{position:absolute;inset:16%;width:68%;height:68%}
+.mq:hover,.mq:focus-visible{background:var(--paper);color:var(--ink)}
+.sp-marq + .nextp{margin-top:22px}
+.sp-cur{position:fixed;left:0;top:0;width:14px;height:14px;border-radius:50%;background:#fff;mix-blend-mode:difference;pointer-events:none;z-index:20}
 /* Cabeçalho */
 .top{position:sticky;top:var(--top);z-index:30;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:66px}
@@ -1659,9 +1672,11 @@ function showSP(i){
   if (!sp.hidden && cur_i === i) return;
   clearInterval(buildTimer); buildTimer = null;
   cur_i = i; $('#spNo').textContent = `nº ${sno(i)}`;
+  if (window.cpSimboloSai) window.cpSimboloSai(false);
   renderSP(i); sp.hidden = false; sp.scrollTop = 0; $('#spBack').focus({preventScroll:true});
+  if (window.cpSimbolo) window.cpSimbolo(i);
 }
-function hideSP(){ if (sp.hidden) return false; clearInterval(buildTimer); buildTimer = null; sp.hidden = true; spBody.innerHTML = ''; cur_i = -1; return true; }
+function hideSP(){ if (sp.hidden) return false; clearInterval(buildTimer); buildTimer = null; if (window.cpSimboloSai) window.cpSimboloSai(true); sp.hidden = true; spBody.innerHTML = ''; cur_i = -1; return true; }
 function route(h){
   if (typeof h !== 'string') h = location.hash;
   const m = h.match(/^#s(\d{2})$/), slug = h.slice(1);
@@ -1707,5 +1722,6 @@ m.addEventListener&&m.addEventListener('change',pinta);pinta()})();</script>
 <script src="/vendor/gsap-3.15.1/MotionPathPlugin.min.js" defer></script>
 <script src="/vendor/gsap-3.15.1/Flip.min.js" defer></script>
 <script src="/motion.js" defer></script>
+<script src="/simbolo-motion.js" defer></script>
 <script src="/visitas.js" defer></script>
 </body></html>
